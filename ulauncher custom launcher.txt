@@ -1,0 +1,6 @@
+
+########### paste this command on custom launch app on cinnamon shortcuts ,
+in case not work use wmctrl -l to get ulauncher tab name ####
+
+
+ulauncher-toggle delay=500  wmctrl -a Application Launcher
