@@ -6,7 +6,7 @@ export ZSH="$HOME/.oh-my-zsh"
 
 ZSH_THEME="agnoster"
 
-PS1="[サイト19\$] \w: "
+#PS1="[サイト19\$] \w: "
 
 ##### Converts APT and sudo to nala 
   apt() { 
@@ -29,8 +29,14 @@ alias update='sudo apt update && sudo apt upgrade && sudo flatpak update'
 alias dotfiles=' cd /media/mahalo/Toxic/linuxbackup/dotfiles'
 alias cl='clear'
 
+### Plugins ###
+plugins=(git zsh-autosuggestions)
 
-plugins=(git)
 
+
+
+
+
+
+source $HOME/.cargo/env
 source $ZSH/oh-my-zsh.sh
-
