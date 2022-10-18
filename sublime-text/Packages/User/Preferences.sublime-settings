@@ -1,0 +1,12 @@
+{
+	"theme": "ayu-dark.sublime-theme",
+	"dark_theme": "Default.sublime-theme",
+	"light_theme": "Default Dark.sublime-theme",
+	"color_scheme": "ayu-mirage.sublime-color-scheme",
+"hot_exit": false,
+ "remember_open_files": false,
+	"ignored_packages":
+	[
+		"Vintage",
+	],
+}
