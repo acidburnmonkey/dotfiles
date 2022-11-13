@@ -1,2 +1,2 @@
 set number
-:se mouse+=a 
+syntax on

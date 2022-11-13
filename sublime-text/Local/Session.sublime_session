@@ -1,16 +1,24 @@
 {
+	"file_history":
+	[
+	],
 	"folder_history":
 	[
 	],
-	"last_version": 4126,
-	"last_window_id": 9,
+	"last_version": 4143,
+	"last_window_id": 10,
 	"log_indexing": false,
-	"next_update_check": 1666049746,
+	"next_update_check": 1668390171,
 	"settings":
 	{
 		"new_window_full_screen": false,
-		"new_window_height": 766.0,
+		"new_window_height": 810.0,
 		"new_window_maximized": false,
+		"new_window_position":
+		[
+			2179.0,
+			1172.0
+		],
 		"new_window_settings":
 		{
 			"auto_complete":
@@ -58,6 +66,46 @@
 			},
 			"file_history":
 			[
+				"/home/mahalo/repos/netruner-theme/netruner/theme.txt",
+				"/home/mahalo/repos/netruner-theme/install.sh",
+				"/media/veracrypt1/links",
+				"/home/mahalo/Vimix-1080p/install.sh",
+				"/home/mahalo/repos/install.sh",
+				"/etc/default/grub.bak",
+				"/etc/default/grub",
+				"/etc/default/useradd",
+				"/etc/default/microsoft-edge",
+				"/home/mahalo/Vimix-1080p/Vimix/theme.txt",
+				"/home/mahalo/chatfuckery.txt",
+				"/media/Toxic/photos/projects/Vimix-1080p/install.sh",
+				"/usr/share/grub/themes/Vimix/theme.txt",
+				"/media/Toxic/photos/projects/Vimix-1080p/Vimix/theme.txt",
+				"/media/Toxic/photos/projects/Vimix-1080p/LICENSE",
+				"/media/Toxic/photos/projects/netruner/theme.txt",
+				"/media/Toxic/photos/projects/vimixmod/Vimix-1080p/Vimix/theme.txt",
+				"/media/Toxic/photos/projects/vimixmod/theme.txt",
+				"/media/Toxic/photos/projects/vimixmod/Vimix-1080p/install.sh",
+				"/media/Toxic/photos/projects/scpwatch/rotation.txt",
+				"/media/Toxic/photos/projects/boot_loader/Vimix-1080p/Vimix/theme.txt",
+				"/media/Toxic/photos/projects/boot_loader/Vimix-1080p/install.sh",
+				"/home/mahalo/Downloads/Vimix-1080p/Vimix/theme.txt",
+				"/home/mahalo/Downloads/Vimix-1080p/install.sh",
+				"/home/mahalo/scripts/Untitled Document",
+				"/media/Toxic/linuxbackup/cinnamon tweaks.txt",
+				"/media/Toxic/linuxbackup/linux comands.txt",
+				"/media/Toxic/important documents/password de la loca.txt",
+				"/home/mahalo/user.js",
+				"/home/mahalo/repos/firefox-sweet-theme/configuration/user.js",
+				"/home/mahalo/repos/firefox-sweet-theme/userChrome.css",
+				"/home/mahalo/repos/firefox-sweet-theme/scripts/user.js",
+				"/home/mahalo/repos/firefox-sweet-theme/README.md",
+				"/home/mahalo/repos/firefox-sweet-theme/theme/colors/mars.css",
+				"/home/mahalo/repos/firefox-sweet-theme/theme/colors/light.css",
+				"/home/mahalo/repos/firefox-sweet-theme/theme/colors/dark.css",
+				"/home/mahalo/repos/firefox-sweet-theme/scripts/install.sh",
+				"/home/mahalo/dotfiles_bachup.sh",
+				"/media/Toxic/linuxbackup/dotfiles/kitty/kitty.conf",
+				"/home/mahalo/.vimrc",
 				"/home/mahalo/.xsession-errors",
 				"/home/mahalo/.wget-hsts",
 				"/home/mahalo/.bashrc",
@@ -65,7 +113,6 @@
 				"/home/mahalo/.config/sublime-text/Packages/User/Preferences.sublime-settings",
 				"/home/mahalo/.bash_history",
 				"/home/mahalo/.viminfo",
-				"/home/mahalo/.vimrc",
 				"/home/mahalo/.zshrc.pre-oh-my-zsh",
 				"/home/mahalo/.cinnamon/configs/menu@cinnamon.org/0.json",
 				"/home/mahalo/.config/ckb-next/ckb-next.conf",
@@ -74,12 +121,10 @@
 				"/home/mahalo/.config/ckb-next/ckb-next_backup_1665781622.conf",
 				"/home/mahalo/Downloads/60-openrgb.rules",
 				"/home/mahalo/Downloads/Fonts/readme.txt",
-				"/media/Toxic/linuxbackup/cinnamon tweaks.txt",
 				"/home/mahalo/linux-comands.txt",
 				"/home/mahalo/.config/OpenRGB/OpenRGB.json",
 				"/media/Toxic/linuxbackup/mintapps.txt",
 				"/home/mahalo/repos/photoshop-main/Makefile",
-				"/media/Toxic/linuxbackup/linux comands.txt",
 				"/home/mahalo/install.sh"
 			],
 			"find":
@@ -170,7 +215,7 @@
 			{
 			}
 		},
-		"new_window_width": 1130.0
+		"new_window_width": 1411.0
 	},
 	"windows":
 	[
@@ -221,6 +266,46 @@
 			},
 			"file_history":
 			[
+				"/home/mahalo/repos/netruner-theme/netruner/theme.txt",
+				"/home/mahalo/repos/netruner-theme/install.sh",
+				"/media/veracrypt1/links",
+				"/home/mahalo/Vimix-1080p/install.sh",
+				"/home/mahalo/repos/install.sh",
+				"/etc/default/grub.bak",
+				"/etc/default/grub",
+				"/etc/default/useradd",
+				"/etc/default/microsoft-edge",
+				"/home/mahalo/Vimix-1080p/Vimix/theme.txt",
+				"/home/mahalo/chatfuckery.txt",
+				"/media/Toxic/photos/projects/Vimix-1080p/install.sh",
+				"/usr/share/grub/themes/Vimix/theme.txt",
+				"/media/Toxic/photos/projects/Vimix-1080p/Vimix/theme.txt",
+				"/media/Toxic/photos/projects/Vimix-1080p/LICENSE",
+				"/media/Toxic/photos/projects/netruner/theme.txt",
+				"/media/Toxic/photos/projects/vimixmod/Vimix-1080p/Vimix/theme.txt",
+				"/media/Toxic/photos/projects/vimixmod/theme.txt",
+				"/media/Toxic/photos/projects/vimixmod/Vimix-1080p/install.sh",
+				"/media/Toxic/photos/projects/scpwatch/rotation.txt",
+				"/media/Toxic/photos/projects/boot_loader/Vimix-1080p/Vimix/theme.txt",
+				"/media/Toxic/photos/projects/boot_loader/Vimix-1080p/install.sh",
+				"/home/mahalo/Downloads/Vimix-1080p/Vimix/theme.txt",
+				"/home/mahalo/Downloads/Vimix-1080p/install.sh",
+				"/home/mahalo/scripts/Untitled Document",
+				"/media/Toxic/linuxbackup/cinnamon tweaks.txt",
+				"/media/Toxic/linuxbackup/linux comands.txt",
+				"/media/Toxic/important documents/password de la loca.txt",
+				"/home/mahalo/user.js",
+				"/home/mahalo/repos/firefox-sweet-theme/configuration/user.js",
+				"/home/mahalo/repos/firefox-sweet-theme/userChrome.css",
+				"/home/mahalo/repos/firefox-sweet-theme/scripts/user.js",
+				"/home/mahalo/repos/firefox-sweet-theme/README.md",
+				"/home/mahalo/repos/firefox-sweet-theme/theme/colors/mars.css",
+				"/home/mahalo/repos/firefox-sweet-theme/theme/colors/light.css",
+				"/home/mahalo/repos/firefox-sweet-theme/theme/colors/dark.css",
+				"/home/mahalo/repos/firefox-sweet-theme/scripts/install.sh",
+				"/home/mahalo/dotfiles_bachup.sh",
+				"/media/Toxic/linuxbackup/dotfiles/kitty/kitty.conf",
+				"/home/mahalo/.vimrc",
 				"/home/mahalo/.xsession-errors",
 				"/home/mahalo/.wget-hsts",
 				"/home/mahalo/.bashrc",
@@ -228,7 +313,6 @@
 				"/home/mahalo/.config/sublime-text/Packages/User/Preferences.sublime-settings",
 				"/home/mahalo/.bash_history",
 				"/home/mahalo/.viminfo",
-				"/home/mahalo/.vimrc",
 				"/home/mahalo/.zshrc.pre-oh-my-zsh",
 				"/home/mahalo/.cinnamon/configs/menu@cinnamon.org/0.json",
 				"/home/mahalo/.config/ckb-next/ckb-next.conf",
@@ -237,12 +321,10 @@
 				"/home/mahalo/.config/ckb-next/ckb-next_backup_1665781622.conf",
 				"/home/mahalo/Downloads/60-openrgb.rules",
 				"/home/mahalo/Downloads/Fonts/readme.txt",
-				"/media/Toxic/linuxbackup/cinnamon tweaks.txt",
 				"/home/mahalo/linux-comands.txt",
 				"/home/mahalo/.config/OpenRGB/OpenRGB.json",
 				"/media/Toxic/linuxbackup/mintapps.txt",
 				"/home/mahalo/repos/photoshop-main/Makefile",
-				"/media/Toxic/linuxbackup/linux comands.txt",
 				"/home/mahalo/install.sh"
 			],
 			"find":
@@ -291,7 +373,7 @@
 				"height": 0.0
 			},
 			"pinned_build_system": "",
-			"position": "0,0,0,0,0,2263,1085,3393,1851,3840,1986,0",
+			"position": "0,0,0,0,0,2179,1108,3590,1918,3840,1986,0",
 			"replace":
 			{
 				"height": 0.0
@@ -336,7 +418,7 @@
 			"template_settings":
 			{
 			},
-			"window_id": 1
+			"window_id": 10
 		}
 	],
 	"workspaces":
