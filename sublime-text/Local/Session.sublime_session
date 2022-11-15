@@ -1,6 +1,7 @@
 {
 	"file_history":
 	[
+		"/home/mahalo/scripts/cleankernels.sh"
 	],
 	"folder_history":
 	[
@@ -8,16 +9,16 @@
 	"last_version": 4143,
 	"last_window_id": 10,
 	"log_indexing": false,
-	"next_update_check": 1668390171,
+	"next_update_check": 1668562971,
 	"settings":
 	{
 		"new_window_full_screen": false,
-		"new_window_height": 810.0,
+		"new_window_height": 1012.0,
 		"new_window_maximized": false,
 		"new_window_position":
 		[
-			2179.0,
-			1172.0
+			2250.0,
+			988.0
 		],
 		"new_window_settings":
 		{
@@ -66,6 +67,7 @@
 			},
 			"file_history":
 			[
+				"/home/mahalo/scripts/cleankernels.sh",
 				"/home/mahalo/repos/netruner-theme/netruner/theme.txt",
 				"/home/mahalo/repos/netruner-theme/install.sh",
 				"/media/veracrypt1/links",
@@ -129,7 +131,7 @@
 			],
 			"find":
 			{
-				"height": 0.0
+				"height": 30.0
 			},
 			"find_in_files":
 			{
@@ -143,6 +145,7 @@
 				"case_sensitive": false,
 				"find_history":
 				[
+					"Fedora"
 				],
 				"highlight": true,
 				"in_selection": false,
@@ -161,7 +164,7 @@
 			},
 			"incremental_find":
 			{
-				"height": 0.0
+				"height": 30.0
 			},
 			"input":
 			{
@@ -175,7 +178,7 @@
 			"pinned_build_system": "",
 			"replace":
 			{
-				"height": 0.0
+				"height": 56.0
 			},
 			"save_all_on_build": true,
 			"select_file":
@@ -215,7 +218,7 @@
 			{
 			}
 		},
-		"new_window_width": 1411.0
+		"new_window_width": 960.0
 	},
 	"windows":
 	[
@@ -266,6 +269,7 @@
 			},
 			"file_history":
 			[
+				"/home/mahalo/scripts/cleankernels.sh",
 				"/home/mahalo/repos/netruner-theme/netruner/theme.txt",
 				"/home/mahalo/repos/netruner-theme/install.sh",
 				"/media/veracrypt1/links",
@@ -329,7 +333,7 @@
 			],
 			"find":
 			{
-				"height": 0.0
+				"height": 30.0
 			},
 			"find_in_files":
 			{
@@ -343,6 +347,7 @@
 				"case_sensitive": false,
 				"find_history":
 				[
+					"Fedora"
 				],
 				"highlight": true,
 				"in_selection": false,
@@ -361,7 +366,7 @@
 			},
 			"incremental_find":
 			{
-				"height": 0.0
+				"height": 30.0
 			},
 			"input":
 			{
@@ -373,10 +378,10 @@
 				"height": 0.0
 			},
 			"pinned_build_system": "",
-			"position": "0,0,0,0,0,2179,1108,3590,1918,3840,1986,0",
+			"position": "0,0,0,0,0,2250,924,3210,1936,3840,2004,0",
 			"replace":
 			{
-				"height": 0.0
+				"height": 56.0
 			},
 			"save_all_on_build": true,
 			"select_file":
