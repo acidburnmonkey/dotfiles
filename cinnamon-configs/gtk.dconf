@@ -1,0 +1,16 @@
+[settings/color-chooser]
+selected-color=(true, 0.97254901960784312, 0.89411764705882357, 0.36078431372549019, 1.0)
+
+[settings/file-chooser]
+date-format='regular'
+location-mode='path-bar'
+show-hidden=false
+show-size-column=true
+show-type-column=true
+sidebar-width=171
+sort-column='modified'
+sort-directories-first=false
+sort-order='descending'
+type-format='category'
+window-position=(2371, 1077)
+window-size=(1018, 742)

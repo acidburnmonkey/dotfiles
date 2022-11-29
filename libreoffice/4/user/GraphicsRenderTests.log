@@ -1,8 +1,8 @@
 Graphics Backend used: svp
-Passed Tests : 67
-Quirky Tests : 35
-Failed Tests : 1
-Skipped Tests : 6
+Passed Tests: 67
+Quirky Tests: 35
+Failed Tests: 1
+Skipped Tests: 6
 
 ---Name of the tests that failed---
 testDrawInvertN50WithRectangle

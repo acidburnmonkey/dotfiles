@@ -16,6 +16,8 @@ alias cl='clear'
 alias goarchon='ssh root@192.168.1.118'
 alias src='source .zshrc'
 alias neogit='onefetch'
+alias grub2-update='sudo grub2-mkconfig -o /boot/efi/EFI/fedora/grub.cfg'
+
 
 ### Plugins ###
 plugins=(git zsh-autosuggestions python)

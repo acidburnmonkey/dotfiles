@@ -1,0 +1,27 @@
+[desktop]
+computer-icon-visible=false
+desktop-layout='true::true'
+volumes-visible=true
+
+[plugins]
+disabled-extensions=@as []
+
+[preferences]
+executable-text-activation='display'
+inherit-show-thumbnails=true
+show-hidden-files=false
+show-home-icon-toolbar=true
+show-image-thumbnails='always'
+show-location-entry=true
+show-show-thumbnails-toolbar=false
+thumbnail-limit=uint64 8589934592
+tooltips-in-list-view=false
+
+[window-state]
+devices-expanded=true
+geometry='960x1012+1920+924'
+maximized=true
+network-expanded=false
+sidebar-bookmark-breakpoint=1
+sidebar-width=199
+start-with-sidebar=true
