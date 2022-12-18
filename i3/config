@@ -6,10 +6,9 @@ set $alt Mod1
 font Hack Nerd Font 11
 
 # Volume keys
-bindsym $mod+plus		exec --no-startup-id pulsemixer --change-volume +5
-bindsym $mod+Shift+plus		exec --no-startup-id pulsemixer --change-volume +15
-bindsym $mod+minus 		exec --no-startup-id pulsemixer --change-volume -5
-bindsym $mod+Shift+minus	exec --no-startup-id pulsemixer --change-volume -15
+bindsym XF86AudioMute exec "amixer -q sset Master,0 toggle"
+bindsym XF86AudioRaiseVolume exec "amixer -q sset Master,0 5%+ unmute"
+bindsym XF86AudioLowerVolume exec "amixer -q sset Master,0 5%- unmute"
 
 ############### MY stuff ##########
 bindsym $mod+d exec ~/.config/polybar/scripts/rofimenu/launcher.sh 
@@ -31,10 +30,9 @@ for_window [title="Library"] floating enable
 
 # Define gaps between windows
 gaps inner 20
-#bindsym $mod+Enter exec i3-sensible-emulator 
 
 bindsym $mod+r exec kitty
-# Drag floating windows (Mouse + $mod)
+#Drag floating windows (Mouse + $mod)
 floating_modifier $mod
 
 # Kill focused window
@@ -136,4 +134,4 @@ exec_always --no-startup-id bash ~/.config/polybar/launch.sh
 exec_always --no-startup-id feh --bg-fill ~/Pictures/wallhaven-k7g6md.jpg
 #exec_always --no-startup-id compton -b
 exec_always --no-startup-id dunst
-exec_always --no-startup-id picom --experimental-backends -CGb
+exec_always --no-startup-id picom 
