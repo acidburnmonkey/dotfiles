@@ -11,7 +11,7 @@
 	"last_version": 4143,
 	"last_window_id": 11,
 	"log_indexing": false,
-	"next_update_check": 1669746868,
+	"next_update_check": 1671471877,
 	"settings":
 	{
 		"new_window_full_screen": false,
@@ -19,7 +19,7 @@
 		"new_window_maximized": false,
 		"new_window_position":
 		[
-			2053.0,
+			2176.0,
 			1056.0
 		],
 		"new_window_settings":
@@ -396,7 +396,7 @@
 				"height": 0.0
 			},
 			"pinned_build_system": "",
-			"position": "0,0,0,0,0,2053,992,3684,1936,3840,2004,0",
+			"position": "0,0,0,0,0,2176,992,3807,1936,3840,2004,0",
 			"replace":
 			{
 				"height": 56.0
