@@ -6,9 +6,11 @@ set $alt Mod1
 font Hack Nerd Font 11
 
 # Volume keys
-bindsym XF86AudioMute exec "amixer -q sset Master,0 toggle"
-bindsym XF86AudioRaiseVolume exec "amixer -q sset Master,0 5%+ unmute"
-bindsym XF86AudioLowerVolume exec "amixer -q sset Master,0 5%- unmute"
+bindsym XF86AudioMute exec ~/.config/i3/volume/volume.sh mute 
+# bindsym XF86AudioRaiseVolume exec "amixer -q sset Master,0 5%+ unmute"
+# bindsym XF86AudioLowerVolume exec "amixer -q sset Master,0 5%- unmute"
+bindsym XF86AudioRaiseVolume exec ~/.config/i3/volume/volume.sh up 
+bindsym XF86AudioLowerVolume exec ~/.config/i3/volume/volume.sh down 
 
 ############### MY stuff ##########
 bindsym $mod+d exec ~/.config/polybar/scripts/rofimenu/launcher.sh 
