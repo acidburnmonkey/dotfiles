@@ -80,15 +80,15 @@ bindsym $mod+a focus parent
 # ASSIGN
 assign [class="firefox"] $ws2
 assign [class="kitty"] $ws1
-assign [class="code - oss"] $ws4
+assign [class="jetbrains-pycharm-ce"] $ws4
 assign [class="Nemo"] $ws3
 assign [class="Steam"] $ws5
 # Set names for workspaces
 set $ws1 " Main"
 set $ws2 " Web"
-set $ws3 " Nemo"
+set $ws3 " Nemo"
 set $ws4 " Code"
-set $ws5 " Files"
+set $ws5 " Files"
 
 # Switch to workspaces
 bindsym $mod+1 workspace $ws1
@@ -132,6 +132,7 @@ client.placeholder      #282828 #282828 #ebdbb2 #282828 #282828
 # Run commands on startup
 exec_always --no-startup-id bash ~/.config/polybar/launch.sh
 exec_always --no-startup-id feh --bg-fill ~/Pictures/wallhaven-k7g6md.jpg
-#exec_always --no-startup-id compton -b
 exec_always --no-startup-id dunst
-exec_always --no-startup-id picom 
+exec_always --no-startup-id picom
+exec_always --no-startup-id nm-applet
+
