@@ -7,11 +7,11 @@ font Hack Nerd Font 11
 
 # Volume keys
 bindsym XF86AudioMute exec ~/.config/i3/volume/volume.sh mute 
-# bindsym XF86AudioRaiseVolume exec "amixer -q sset Master,0 5%+ unmute"
-# bindsym XF86AudioLowerVolume exec "amixer -q sset Master,0 5%- unmute"
 bindsym XF86AudioRaiseVolume exec ~/.config/i3/volume/volume.sh up 
 bindsym XF86AudioLowerVolume exec ~/.config/i3/volume/volume.sh down 
-
+# Brightness 
+bindsym XF86MonBrightnessUp exec --no-startup-id ~/.config/i3/brightnessControl.sh up
+bindsym XF86MonBrightnessDown exec --no-startup-id  ~/.config/i3/brightnessControl.sh down
 ############### MY stuff ##########
 bindsym $mod+d exec ~/.config/polybar/scripts/rofimenu/launcher.sh 
 bindsym $mod+l exec ~/.config/polybar/scripts/rofipowermenu/skpowermenu.sh
@@ -84,7 +84,7 @@ assign [class="firefox"] $ws2
 assign [class="kitty"] $ws1
 assign [class="jetbrains-pycharm-ce"] $ws4
 assign [class="Nemo"] $ws3
-assign [class="Steam"] $ws5
+assign [class="thunderbird"] $ws5
 # Set names for workspaces
 set $ws1 " Main"
 set $ws2 " Web"
@@ -134,7 +134,7 @@ client.placeholder      #282828 #282828 #ebdbb2 #282828 #282828
 # Run commands on startup
 exec_always --no-startup-id bash ~/.config/polybar/launch.sh
 exec_always --no-startup-id feh --bg-fill ~/Pictures/wallhaven-k7g6md.jpg
-exec_always --no-startup-id dunst
+exec_always --no-startup-id dunst -config ~/.config/dunst/dunstrc
 exec_always --no-startup-id picom
 exec_always --no-startup-id nm-applet
 
