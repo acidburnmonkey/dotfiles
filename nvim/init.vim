@@ -9,16 +9,21 @@ set softtabstop=4
 set shiftwidth=4
 set expandtab
 set autoindent
-let mapleader= ' '
-set encoding=utf8
+let mapleader=' '
+command! WipeReg for i in range(34,122) | silent! call setreg(nr2char(i), []) | endfor
 
 "############
 "#   Pugins #
 "############
 
 call plug#begin()
+
+Plug 'lukas-reineke/indent-blankline.nvim'
+"''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+Plug 'norcalli/nvim-colorizer.lua'
+"''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 Plug 'mbbill/undotree'
-"''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+"''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 Plug 'nvim-tree/nvim-web-devicons'
 Plug 'nvim-neo-tree/neo-tree.nvim'
 Plug 'MunifTanjim/nui.nvim'
@@ -72,15 +77,19 @@ call plug#end()
 "#####################
 
 nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
-
 nnoremap \ :Neotree reveal<cr>
 nnoremap <leader>u :UndotreeToggle<CR>
+nnoremap <leader>- :IndentBlanklineToggle<CR>
+
 lua vim.keymap.set("n", "<leader>r", [[:%s#\<<C-r><C-w>\>#<C-r><C-w>#gI<Left><Left><Left>]])
+:nmap P o<ESC>p
 
 "#####################
 "#     Configs       # 
 "#####################
+
 imap <silent><expr> <Tab> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>' 
+autocmd VimEnter * WipeReg
 "''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 :map <C-w> daw 
 :map <F1> <nop>
@@ -89,6 +98,7 @@ let g:peekup_open = '<F5>'
 let g:peekup_paste_after = '<leader>p'
 
 "''''''''''''Python'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
 let g:deoplete#enable_at_startup = 1
 " <TAB>: completion.
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
@@ -97,7 +107,7 @@ autocmd FileType python imap <buffer> <F10> <esc>:w<CR>:exec '!python3' shellesc
 
 "''''''''''''''' Theme '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 lua <<EOF
-vim.cmd.colorscheme "catppuccin"
+ vim.cmd.colorscheme "catppuccin-mocha"
 EOF
 
 "''''''''''''''''''''Font Icons ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
@@ -143,9 +153,9 @@ vim.api.nvim_create_autocmd('FileType', {
 EOF
 "''''''''''''''''''''Zero Lsp''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 lua <<EOF
-local lsp = require('lsp-zero')
-lsp.preset('recommended')
-lsp.setup()
+    local lsp = require('lsp-zero')
+    lsp.preset('recommended')
+    lsp.setup()
 EOF
 "'''''''''''''''''''Tree sitter highlight'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 lua <<EOF
@@ -160,6 +170,6 @@ require'nvim-treesitter.configs'.setup {
   },
 }
 EOF
-"''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-
-
+"''''''''''''''''''nvim-colorizer''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+lua require'colorizer'.setup()
+"''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
