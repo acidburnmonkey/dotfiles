@@ -84,6 +84,8 @@ nnoremap <leader>- :IndentBlanklineToggle<CR>
 
 lua vim.keymap.set("n", "<leader>r", [[:%s#\<<C-r><C-w>\>#<C-r><C-w>#gI<Left><Left><Left>]])
 :nmap P o<ESC>p
+nnoremap d "_d
+vnoremap d "_d
 
 "#####################
 "#     Configs       # 
