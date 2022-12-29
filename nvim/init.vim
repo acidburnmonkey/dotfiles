@@ -17,19 +17,27 @@ set encoding=utf8
 "############
 
 call plug#begin()
-
+Plug 'mbbill/undotree'
+"''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+Plug 'nvim-tree/nvim-web-devicons'
+Plug 'nvim-neo-tree/neo-tree.nvim'
+Plug 'MunifTanjim/nui.nvim'
+"''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+"''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-"''''''''''''''''''''''''''''''''''''''''''''''''''''''
+"''''''''''''''''''''''''''''''''''''''''''''''"''''''''''''''''''
 Plug 'williamboman/mason.nvim'
 Plug 'williamboman/mason-lspconfig.nvim'
 Plug 'neovim/nvim-lspconfig'
-"''''''''''''''''''''''''''''''''''''''''''''''''''''
+"''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 Plug 'L3MON4D3/LuaSnip'
 Plug 'rafamadriz/friendly-snippets'
-""""""""""""""""""""""""""''''''''''''''''''''''""""
+""""""""""""""""""""""""""'''''''''''''''''''''''''''''''''''""""
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-commentary'
-"''''''''''''''''''''''''''''''''''''''''''''''''''
+"''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 else
@@ -42,8 +50,6 @@ Plug 'deoplete-plugins/deoplete-jedi'
 Plug 'gennaro-tedesco/nvim-peekup'
 "''''''''''''''''''''''''''''''''''''''''''''''''''
 Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
-"''''''''''''''''''''''''''''''''''''''''''''''''''
-Plug 'preservim/nerdtree'
 "''''''''''''''''''''''''''''''''''''''''''''''''''
 Plug 'tpope/vim-surround'
 "'''''''''''''''''''''''''''''''''''''''''''''''''''
@@ -64,8 +70,12 @@ call plug#end()
 "#####################
 "     Remaps         #
 "#####################
-nnoremap("v", "J", ":m '>+1<CR>gv=gv")
-nnoremap("v", "K", ":m '<-2<CR>gv=gv")
+
+nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
+
+nnoremap \ :Neotree reveal<cr>
+nnoremap <leader>u :UndotreeToggle<CR>
+lua vim.keymap.set("n", "<leader>r", [[:%s#\<<C-r><C-w>\>#<C-r><C-w>#gI<Left><Left><Left>]])
 
 "#####################
 "#     Configs       # 
@@ -89,9 +99,6 @@ autocmd FileType python imap <buffer> <F10> <esc>:w<CR>:exec '!python3' shellesc
 lua <<EOF
 vim.cmd.colorscheme "catppuccin"
 EOF
-"''''''''''''' Nerd tree '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-nnoremap <F2> :NERDTreeToggle<CR>
-:xmap S
 
 "''''''''''''''''''''Font Icons ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 set guifont=Hack\ Nerd\ Font\ 12
@@ -140,7 +147,7 @@ local lsp = require('lsp-zero')
 lsp.preset('recommended')
 lsp.setup()
 EOF
-"'''''''''''''''''''Tree sitter highlight'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+"'''''''''''''''''''Tree sitter highlight'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
   -- A list of parser names, or "all"
@@ -153,4 +160,6 @@ require'nvim-treesitter.configs'.setup {
   },
 }
 EOF
+"''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
 
