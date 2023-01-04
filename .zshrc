@@ -29,7 +29,9 @@ alias vim='nvim'
 ### Plugins ###
 plugins=(git zsh-autosuggestions python)
 
-
+function cd {
+    builtin cd "$@" && ls -F
+}
 
 source $ZSH/oh-my-zsh.sh
 

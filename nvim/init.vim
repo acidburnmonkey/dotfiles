@@ -91,6 +91,19 @@ vnoremap d "_d
 "#     Configs       # 
 "#####################
 
+"'''''''''''Force transparency if no compositor installed'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+lua <<EOF
+    function force_backgraund(color)
+        color = color or "catppuccin-mocha"
+        vim.cmd.colorscheme(color)
+
+        vim.api.nvim_set_hl(0, "Normal",{bg = "none"} )
+        vim.api.nvim_set_hl(0, "NormalFloat",{bg = "none"} )
+    end
+
+EOF
+lua force_backgraund()
+"''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 imap <silent><expr> <Tab> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>' 
 autocmd VimEnter * WipeReg
 "''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
@@ -108,10 +121,13 @@ inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 autocmd FileType python map <buffer> <F10> :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
 autocmd FileType python imap <buffer> <F10> <esc>:w<CR>:exec '!python3' shellescape(@%, 1)<CR>
 
+autocmd FileType sh map <buffer> <F10> :w<CR>:exec '!/bin/bash' shellescape(@%, 1)<CR>
+autocmd FileType sh imap <buffer> <F10> <esc>:w<CR>:exec '!/bin/bash' shellescape(@%, 1)<CR>
+
 "''''''''''''''' Theme '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-lua <<EOF
- vim.cmd.colorscheme "catppuccin-mocha"
-EOF
+" lua <<EOF
+"  vim.cmd.colorscheme "catppuccin-mocha"
+" EOF
 
 "''''''''''''''''''''Font Icons ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 set guifont=Hack\ Nerd\ Font\ 12
