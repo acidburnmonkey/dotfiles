@@ -6,12 +6,12 @@ set $alt Mod1
 font Hack Nerd Font 11
 
 # Volume keys
-bindsym XF86AudioMute exec ~/.config/i3/volume/volume.sh mute 
-bindsym XF86AudioRaiseVolume exec ~/.config/i3/volume/volume.sh up 
-bindsym XF86AudioLowerVolume exec ~/.config/i3/volume/volume.sh down 
+bindsym XF86AudioMute exec ~/.config/i3/dunstthree/dunstthree.sh mute 
+bindsym XF86AudioRaiseVolume exec ~/.config/i3/dunstthree/dunstthree.sh vup 
+bindsym XF86AudioLowerVolume exec ~/.config/i3/dunstthree/dunstthree.sh vdown 
 # Brightness 
-bindsym XF86MonBrightnessUp exec --no-startup-id ~/.config/i3/brightnessControl.sh up
-bindsym XF86MonBrightnessDown exec --no-startup-id  ~/.config/i3/brightnessControl.sh down
+bindsym XF86MonBrightnessUp exec --no-startup-id ~/.config/i3/dunstthree/dunstthree.sh bup
+bindsym XF86MonBrightnessDown exec --no-startup-id  ~/.config/i3/dunstthree/dunstthree.sh bdown
 ############### MY stuff ##########
 bindsym $mod+d exec ~/.config/polybar/scripts/rofimenu/launcher.sh 
 bindsym $mod+l exec ~/.config/polybar/scripts/rofipowermenu/skpowermenu.sh

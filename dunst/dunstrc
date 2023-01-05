@@ -215,7 +215,7 @@
     max_icon_size = 128
 
     # Paths to default icons (only neccesary when not using recursive icon lookup)
-    icon_path = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
+    icon_path = ~/.config/dust/icons 
 
     ### History ###
 
@@ -315,7 +315,7 @@
     foreground = "#888888"
     timeout = 10
     # Icon for notifications with low urgency, uncomment to enable
-    #default_icon = /path/to/icon
+    # default_icon = ~/.config/dunst/icons/volume.png
 
 [urgency_normal]
     background = "#aa2F343F"
