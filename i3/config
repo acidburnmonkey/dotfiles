@@ -81,10 +81,22 @@ bindsym $mod+a focus parent
 
 # ASSIGN
 assign [class="firefox"] $ws2
+for_window [urgent="latest" class="firefox"] focus
+
 assign [class="kitty"] $ws1
+for_window [urgent="latest" class="kitty"] focus
+
 assign [class="jetbrains-pycharm-ce"] $ws4
-assign [class="Nemo"] $ws3
+for_window [urgent="latest" class="jetbrains-pycharm-ce"] focus
+
+assign [class="jetbrains-clion"]  $ws4 
+for_window [urgent="latest" class="jetbrains-clion"] focus
+
+assign  [class="Nemo"] $ws3
+for_window [urgent="latest" class="Nemo"] focus
+
 assign [class="thunderbird"] $ws5
+for_window [urgent="latest" class="thunderbird"] focus
 # Set names for workspaces
 set $ws1 " Main"
 set $ws2 " Web"
@@ -137,4 +149,5 @@ exec_always --no-startup-id feh --bg-fill ~/Pictures/wallhaven-k7g6md.jpg
 exec_always --no-startup-id dunst -config ~/.config/dunst/dunstrc
 exec_always --no-startup-id picom
 exec_always --no-startup-id nm-applet
+exec_always --no-startup-id ~/appimages/Nextcloud-3.6.4-x86_64.AppImage --background
 
