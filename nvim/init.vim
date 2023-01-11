@@ -19,12 +19,7 @@ command! WipeReg for i in range(34,122) | silent! call setreg(nr2char(i), []) | 
 
 call plug#begin()
 
-<<<<<<< HEAD
-" Plug 'puremourning/vimspector'
-"''''''''''''''''''''''''''''''''''''''''''''''''
-=======
 "''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
->>>>>>> refs/remotes/origin/main
 Plug 'lukas-reineke/indent-blankline.nvim'
 "''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 Plug 'norcalli/nvim-colorizer.lua'
