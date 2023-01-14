@@ -4,7 +4,10 @@ import:
 #  - ~/.config/alacritty/catppuccin/catppuccin-macchiato.yml
 #  - ~/.config/alacritty/catppuccin/catppuccin-frappe.yml
 #  - ~/.config/alacritty/catppuccin/catppuccin-latte.yml
-window.opacity: 1.0
+
+decorations: full
+window:
+  opacity: 0.6
 # Font configuration
 font:
   size: 13.0
