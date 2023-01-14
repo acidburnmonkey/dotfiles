@@ -19,7 +19,8 @@ command! WipeReg for i in range(34,122) | silent! call setreg(nr2char(i), []) | 
 
 call plug#begin()
 
-"''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+" Plug 'puremourning/vimspector'
+"''''''''''''''''''''''''''''''''''''''''''''''''
 Plug 'lukas-reineke/indent-blankline.nvim'
 "''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 Plug 'norcalli/nvim-colorizer.lua'
@@ -104,7 +105,7 @@ lua vim.keymap.set("v", "<leader>y", "\"+y")
 imap <silent><expr> <Tab> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>' 
 autocmd VimEnter * WipeReg
 "''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-:map <C-w> daw 
+:map <leader>d daw 
 :map <F1> <nop>
 "'''' registers ''''
 let g:peekup_open = '<F5>'
@@ -121,7 +122,7 @@ autocmd FileType python imap <buffer> <F10> <esc>:w<CR>:exec '!python3' shellesc
 autocmd FileType sh map <buffer> <F10> :w<CR>:exec '!/bin/bash' shellescape(@%, 1)<CR>
 autocmd FileType sh imap <buffer> <F10> <esc>:w<CR>:exec '!/bin/bash' shellescape(@%, 1)<CR>
 "C++
-map  <F8> : !gcc % && ./a.out <CR>
+map  <F8> :!g++ -Wall % && ./a.out <CR>
 "''''''''''''''' Theme '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 lua <<EOF
  vim.cmd.colorscheme "catppuccin-mocha"
@@ -192,4 +193,4 @@ require'nvim-treesitter.configs'.setup {
 EOF
 "''''''''''''''''''nvim-colorizer''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 lua require'colorizer'.setup()
-
+"''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''

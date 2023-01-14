@@ -19,7 +19,7 @@ bindsym $mod+Return exec kitty
 bindsym $alt+0x2c exec nemo 
 bindsym $alt+0x2f  exec firefox 
 bindsym Ctrl+$alt+l  exec dm-tool lock
-
+bindsym $mod+0x2e exec alacritty -e "ranger"
 smart_gaps on
 smart_borders on
 
@@ -97,6 +97,10 @@ for_window [urgent="latest" class="Nemo"] focus
 
 assign [class="thunderbird"] $ws5
 for_window [urgent="latest" class="thunderbird"] focus
+
+for_window [urgent="latest" class="Alacritty"] focus
+assign  [class="Alacritty"] $ws3
+
 # Set names for workspaces
 set $ws1 " Main"
 set $ws2 " Web"
