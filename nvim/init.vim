@@ -92,18 +92,21 @@ vnoremap d "_d
 nnoremap ("<C-d>", "<C-d>zz")
 nnoremap ("<C-u>", "<C-u>zz")
 :map s <nop>
+
 lua vim.keymap.set("v", "K",":m '<-2<CR>gv=gv")
 lua vim.keymap.set("v", "J",":m '>+1<CR>gv=gv")
 lua vim.keymap.set("x", "p", "\"_dP")
 lua vim.keymap.set("n", "<leader>y", "\"+y")
 lua vim.keymap.set("v", "<leader>y", "\"+y")
 
+" magic use \1 to reference 
+lua vim.keymap.set("v", "<leader>c", [[:s/\(\w.*\)/]])
+
 "#####################
 "#     Configs       # 
 "#####################
 
 imap <silent><expr> <Tab> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>' 
-autocmd VimEnter * WipeReg
 "''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 :map <leader>d daw 
 :map <F1> <nop>

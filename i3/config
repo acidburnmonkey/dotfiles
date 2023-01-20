@@ -20,8 +20,8 @@ bindsym $alt+0x2c exec nemo
 bindsym $alt+0x2f  exec firefox 
 bindsym Ctrl+$alt+l  exec dm-tool lock
 bindsym $mod+0x2e exec alacritty -e "ranger"
-smart_gaps on
-smart_borders on
+# smart_gaps on
+# smart_borders on
 
 # Align window title
 title_align center
