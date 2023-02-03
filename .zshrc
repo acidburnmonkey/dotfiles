@@ -8,6 +8,8 @@ export EDITOR='nvim'
 export VISUAL='nvim'
 export PATH="$HOME/scripts:$PATH"
 export ZSH="$HOME/.oh-my-zsh"
+export PATH="$HOME/.local/bin:$PATH"
+export PYTHONUNBUFFERED=1
 
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
@@ -23,7 +25,7 @@ alias grub2-update='sudo grub2-mkconfig -o /boot/efi/EFI/fedora/grub.cfg'
 alias vim='nvim'
 
 ### Plugins ###
-plugins=(git zsh-autosuggestions python)
+plugins=(git zsh-autosuggestions python virtualenv)
 
 function cd {
     builtin cd "$@" && ls -F

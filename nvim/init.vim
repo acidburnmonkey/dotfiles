@@ -1,4 +1,4 @@
-set relativenumber
+set rnu
 set clipboard+=unnamedplus
 filetype plugin on
 set noswapfile
@@ -19,8 +19,8 @@ command! WipeReg for i in range(34,122) | silent! call setreg(nr2char(i), []) | 
 
 call plug#begin()
 
-" Plug 'puremourning/vimspector'
-"''''''''''''''''''''''''''''''''''''''''''''''''
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+"''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 Plug 'lukas-reineke/indent-blankline.nvim'
 "''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 Plug 'norcalli/nvim-colorizer.lua'
@@ -44,7 +44,7 @@ Plug 'L3MON4D3/LuaSnip'
 Plug 'rafamadriz/friendly-snippets'
 """"""""""""""""""""""""""'''''''''''''''''''''''''''''''''''""""
 Plug 'jiangmiao/auto-pairs'
-Plug 'tpope/vim-commentary' 
+Plug 'tpope/vim-commentary'
 "''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -79,7 +79,7 @@ call plug#end()
 "     Remaps         #
 "#####################
 
-"From plugins
+nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
 nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
 nnoremap \ :Neotree reveal<cr>
 nnoremap <leader>u :UndotreeToggle<CR>
@@ -89,24 +89,27 @@ lua vim.keymap.set("n", "<leader>r", [[:%s#\<<C-r><C-w>\>#<C-r><C-w>#gI<Left><Le
 :nmap P o<ESC>p
 nnoremap d "_d
 vnoremap d "_d
-nnoremap ("<C-d>", "<C-d>zz")
-nnoremap ("<C-u>", "<C-u>zz")
-:map s <nop>
-
-lua vim.keymap.set("v", "K",":m '<-2<CR>gv=gv")
-lua vim.keymap.set("v", "J",":m '>+1<CR>gv=gv")
-lua vim.keymap.set("x", "p", "\"_dP")
-lua vim.keymap.set("n", "<leader>y", "\"+y")
-lua vim.keymap.set("v", "<leader>y", "\"+y")
-
-" magic use \1 to reference 
 lua vim.keymap.set("v", "<leader>c", [[:s/\(\w.*\)/]])
 
 "#####################
 "#     Configs       # 
 "#####################
 
+"'''''''''''Force transparency if no compositor installed'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+lua <<EOF
+    function force_backgraund(color)
+        color = color or "catppuccin-mocha"
+        vim.cmd.colorscheme(color)
+
+        vim.api.nvim_set_hl(0, "Normal",{bg = "none"} )
+        vim.api.nvim_set_hl(0, "NormalFloat",{bg = "none"} )
+    end
+
+EOF
+lua force_backgraund()
+"''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 imap <silent><expr> <Tab> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>' 
+" autocmd VimEnter * WipeReg
 "''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 :map <leader>d daw 
 :map <F1> <nop>
@@ -114,22 +117,21 @@ imap <silent><expr> <Tab> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-o
 let g:peekup_open = '<F5>'
 let g:peekup_paste_after = '<leader>p'
 
-"''''''''''''Debugging'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-
+"''''''''''''Python'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 let g:deoplete#enable_at_startup = 1
 " <TAB>: completion.
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 autocmd FileType python map <buffer> <F10> :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
 autocmd FileType python imap <buffer> <F10> <esc>:w<CR>:exec '!python3' shellescape(@%, 1)<CR>
-"Bash runing on maping
+
 autocmd FileType sh map <buffer> <F10> :w<CR>:exec '!/bin/bash' shellescape(@%, 1)<CR>
 autocmd FileType sh imap <buffer> <F10> <esc>:w<CR>:exec '!/bin/bash' shellescape(@%, 1)<CR>
-"C++
-map  <F8> :!g++ -Wall % && ./a.out <CR>
+
+nnoremap <silent> <F8> :!g++ -Wall % && ./a.out<cr>
 "''''''''''''''' Theme '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-lua <<EOF
- vim.cmd.colorscheme "catppuccin-mocha"
-EOF
+" lua <<EOF
+"  vim.cmd.colorscheme "catppuccin-mocha"
+" EOF
 
 "''''''''''''''''''''Font Icons ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 set guifont=Hack\ Nerd\ Font\ 12
@@ -138,7 +140,7 @@ let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 "'''''''''''''LSP'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 lua <<EOF
 require("mason-lspconfig").setup {
-    ensure_installed = {"rust_analyzer","jedi_language_server", "clangd"},
+    ensure_installed = {"rust_analyzer","jedi_language_server"},
 }
 require("mason").setup({
     ui = {
@@ -159,9 +161,6 @@ require("lspconfig").jedi_language_server.setup {
     on_attach = on_attach 
     } 
 
-require("lspconfig").clangd.setup {
-    on_attach = on_attach 
-    } 
 EOF
 "'''''''''''''''''''Bash lsp , installed trough dnf not plug '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 lua <<EOF
@@ -196,4 +195,8 @@ require'nvim-treesitter.configs'.setup {
 EOF
 "''''''''''''''''''nvim-colorizer''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 lua require'colorizer'.setup()
-"''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
+"'''''''''''''''''''Markdown Preview '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+let g:mkdp_auto_start = 1
+let g:mkdp_auto_close = 1
+
