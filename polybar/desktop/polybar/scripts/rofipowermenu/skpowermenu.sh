@@ -85,7 +85,7 @@ case ${chosen} in
 		run_cmd --reboot
         ;;
     $lock)
-        i3lock
+        i3lock  -t -i ~/.config/i3/lock.png 
         ;;
     $logout)
 		run_cmd --logout

@@ -195,4 +195,5 @@ exec_always --no-startup-id dunst -config ~/.config/dunst/dunstrc
 exec_always --no-startup-id picom
 exec_always --no-startup-id nm-applet
 exec_always --no-startup-id ~/programs/Nextcloud-3.6.0-x86_64.AppImage --background
+exec_always --no-startup-id  blueman-applet 
 
