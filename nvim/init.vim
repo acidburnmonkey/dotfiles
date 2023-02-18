@@ -1,4 +1,4 @@
-set rnu
+set nu rnu
 set clipboard+=unnamedplus
 filetype plugin on
 set noswapfile
@@ -19,6 +19,8 @@ command! WipeReg for i in range(34,122) | silent! call setreg(nr2char(i), []) | 
 
 call plug#begin()
 
+Plug 'voldikss/vim-floaterm'
+"''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 "''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 Plug 'lukas-reineke/indent-blankline.nvim'
@@ -91,6 +93,16 @@ nnoremap d "_d
 vnoremap d "_d
 lua vim.keymap.set("v", "<leader>c", [[:s/\(\w.*\)/]])
 
+:map <leader>d daw 
+:map <F1> <nop>
+map <F1> <Esc>
+imap <F1> <Esc>
+map q <Nop>
+let g:peekup_open = '<F5>'
+let g:peekup_paste_after = '<leader>p'
+" autocmd VimEnter * WipeReg
+
+
 "#####################
 "#     Configs       # 
 "#####################
@@ -109,13 +121,6 @@ EOF
 lua force_backgraund()
 "''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 imap <silent><expr> <Tab> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>' 
-" autocmd VimEnter * WipeReg
-"''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-:map <leader>d daw 
-:map <F1> <nop>
-"'''' registers ''''
-let g:peekup_open = '<F5>'
-let g:peekup_paste_after = '<leader>p'
 
 "''''''''''''Python'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 let g:deoplete#enable_at_startup = 1
@@ -127,17 +132,17 @@ autocmd FileType python imap <buffer> <F10> <esc>:w<CR>:exec '!python3' shellesc
 autocmd FileType sh map <buffer> <F10> :w<CR>:exec '!/bin/bash' shellescape(@%, 1)<CR>
 autocmd FileType sh imap <buffer> <F10> <esc>:w<CR>:exec '!/bin/bash' shellescape(@%, 1)<CR>
 
-nnoremap <silent> <F8> :!g++ -Wall % && ./a.out<cr>
+" nnoremap <silent> <F8> :!g++ -Wall % && ./a.out<cr>
 "''''''''''''''' Theme '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 " lua <<EOF
 "  vim.cmd.colorscheme "catppuccin-mocha"
 " EOF
 
-"''''''''''''''''''''Font Icons ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+"''''''''''''''''''''Font Icons '''''''''''''''''''''''''''''''''''''''
 set guifont=Hack\ Nerd\ Font\ 12
 let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 
-"'''''''''''''LSP'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+"'''''''''''''LSP''''''''''''''''''''''''''''''''''''''''''''''''''''''
 lua <<EOF
 require("mason-lspconfig").setup {
     ensure_installed = {"rust_analyzer","jedi_language_server"},
@@ -162,7 +167,7 @@ require("lspconfig").jedi_language_server.setup {
     } 
 
 EOF
-"'''''''''''''''''''Bash lsp , installed trough dnf not plug '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+"'''''''''''''''''''Bash lsp , installed trough dnf not plug '''''''''''
 lua <<EOF
 vim.api.nvim_create_autocmd('FileType', {
   pattern = 'sh',
@@ -174,13 +179,13 @@ vim.api.nvim_create_autocmd('FileType', {
   end,
 })
 EOF
-"''''''''''''''''''''Zero Lsp''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+"''''''''''''''''''''Zero Lsp''''''''''''''''''''''''''''''''''''''''''
 lua <<EOF
     local lsp = require('lsp-zero')
     lsp.preset('recommended')
     lsp.setup()
 EOF
-"'''''''''''''''''''Tree sitter highlight'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+"'''''''''''''''''''Tree sitter highlight''''''''''''''''''''''''''''''
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
   -- A list of parser names, or "all"
@@ -193,10 +198,15 @@ require'nvim-treesitter.configs'.setup {
   },
 }
 EOF
-"''''''''''''''''''nvim-colorizer''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+"''''''''''''''''''nvim-colorizer'''''''''''''''''''''''''''''''''''''
 lua require'colorizer'.setup()
 
-"'''''''''''''''''''Markdown Preview '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+"'''''''''''''''''''Markdown Preview ''''''''''''''''''''''''''''''''''
 let g:mkdp_auto_start = 1
 let g:mkdp_auto_close = 1
+let g:mkdp_browser = 'chromium-browser'
 
+"''''''''''''''''''''''FloatTerm'''''''''''''''''''''''''''''''''''''''''''
+let g:floaterm_keymap_toggle = '<F12>'
+nnoremap <silent> <F8> :FloatermNew --autoclose=0 g++ -Wall % && ./a.out<cr>
+nnoremap <silent> <F11> :FloatermNew --disposable --autoclose=0 python %<cr> 

@@ -20,8 +20,7 @@ bindsym $mod+l exec ~/.local/bin/betterlockscreen -l  -- -e
 bindsym $alt+0x2c exec nemo 
 bindsym $alt+0x2f  exec firefox 
 bindsym Ctrl+$alt+l  exec i3lock 
-# smart_gaps on
-# smart_borders on
+bindsym $mod+t  exec alacritty
 
 # Align window title
 title_align center
@@ -32,6 +31,8 @@ for_window [title="Library"] floating enable
 
 # Define gaps between windows
 gaps inner 20
+# smart_gaps on
+# smart_borders on
 
 bindsym $mod+r exec kitty
 #Drag floating windows (Mouse + $mod)
@@ -104,11 +105,11 @@ for_window [urgent="latest" class="vlc"] focus
 assign [class="parole"] $ws8
 for_window [urgent="latest" class="parole"] focus
 
-assign [class="amberol"] $ws8
-for_window [urgent="latest" class="amberol"] focus
+assign [class="Tauon Music Box"] $ws8
+for_window [urgent="latest" class="Tauon Music Box"] focus
 
-assign [class="microsoft-edge"] $ws8
-for_window [urgent="latest" class="microsoft-edge"] focus
+assign [class="Microsoft-edge"] $ws8
+for_window [urgent="latest" class="Microsoft-edge"] focus
 
 # move focused window between monitors
 bindsym $mod+Shift+greater move container to output right

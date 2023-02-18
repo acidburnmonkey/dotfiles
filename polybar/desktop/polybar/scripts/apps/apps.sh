@@ -26,7 +26,7 @@ term_cmd='kitty'
 file_cmd='nemo'
 text_cmd='flatpak run com.jetbrains.CLion'
 web_cmd='firefox -no-remote -P School'
-music_cmd='flatpak run io.bassi.Amberol'
+music_cmd='flatpak run com.github.taiko2k.tauonmb'
 setting_cmd='xfce4-settings-manager'
 
 # Options
