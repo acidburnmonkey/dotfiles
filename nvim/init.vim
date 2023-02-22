@@ -12,7 +12,6 @@ set autoindent
 let mapleader=' '
 set encoding=utf-8
 command! WipeReg for i in range(34,122) | silent! call setreg(nr2char(i), []) | endfor
-
 "############
 "#   Pugins #
 "############
@@ -86,22 +85,33 @@ nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
 nnoremap \ :Neotree reveal<cr>
 nnoremap <leader>u :UndotreeToggle<CR>
 nnoremap <leader>- :IndentBlanklineToggle<CR>
+let g:peekup_open = '<F5>'
 
-lua vim.keymap.set("n", "<leader>r", [[:%s#\<<C-r><C-w>\>#<C-r><C-w>#gI<Left><Left><Left>]])
 :nmap P o<ESC>p
 nnoremap d "_d
 vnoremap d "_d
-lua vim.keymap.set("v", "<leader>c", [[:s/\(\w.*\)/]])
-
-:map <leader>d daw 
 :map <F1> <nop>
 map <F1> <Esc>
 imap <F1> <Esc>
 map q <Nop>
-let g:peekup_open = '<F5>'
-let g:peekup_paste_after = '<leader>p'
-" autocmd VimEnter * WipeReg
 
+:map <leader>d daw 
+:map <nowait> vw viw
+autocmd VimEnter * WipeReg
+
+lua <<EOF
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+vim.keymap.set("v", "<leader>c", [[:s/\(\w.*\)/]])
+vim.keymap.set("n", "<leader>r", [[:%s#\<<C-r><C-w>\>#<C-r><C-w>#gI<Left><Left><Left>]])
+vim.keymap.set("x", "<leader>p", [["_dP]])
+vim.keymap.set("n", "J", "mzJ`z")
+vim.keymap.set("n", "<C-d>", "<C-d>zz")
+vim.keymap.set("n", "<C-u>", "<C-u>zz")
+
+vim.opt.hlsearch = false
+vim.opt.incsearch = true
+EOF
 
 "#####################
 "#     Configs       # 
@@ -144,9 +154,9 @@ let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 
 "'''''''''''''LSP''''''''''''''''''''''''''''''''''''''''''''''''''''''
 lua <<EOF
-require("mason-lspconfig").setup {
-    ensure_installed = {"rust_analyzer","jedi_language_server"},
-}
+-- require("mason-lspconfig").setup {
+--     ensure_installed = {"rust_analyzer","jedi_language_server"},
+-- }
 require("mason").setup({
     ui = {
         icons = {
@@ -208,5 +218,5 @@ let g:mkdp_browser = 'chromium-browser'
 
 "''''''''''''''''''''''FloatTerm'''''''''''''''''''''''''''''''''''''''''''
 let g:floaterm_keymap_toggle = '<F12>'
-nnoremap <silent> <F8> :FloatermNew --autoclose=0 g++ -Wall % && ./a.out<cr>
+nnoremap <silent> <F9> :FloatermNew --autoclose=0 g++ -g -Wall % && ./a.out<cr>
 nnoremap <silent> <F11> :FloatermNew --disposable --autoclose=0 python %<cr> 

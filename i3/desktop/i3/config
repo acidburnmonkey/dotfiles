@@ -15,19 +15,25 @@ bindsym XF86MonBrightnessDown exec --no-startup-id  ~/.config/i3/dunstthree/duns
 
 ############### Applications Shortcuts ##########
 
+bindsym $mod+s  exec ~/.config/polybar/scripts/apps/apps.sh
 bindsym $mod+d exec ~/.config/polybar/scripts/rofimenu/launcher.sh 
 bindsym $mod+l exec ~/.local/bin/betterlockscreen -l  -- -e
 bindsym $alt+0x2c exec nemo 
 bindsym $alt+0x2f  exec firefox 
-bindsym Ctrl+$alt+l  exec i3lock 
+bindsym Ctrl+$alt+l exec ~/.config/polybar/scripts/rofipowermenu/skpowermenu.sh
 bindsym $mod+t  exec alacritty
 
 # Align window title
 title_align center
 floating_modifier $mod
+
 # Window rules
 for_window [class="^.*"] border pixel 0
 for_window [title="Library"] floating enable
+
+for_window [class="Pycalendar.py" instance="pycalendar.py"] floating enable; move absolute position top left 
+for_window [class="Pycalendar.py" instance="pycalendar.py"] move absolute position 3200 890 
+
 
 # Define gaps between windows
 gaps inner 20
@@ -41,9 +47,6 @@ floating_modifier $mod
 # Kill focused window
 bindsym $mod+q kill
 
-# Open applications
-bindsym Print exec gnome-screenshot
-#rofi -no-config -no-lazy-grab -show drun -modi drun -theme ~/.config/polybar/scripts/rofi/launcher.rasi
 # Change window focus
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
@@ -196,5 +199,5 @@ exec_always --no-startup-id dunst -config ~/.config/dunst/dunstrc
 exec_always --no-startup-id picom
 exec_always --no-startup-id nm-applet
 exec_always --no-startup-id ~/programs/Nextcloud-3.6.0-x86_64.AppImage --background
-exec_always --no-startup-id  blueman-applet 
-
+exec_always --no-startup-id  blueman-applet --popup
+exec_always --no-startup-id autotiling
