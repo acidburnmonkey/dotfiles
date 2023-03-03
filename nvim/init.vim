@@ -132,7 +132,7 @@ lua force_backgraund()
 "''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 imap <silent><expr> <Tab> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>' 
 
-"''''''''''''Python'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+"''''''''''''Coding'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 let g:deoplete#enable_at_startup = 1
 " <TAB>: completion.
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
@@ -141,6 +141,12 @@ autocmd FileType python imap <buffer> <F10> <esc>:w<CR>:exec '!python3' shellesc
 
 autocmd FileType sh map <buffer> <F10> :w<CR>:exec '!/bin/bash' shellescape(@%, 1)<CR>
 autocmd FileType sh imap <buffer> <F10> <esc>:w<CR>:exec '!/bin/bash' shellescape(@%, 1)<CR>
+
+augroup CBuild
+  autocmd!
+  autocmd filetype cpp nnoremap <buffer> <leader>cc :!g++ -o %:p:r %<cr>
+  autocmd filetype cpp nnoremap <buffer> <leader>cr :!g++ -o %:p:r %<cr>:!%:p:r<cr>
+augroup END
 
 " nnoremap <silent> <F8> :!g++ -Wall % && ./a.out<cr>
 "''''''''''''''' Theme '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
@@ -218,5 +224,5 @@ let g:mkdp_browser = 'chromium-browser'
 
 "''''''''''''''''''''''FloatTerm'''''''''''''''''''''''''''''''''''''''''''
 let g:floaterm_keymap_toggle = '<F12>'
-nnoremap <silent> <F9> :FloatermNew --autoclose=0 g++ -g -Wall % && ./a.out<cr>
-nnoremap <silent> <F11> :FloatermNew --disposable --autoclose=0 python %<cr> 
+nnoremap <silent> <F9> :w<CR> :FloatermNew --autoclose=0 g++ -g -Wall % && ./a.out<cr>
+nnoremap <silent> <F11> :w<CR> :FloatermNew --disposable --autoclose=0 python3 %<cr> 

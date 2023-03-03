@@ -17,7 +17,7 @@ bindsym XF86MonBrightnessDown exec --no-startup-id  ~/.config/i3/dunstthree/duns
 
 bindsym $mod+s  exec ~/.config/polybar/scripts/apps/apps.sh
 bindsym $mod+d exec ~/.config/polybar/scripts/rofimenu/launcher.sh 
-bindsym $mod+l exec ~/.local/bin/betterlockscreen -l  -- -e
+bindsym $mod+l exec ~/.local/bin/betterlockscreen -l -- -e
 bindsym $alt+0x2c exec nemo 
 bindsym $alt+0x2f  exec firefox 
 bindsym Ctrl+$alt+l exec ~/.config/polybar/scripts/rofipowermenu/skpowermenu.sh
@@ -84,11 +84,14 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
 # ASSIGN
+assign [class="kitty"] $ws1
+for_window [urgent="latest" class="kitty"] focus
+
 assign [class="firefox"] $ws2
 for_window [urgent="latest" class="firefox"] focus
 
-assign [class="kitty"] $ws1
-for_window [urgent="latest" class="kitty"] focus
+assign  [class="Nemo"] $ws3
+for_window [urgent="latest" class="Nemo"] focus
 
 assign [class="jetbrains-pycharm-ce"] $ws4
 for_window [urgent="latest" class="jetbrains-pycharm-ce"] focus
@@ -96,8 +99,8 @@ for_window [urgent="latest" class="jetbrains-pycharm-ce"] focus
 assign [class="jetbrains-clion"]  $ws4 
 for_window [urgent="latest" class="jetbrains-clion"] focus
 
-assign  [class="Nemo"] $ws3
-for_window [urgent="latest" class="Nemo"] focus
+assign [class="discord"]  $ws5 
+for_window [urgent="latest" class="discord"] focus
 
 assign [class="thunderbird"] $ws7
 for_window [urgent="latest" class="thunderbird"] focus
@@ -113,6 +116,9 @@ for_window [urgent="latest" class="Tauon Music Box"] focus
 
 assign [class="Microsoft-edge"] $ws8
 for_window [urgent="latest" class="Microsoft-edge"] focus
+
+assign [class="Steam"] $ws9
+for_window [urgent="latest" class="Steam"] focus
 
 # move focused window between monitors
 bindsym $mod+Shift+greater move container to output right

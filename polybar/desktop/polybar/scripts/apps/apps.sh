@@ -27,7 +27,7 @@ file_cmd='nemo'
 text_cmd='flatpak run com.jetbrains.CLion'
 web_cmd='firefox -no-remote -P School'
 music_cmd='flatpak run com.github.taiko2k.tauonmb'
-setting_cmd='xfce4-settings-manager'
+setting_cmd='steam'
 
 # Options
 layout=`cat ${theme} | grep 'USE_ICON' | cut -d'=' -f2`
@@ -37,7 +37,7 @@ if [[ "$layout" == 'NO' ]]; then
 	option_3=" Clion <span weight='light' size='small'></span>"
 	option_4=" School<span weight='light' size='small'></span>"
 	option_5=" Music <span weight='light' size='small'></span>"
-	option_6=" Settings <span weight='light' size='small'></span>"
+	option_6=" Steam <span weight='light' size='small'></span>"
 else
 	option_1=" "
 	option_2=" "
