@@ -86,6 +86,7 @@ nnoremap \ :Neotree reveal<cr>
 nnoremap <leader>u :UndotreeToggle<CR>
 nnoremap <leader>- :IndentBlanklineToggle<CR>
 let g:peekup_open = '<F5>'
+"let g:peekup_paste_after = '<leader>0'
 
 :nmap P o<ESC>p
 nnoremap d "_d
@@ -97,6 +98,7 @@ map q <Nop>
 
 :map <leader>d daw 
 :map <nowait> vw viw
+:map <nowait> cw ciw
 autocmd VimEnter * WipeReg
 
 lua <<EOF

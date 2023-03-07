@@ -23,6 +23,7 @@ alias src='source ~/.zshrc'
 alias neogit='onefetch'
 alias grub2-update='sudo grub2-mkconfig -o /boot/efi/EFI/fedora/grub.cfg'
 alias vim='nvim'
+alias xc='xclip -sel clip'
 
 ### Plugins ###
 plugins=(git zsh-autosuggestions python virtualenv)
