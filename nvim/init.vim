@@ -226,5 +226,5 @@ let g:mkdp_browser = 'chromium-browser'
 
 "''''''''''''''''''''''FloatTerm'''''''''''''''''''''''''''''''''''''''''''
 let g:floaterm_keymap_toggle = '<F12>'
-nnoremap <silent> <F9> :w<CR> :FloatermNew --autoclose=0 g++ -g -Wall % && ./a.out<cr>
-nnoremap <silent> <F11> :w<CR> :FloatermNew --disposable --autoclose=0 python3 %<cr> 
+nnoremap <silent> <F9> :w<bar> :FloatermNew --autoclose=0 g++ -g -Wall % && ./a.out<cr>
+nnoremap <silent> <F11> :w <bar> :FloatermNew --disposable --autoclose=0 python3 %<cr> 

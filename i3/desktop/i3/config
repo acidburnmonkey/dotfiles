@@ -78,7 +78,7 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 
 # Focus the parent container
-bindsym $mod+a focus parent
+# bindsym $mod+a focus parent
 
 # Focus the child container
 #bindsym $mod+d focus child
@@ -200,10 +200,11 @@ exec --no-startup-id /usr/bin/openrgb --startminimized --profile "sss"
 exec --no-startup-id bash ~/scripts/startup.sh 
 
 exec_always --no-startup-id bash ~/.config/polybar/launch.sh
-exec_always --no-startup-id feh --bg-fill /media/toxic/photos/cattpussin-mask.png
+# exec_always --no-startup-id feh --bg-fill /media/toxic/photos/cattpussin-mask.png
 exec_always --no-startup-id dunst -config ~/.config/dunst/dunstrc
 exec_always --no-startup-id picom
 exec_always --no-startup-id nm-applet
 exec_always --no-startup-id ~/programs/Nextcloud-3.6.0-x86_64.AppImage --background
 exec_always --no-startup-id  blueman-applet --popup
 exec_always --no-startup-id autotiling
+exec_always --no-startup-id nitrogen --restore

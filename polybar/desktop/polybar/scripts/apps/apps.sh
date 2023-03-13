@@ -22,8 +22,8 @@ elif [[ ( "$theme" == *'type-2'* ) || ( "$theme" == *'type-4'* ) ]]; then
 fi
 
 # CMDs (add your apps here)
-term_cmd='kitty'
-file_cmd='nemo'
+term_cmd='lightdm-settings'
+file_cmd='/home/mahalo/kali-vmware/kali-linux-2022.3-vmware-amd64.vmx'
 text_cmd='flatpak run com.jetbrains.CLion'
 web_cmd='firefox -no-remote -P School'
 music_cmd='flatpak run com.github.taiko2k.tauonmb'
@@ -32,8 +32,8 @@ setting_cmd='steam'
 # Options
 layout=`cat ${theme} | grep 'USE_ICON' | cut -d'=' -f2`
 if [[ "$layout" == 'NO' ]]; then
-	option_1=" Terminal <span weight='light' size='small'></span>"
-	option_2=" Files <span weight='light' size='small'></span>"
+	option_1=" Login Window <span weight='light' size='small'></span>"
+	option_2=" Kali <span weight='light' size='small'></span>"
 	option_3=" Clion <span weight='light' size='small'></span>"
 	option_4=" School<span weight='light' size='small'></span>"
 	option_5=" Music <span weight='light' size='small'></span>"
@@ -65,10 +65,11 @@ run_rofi() {
 
 # Execute Command
 run_cmd() {
+	polkit_cmd="pkexec env PATH=$PATH DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY"
 	if [[ "$1" == '--opt1' ]]; then
-		${term_cmd}
+		${polkit_cmd} ${term_cmd}
 	elif [[ "$1" == '--opt2' ]]; then
-		${file_cmd}
+		${polkit_cmd} ${file_cmd}
 	elif [[ "$1" == '--opt3' ]]; then
 		${text_cmd}
 	elif [[ "$1" == '--opt4' ]]; then
