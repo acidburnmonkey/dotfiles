@@ -95,6 +95,8 @@ vnoremap d "_d
 map <F1> <Esc>
 imap <F1> <Esc>
 map q <Nop>
+map s <Nop>
+map S <Nop>
 
 :map <leader>d daw 
 :map <nowait> vw viw
