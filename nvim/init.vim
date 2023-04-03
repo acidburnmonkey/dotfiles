@@ -83,7 +83,6 @@ call plug#end()
 "#####################
 
 nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
-nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
 nnoremap \ :Neotree reveal<cr>
 nnoremap <leader>u :UndotreeToggle<CR>
 nnoremap <leader>- :IndentBlanklineToggle<CR>
@@ -110,6 +109,7 @@ nnoremap <TAB> :bnext<CR>
 nnoremap <S-TAB> :bprevious<CR>
 
 lua <<EOF
+
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 vim.keymap.set("v", "<leader>c", [[:s/\(\w.*\)/]])
@@ -118,6 +118,10 @@ vim.keymap.set("x", "<leader>p", [["_dP]])
 vim.keymap.set("n", "J", "mzJ`z")
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
+
+--telescope
+vim.keymap.set('n', '<leader>ff', "<cmd>lua require'telescope.builtin'.find_files({ find_command = {'rg', '--files', '--hidden', '-g', '!.git' }})<cr>")
+vim.keymap.set('n', '<leader>fr', "<cmd>lua require'telescope.builtin'.buffers({ show_all_buffers = true })<cr>")
 
 vim.opt.hlsearch = false
 
@@ -245,3 +249,5 @@ let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 set noshowmode 
 set showtabline=2
+let g:airline_section_z = airline#section#create(['%3p%% %L☰'])
+let g:airline#extensions#tabline#enabled = 1
