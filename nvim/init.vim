@@ -72,9 +72,11 @@ Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-nvim-lua'
 Plug 'VonHeikemen/lsp-zero.nvim'
+" ''''''''''''''''''''''''''''''''''''''''''''''''
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 call plug#end()
-
 
 "#####################
 "     Remaps         #
@@ -103,6 +105,10 @@ map S <Nop>
 :map <nowait> cw ciw
 autocmd VimEnter * WipeReg
 
+"tabs 
+nnoremap <TAB> :bnext<CR>
+nnoremap <S-TAB> :bprevious<CR>
+
 lua <<EOF
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
@@ -114,7 +120,7 @@ vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 
 vim.opt.hlsearch = false
-vim.opt.incsearch = true
+
 EOF
 
 "#####################
@@ -179,7 +185,9 @@ require("mason").setup({
 --shortcuts
 local on_attach = function(_,_) 
    --Shift K for documentation
-    vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
+   vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
+   vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {})
+   vim.keymap.set('n', 'gr', vim.lsp.buf.references, {})
 end     
 
 require("lspconfig").jedi_language_server.setup {
@@ -230,3 +238,10 @@ let g:mkdp_browser = 'chromium-browser'
 let g:floaterm_keymap_toggle = '<F12>'
 nnoremap <silent> <F9> :w<bar> :FloatermNew --autoclose=0 g++ -g -Wall % && ./a.out<cr>
 nnoremap <silent> <F11> :w <bar> :FloatermNew --disposable --autoclose=0 python3 %<cr> 
+
+"''''''''''''''''''''Airline Bar'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+set noshowmode 
+set showtabline=2
