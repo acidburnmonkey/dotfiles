@@ -75,14 +75,14 @@ Plug 'VonHeikemen/lsp-zero.nvim'
 " ''''''''''''''''''''''''''''''''''''''''''''''''
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-
+" ''''''''''''''''''''''''''''''''''''''''''''''''
+Plug 'tpope/vim-fugitive'
 call plug#end()
 
 "#####################
 "     Remaps         #
 "#####################
 
-nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
 nnoremap \ :Neotree reveal<cr>
 nnoremap <leader>u :UndotreeToggle<CR>
 nnoremap <leader>- :IndentBlanklineToggle<CR>
@@ -104,6 +104,10 @@ map S <Nop>
 :map <nowait> cw ciw
 autocmd VimEnter * WipeReg
 
+"closes all buffers but current 
+command! BufOnly silent! execute "%bd|e#|bd#"
+nnoremap <leader>b :BufOnly<CR>
+
 "tabs 
 nnoremap <TAB> :bnext<CR>
 nnoremap <S-TAB> :bprevious<CR>
@@ -122,6 +126,7 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 --telescope
 vim.keymap.set('n', '<leader>ff', "<cmd>lua require'telescope.builtin'.find_files({ find_command = {'rg', '--files', '--hidden', '-g', '!.git' }})<cr>")
 vim.keymap.set('n', '<leader>fr', "<cmd>lua require'telescope.builtin'.buffers({ show_all_buffers = true })<cr>")
+vim.keymap.set('n', '<leader>fg', "<cmd>lua require('telescope.builtin').live_grep()<cr>")
 
 vim.opt.hlsearch = false
 
@@ -143,9 +148,9 @@ lua <<EOF
 
 EOF
 lua force_backgraund()
-"''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+"'''''''''''''''''''''''''''''''''LuaSnip'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 imap <silent><expr> <Tab> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>' 
-
+lua require("luasnip.loaders.from_vscode").lazy_load()
 "''''''''''''Coding'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 let g:deoplete#enable_at_startup = 1
 " <TAB>: completion.
@@ -158,7 +163,7 @@ autocmd FileType sh imap <buffer> <F10> <esc>:w<CR>:exec '!/bin/bash' shellescap
 
 augroup CBuild
   autocmd!
-  autocmd filetype cpp nnoremap <buffer> <leader>cc :!g++ -o %:p:r %<cr>
+  autocmd filetype cpp nnoremap <buffer> <F10> :!g++ -o %:p:r %<cr>
   autocmd filetype cpp nnoremap <buffer> <leader>cr :!g++ -o %:p:r %<cr>:!%:p:r<cr>
 augroup END
 
