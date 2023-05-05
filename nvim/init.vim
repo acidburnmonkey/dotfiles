@@ -11,6 +11,7 @@ set expandtab
 set autoindent
 let mapleader=' '
 set encoding=utf-8
+set termguicolors 
 command! WipeReg for i in range(34,122) | silent! call setreg(nr2char(i), []) | endfor
 "############
 "#   Pugins #
@@ -169,9 +170,7 @@ augroup END
 
 " nnoremap <silent> <F8> :!g++ -Wall % && ./a.out<cr>
 "''''''''''''''' Theme '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-" lua <<EOF
-"  vim.cmd.colorscheme "catppuccin-mocha"
-" EOF
+" lua  vim.cmd.colorscheme "catppuccin-mocha"
 
 "''''''''''''''''''''Font Icons '''''''''''''''''''''''''''''''''''''''
 set guifont=Hack\ Nerd\ Font\ 12
@@ -179,18 +178,18 @@ let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 
 "'''''''''''''LSP''''''''''''''''''''''''''''''''''''''''''''''''''''''
 lua <<EOF
--- require("mason-lspconfig").setup {
---     ensure_installed = {"rust_analyzer","jedi_language_server"},
--- }
 require("mason").setup({
-    ui = {
-        icons = {
-            package_installed = "✓",
-            package_pending = "➜",
-            package_uninstalled = "✗"
-        }
+ui = {
+    icons = {
+        package_installed = "✓",
+        package_pending = "➜",
+        package_uninstalled = "✗"
+    }
     }
 })
+ require("mason-lspconfig").setup {
+     ensure_installed = {"rust_analyzer","jedi_language_server", "clangd"},
+ }
 --shortcuts
 local on_attach = function(_,_) 
    --Shift K for documentation
@@ -252,6 +251,7 @@ nnoremap <silent> <F11> :w <bar> :FloatermNew --disposable --autoclose=0 python3
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline_theme='catppuccin'
 set noshowmode 
 set showtabline=2
 let g:airline_section_z = airline#section#create(['%3p%% %L☰'])

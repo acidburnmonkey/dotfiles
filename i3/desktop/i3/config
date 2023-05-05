@@ -32,7 +32,7 @@ for_window [class="^.*"] border pixel 0
 for_window [title="Library"] floating enable
 
 for_window [class="Pycalendar.py" instance="pycalendar.py"] floating enable; move absolute position top left 
-for_window [class="Pycalendar.py" instance="pycalendar.py"] move absolute position 3200 890 
+for_window [class="Pycalendar.py" instance="pycalendar.py"] move absolute position 3200 980 
 
 
 # Define gaps between windows
