@@ -78,6 +78,8 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 " ''''''''''''''''''''''''''''''''''''''''''''''''
 Plug 'tpope/vim-fugitive'
+"''''''''''''''''''''''''''''''''''''''''''''''''
+
 call plug#end()
 
 "#####################
@@ -136,6 +138,7 @@ EOF
 "#####################
 "#     Configs       # 
 "#####################
+
 
 "'''''''''''Force transparency if no compositor installed'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 lua <<EOF
@@ -256,3 +259,10 @@ set noshowmode
 set showtabline=2
 let g:airline_section_z = airline#section#create(['%3p%% %L☰'])
 let g:airline#extensions#tabline#enabled = 1
+
+"''''''''Neotree''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+lua << EOF
+require("neo-tree").setup({
+        close_if_last_window = true,
+})
+EOF
