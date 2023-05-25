@@ -105,7 +105,7 @@ map S <Nop>
 :map <leader>d daw 
 :map <nowait> vw viw
 :map <nowait> cw ciw
-autocmd VimEnter * WipeReg
+" autocmd VimEnter * WipeReg
 
 "closes all buffers but current 
 command! BufOnly silent! execute "%bd|e#|bd#"
