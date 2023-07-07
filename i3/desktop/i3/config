@@ -123,8 +123,8 @@ for_window [urgent="latest" class="Tauon Music Box"] focus
 assign [class="Microsoft-edge"] $ws8
 for_window [urgent="latest" class="Microsoft-edge"] focus
 
-assign [class="Steam"] $ws9
-for_window [urgent="latest" class="Steam"] focus
+assign [class="steam"] $ws9
+for_window [urgent="latest" class="steam"] focus
 
 assign [class="vmplayer"] $ws9
 for_window [urgent="latest" class="vmplayer"] focus
