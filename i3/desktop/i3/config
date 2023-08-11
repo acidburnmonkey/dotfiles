@@ -93,9 +93,6 @@ for_window [urgent="latest" class="firefox"] focus
 assign  [class="Nemo"] $ws3
 for_window [urgent="latest" class="Nemo"] focus
 
-assign  [class="Sublime_text"] $ws3
-for_window [urgent="latest" class="Sublime_text"] focus
-
 assign [class="jetbrains-pycharm-ce"] $ws4
 for_window [urgent="latest" class="jetbrains-pycharm-ce"] focus
 
@@ -105,7 +102,7 @@ for_window [urgent="latest" class="jetbrains-clion"] focus
 assign [class="Code"]  $ws4 
 for_window [urgent="latest" class="Code"] focus
 
-assign [class="discord"]  $ws5 
+assign [class="discord"]  $ws6 
 for_window [urgent="latest" class="discord"] focus
 
 assign [class="thunderbird"] $ws7
@@ -220,8 +217,9 @@ client.placeholder      #282828 #282828 #ebdbb2 #282828 #282828
 
 # Run commands on startup
 exec --no-startup-id bash ~/.config/i3/screenlayout.sh
-exec --no-startup-id /usr/bin/openrgb --startminimized --profile "sss"
+exec --no-startup-id /usr/bin/openrgb --startminimized --profile "ssx"
 exec --no-startup-id bash ~/scripts/startup.sh 
+exec --no-startup-id /usr/bin/nextcloud --background
 
 exec_always --no-startup-id bash ~/.config/polybar/launch.sh
 # exec_always --no-startup-id feh --bg-fill /media/toxic/photos/cattpussin-mask.png

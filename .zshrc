@@ -26,6 +26,7 @@ alias grub2-update='sudo grub2-mkconfig -o /boot/efi/EFI/fedora/grub.cfg'
 alias vim='nvim'
 alias xc='xclip -sel clip'
 alias pycheck='python -m pylint --disable=R,C'
+alias goadum='ssh mal0@192.168.1.137'
 
 ### Plugins ###
 plugins=(git zsh-autosuggestions python virtualenv)
