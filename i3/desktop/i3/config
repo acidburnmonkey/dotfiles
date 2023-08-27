@@ -93,6 +93,9 @@ for_window [urgent="latest" class="firefox"] focus
 assign  [class="Nemo"] $ws3
 for_window [urgent="latest" class="Nemo"] focus
 
+assign  [class="Sublime_text"] $ws3
+for_window [urgent="latest" class="Sublime_text"] focus
+
 assign [class="jetbrains-pycharm-ce"] $ws4
 for_window [urgent="latest" class="jetbrains-pycharm-ce"] focus
 
@@ -104,6 +107,9 @@ for_window [urgent="latest" class="Code"] focus
 
 assign [class="discord"]  $ws6 
 for_window [urgent="latest" class="discord"] focus
+
+assign [class="TelegramDesktop"]  $ws6 
+for_window [urgent="latest" class="TelegramDesktop"] focus
 
 assign [class="thunderbird"] $ws7
 for_window [urgent="latest" class="thunderbird"] focus
