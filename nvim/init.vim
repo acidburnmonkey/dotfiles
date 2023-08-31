@@ -19,6 +19,8 @@ command! WipeReg for i in range(34,122) | silent! call setreg(nr2char(i), []) | 
 
 call plug#begin()
 
+Plug 'rust-lang/rust.vim'
+"''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 Plug 'voldikss/vim-floaterm'
 "''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
@@ -171,7 +173,9 @@ augroup CBuild
   autocmd filetype cpp nnoremap <buffer> <leader>cr :!g++ -o %:p:r %<cr>:!%:p:r<cr>
 augroup END
 
-" nnoremap <silent> <F8> :!g++ -Wall % && ./a.out<cr>
+autocmd FileType rust nmap <F10> :w<CR>:!rustc % -o %:r && ./%:r<CR>
+
+"" nnoremap <silent> <F8> :!g++ -Wall % && ./a.out<cr>
 "''''''''''''''' Theme '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 " lua  vim.cmd.colorscheme "catppuccin-mocha"
 
@@ -248,7 +252,8 @@ let g:mkdp_browser = 'chromium-browser'
 "''''''''''''''''''''''FloatTerm'''''''''''''''''''''''''''''''''''''''''''
 let g:floaterm_keymap_toggle = '<F12>'
 nnoremap <silent> <F9> :w<bar> :FloatermNew --autoclose=0 g++ -g -Wall % && ./a.out<cr>
-nnoremap <silent> <F11> :w <bar> :FloatermNew --disposable --autoclose=0 python3 %<cr> 
+autocmd FileType python nnoremap <silent> <F11> :w <bar> :FloatermNew --disposable --autoclose=0 python3 %<cr> 
+autocmd FileType rust nnoremap <silent> <F11> :w <bar> :FloatermNew --disposable --autoclose=0 rustc % -o %:r && ./%:r<CR>
 
 "''''''''''''''''''''Airline Bar'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 let g:airline_powerline_fonts = 1
