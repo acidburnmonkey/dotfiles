@@ -88,7 +88,7 @@ call plug#end()
 "     Remaps         #
 "#####################
 
-nnoremap \ :Neotree reveal<cr>
+nnoremap \ :Neotree focus<cr>
 nnoremap <leader>u :UndotreeToggle<CR>
 nnoremap <leader>- :IndentBlanklineToggle<CR>
 let g:peekup_open = '<F5>'
@@ -166,13 +166,7 @@ autocmd FileType python imap <buffer> <F10> <esc>:w<CR>:exec '!python3' shellesc
 
 autocmd FileType sh map <buffer> <F10> :w<CR>:exec '!/bin/bash' shellescape(@%, 1)<CR>
 autocmd FileType sh imap <buffer> <F10> <esc>:w<CR>:exec '!/bin/bash' shellescape(@%, 1)<CR>
-
-augroup CBuild
-  autocmd!
-  autocmd filetype cpp nnoremap <buffer> <F10> :!g++ -o %:p:r %<cr>
-  autocmd filetype cpp nnoremap <buffer> <leader>cr :!g++ -o %:p:r %<cr>:!%:p:r<cr>
-augroup END
-
+autocmd filetype cpp nnoremap <buffer> <F10> :!g++ -o %:p:r %<cr>:!%:p:r<cr>
 autocmd FileType rust nmap <F10> :w<CR>:!rustc % -o %:r && ./%:r<CR>
 
 "" nnoremap <silent> <F8> :!g++ -Wall % && ./a.out<cr>
@@ -251,9 +245,10 @@ let g:mkdp_browser = 'chromium-browser'
 
 "''''''''''''''''''''''FloatTerm'''''''''''''''''''''''''''''''''''''''''''
 let g:floaterm_keymap_toggle = '<F12>'
-nnoremap <silent> <F9> :w<bar> :FloatermNew --autoclose=0 g++ -g -Wall % && ./a.out<cr>
+autocmd filetype cpp nnoremap <silent> <F9> :w<bar> :FloatermNew --autoclose=0 g++ -g -Wall % && ./a.out<cr>
 autocmd FileType python nnoremap <silent> <F11> :w <bar> :FloatermNew --disposable --autoclose=0 python3 %<cr> 
 autocmd FileType rust nnoremap <silent> <F11> :w <bar> :FloatermNew --disposable --autoclose=0 rustc % -o %:r && ./%:r<CR>
+autocmd FileType cpp nnoremap <silent> <F11> :w <bar> :FloatermNew --disposable --autoclose=0 g++ -o %:p:r % <bar> /%:p:r<CR>
 
 "''''''''''''''''''''Airline Bar'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 let g:airline_powerline_fonts = 1
