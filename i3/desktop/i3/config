@@ -102,6 +102,9 @@ for_window [urgent="latest" class="jetbrains-pycharm-ce"] focus
 assign [class="jetbrains-clion"]  $ws4 
 for_window [urgent="latest" class="jetbrains-clion"] focus
 
+assign [class="Xournal"]  $ws4 
+for_window [urgent="latest" class="Xournal"] focus
+
 assign [class="Code"]  $ws4 
 for_window [urgent="latest" class="Code"] focus
 
