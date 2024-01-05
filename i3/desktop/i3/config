@@ -22,6 +22,7 @@ bindsym $alt+0x2c exec nemo
 bindsym $alt+0x2f  exec firefox 
 bindsym Ctrl+$alt+l exec ~/.config/polybar/scripts/rofipowermenu/skpowermenu.sh
 bindsym $mod+t  exec alacritty
+bindsym Ctrl+Shift+u exec ibus emoji
 
 # Align window title
 title_align center
@@ -34,11 +35,14 @@ for_window [title="Library"] floating enable
 for_window [class="Pycalendar.py" instance="pycalendar.py"] floating enable; move absolute position top left 
 for_window [class="Pycalendar.py" instance="pycalendar.py"] move absolute position 3200 980 
 
+for_window [class="Qalculate-gtk"] floating enable
+for_window [class="Ibus-ui-emojier" instance="Ibus-ui-emojier" ] output DP-4
+for_window [class="amberol" instance="amberol"] floating enable;
 
 # Define gaps between windows
 gaps inner 20
 # smart_gaps on
-# smart_borders on
+# smart_borders onibus-ui-emojier
 
 bindsym $mod+r exec kitty
 #Drag floating windows (Mouse + $mod)
@@ -117,17 +121,15 @@ for_window [urgent="latest" class="TelegramDesktop"] focus
 assign [class="thunderbird"] $ws7
 for_window [urgent="latest" class="thunderbird"] focus
 
-assign [class="vlc"] $ws8
-for_window [urgent="latest" class="vlc"] focus
+# assign [class="vlc"] $ws8
+# for_window [urgent="latest" class="vlc"] focus
 
-assign [class="parole"] $ws8
-for_window [urgent="latest" class="parole"] focus
-
-assign [class="Tauon Music Box"] $ws8
-for_window [urgent="latest" class="Tauon Music Box"] focus
 
 assign [class="Microsoft-edge"] $ws8
 for_window [urgent="latest" class="Microsoft-edge"] focus
+
+assign [class="Jellyfin Media Player"] $ws8
+for_window [urgent="latest" class="Jellyfin Media Player"] focus
 
 assign [class="steam"] $ws9
 for_window [urgent="latest" class="steam"] focus

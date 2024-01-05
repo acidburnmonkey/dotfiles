@@ -10,6 +10,8 @@ export PATH="$HOME/scripts:$PATH"
 export ZSH="$HOME/.oh-my-zsh"
 export PATH="$HOME/.local/bin:$PATH"
 export PYTHONUNBUFFERED=1
+export XDG_RUNTIME_DIR=/run/user/$(id -u)
+
 
 ZSH_THEME="powerlevel10k/powerlevel10k"
 

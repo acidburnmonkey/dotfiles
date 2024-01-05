@@ -104,7 +104,7 @@ map q <Nop>
 map s <Nop>
 map S <Nop>
 
-:map <nowait> dw daw 
+:map <leader>d daw 
 :map <nowait> vw viw
 :map <nowait> cw ciw
 " autocmd VimEnter * WipeReg
