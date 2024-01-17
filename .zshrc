@@ -27,7 +27,10 @@ alias grub2-update='sudo grub2-mkconfig -o /boot/efi/EFI/fedora/grub.cfg'
 alias vim='nvim'
 alias xc='xclip -sel clip'
 alias pycheck='python -m pylint --disable=R,C'
+<<<<<<< HEAD
 alias goadum='ssh mal0@192.168.1.146'
+=======
+>>>>>>> parent of cd06db1 (xx)
 
 ### Plugins ###
 plugins=(git zsh-autosuggestions python virtualenv)
