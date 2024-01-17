@@ -23,6 +23,8 @@ bindsym $alt+0x2f  exec firefox
 bindsym Ctrl+$alt+l exec ~/.config/polybar/scripts/rofipowermenu/skpowermenu.sh
 bindsym $mod+t  exec alacritty
 bindsym Ctrl+Shift+u exec ibus emoji
+bindsym 0xff61 exec gnome-screenshot --interactive
+
 
 # Align window title
 title_align center
@@ -146,6 +148,10 @@ for_window [urgent="latest" class="zoom"] focus
 assign [class="photoshop.exe"] $ws10  
 for_window [urgent="latest" class="photoshop.exe"] focus 
 for_window [class="photoshop.exe"] resize set 1920 1080
+
+assign [class="Gimp-2.10"] $ws10  
+for_window [urgent="latest" class="Gimp-2.10"] focus 
+
 
 # move focused window between monitors
 bindsym $mod+Shift+greater move container to output right
