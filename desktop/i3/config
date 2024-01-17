@@ -22,6 +22,9 @@ bindsym $alt+0x2c exec nemo
 bindsym $alt+0x2f  exec firefox 
 bindsym Ctrl+$alt+l exec ~/.config/polybar/scripts/rofipowermenu/skpowermenu.sh
 bindsym $mod+t  exec alacritty
+bindsym Ctrl+Shift+u exec ibus emoji
+bindsym 0xff61 exec gnome-screenshot --interactive
+
 
 # Align window title
 title_align center
@@ -32,13 +35,16 @@ for_window [class="^.*"] border pixel 0
 for_window [title="Library"] floating enable
 
 for_window [class="Pycalendar.py" instance="pycalendar.py"] floating enable; move absolute position top left 
-for_window [class="Pycalendar.py" instance="pycalendar.py"] move absolute position 3200 890 
+for_window [class="Pycalendar.py" instance="pycalendar.py"] move absolute position 3200 980 
 
+for_window [class="Qalculate-gtk"] floating enable
+for_window [class="Ibus-ui-emojier" instance="Ibus-ui-emojier" ] output DP-4
+for_window [class="amberol" instance="amberol"] floating enable;
 
 # Define gaps between windows
 gaps inner 20
 # smart_gaps on
-# smart_borders on
+# smart_borders onibus-ui-emojier
 
 bindsym $mod+r exec kitty
 #Drag floating windows (Mouse + $mod)
@@ -93,35 +99,59 @@ for_window [urgent="latest" class="firefox"] focus
 assign  [class="Nemo"] $ws3
 for_window [urgent="latest" class="Nemo"] focus
 
+assign  [class="Sublime_text"] $ws3
+for_window [urgent="latest" class="Sublime_text"] focus
+
 assign [class="jetbrains-pycharm-ce"] $ws4
 for_window [urgent="latest" class="jetbrains-pycharm-ce"] focus
 
 assign [class="jetbrains-clion"]  $ws4 
 for_window [urgent="latest" class="jetbrains-clion"] focus
 
+assign [class="Xournal"]  $ws4 
+for_window [urgent="latest" class="Xournal"] focus
+
 assign [class="Code"]  $ws4 
 for_window [urgent="latest" class="Code"] focus
 
-assign [class="discord"]  $ws5 
+assign [class="discord"]  $ws6 
 for_window [urgent="latest" class="discord"] focus
+
+assign [class="TelegramDesktop"]  $ws6 
+for_window [urgent="latest" class="TelegramDesktop"] focus
 
 assign [class="thunderbird"] $ws7
 for_window [urgent="latest" class="thunderbird"] focus
 
-assign [class="vlc"] $ws8
-for_window [urgent="latest" class="vlc"] focus
+# assign [class="vlc"] $ws8
+# for_window [urgent="latest" class="vlc"] focus
 
-assign [class="parole"] $ws8
-for_window [urgent="latest" class="parole"] focus
-
-assign [class="Tauon Music Box"] $ws8
-for_window [urgent="latest" class="Tauon Music Box"] focus
 
 assign [class="Microsoft-edge"] $ws8
 for_window [urgent="latest" class="Microsoft-edge"] focus
 
-assign [class="Steam"] $ws9
-for_window [urgent="latest" class="Steam"] focus
+assign [class="Jellyfin Media Player"] $ws8
+for_window [urgent="latest" class="Jellyfin Media Player"] focus
+
+assign [class="steam"] $ws9
+for_window [urgent="latest" class="steam"] focus
+
+assign [class="vmplayer"] $ws9
+for_window [urgent="latest" class="vmplayer"] focus
+
+assign [class="Virt-manager"] $ws9
+for_window [urgent="latest" class="Virt-manager"] focus
+
+assign [class="zoom"] $ws9
+for_window [urgent="latest" class="zoom"] focus
+
+assign [class="photoshop.exe"] $ws10  
+for_window [urgent="latest" class="photoshop.exe"] focus 
+for_window [class="photoshop.exe"] resize set 1920 1080
+
+assign [class="Gimp-2.10"] $ws10  
+for_window [urgent="latest" class="Gimp-2.10"] focus 
+
 
 # move focused window between monitors
 bindsym $mod+Shift+greater move container to output right
@@ -138,6 +168,8 @@ workspace $ws6 output DP-2
 workspace $ws7 output DP-2
 workspace $ws8 output DP-4
 workspace $ws9 output DP-4
+workspace $ws10 output DP-4 
+
 
 # Set names for workspaces
 set $ws1 " Main"
@@ -149,6 +181,8 @@ set $ws6 " zen"
 set $ws7 " Mail" 
 set $ws8 " Media" 
 set $ws9 " Alan" 
+set $ws10 " Photoshop" 
+
 # Switch to workspaces
 bindsym $mod+1 workspace $ws1 
 bindsym $mod+2 workspace $ws2
@@ -159,7 +193,7 @@ bindsym $mod+6 workspace $ws6
 bindsym $mod+7 workspace $ws7
 bindsym $mod+8 workspace $ws8
 bindsym $mod+9 workspace $ws9
-
+bindsym $mod+0 workspace $ws10
 
 # Move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1; workspace $ws1
@@ -171,6 +205,7 @@ bindsym $mod+Shift+6 move container to workspace $ws6; workspace $ws6
 bindsym $mod+Shift+7 move container to workspace $ws7; workspace $ws7
 bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9; workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10; workspace $ws10
 
 # Reload the configuration file
 bindsym $mod+Shift+c reload
@@ -199,8 +234,9 @@ client.placeholder      #282828 #282828 #ebdbb2 #282828 #282828
 
 # Run commands on startup
 exec --no-startup-id bash ~/.config/i3/screenlayout.sh
-exec --no-startup-id /usr/bin/openrgb --startminimized --profile "sss"
+exec --no-startup-id /usr/bin/openrgb --startminimized --profile "ssx"
 exec --no-startup-id bash ~/scripts/startup.sh 
+exec --no-startup-id /usr/bin/nextcloud --background
 
 exec_always --no-startup-id bash ~/.config/polybar/launch.sh
 # exec_always --no-startup-id feh --bg-fill /media/toxic/photos/cattpussin-mask.png

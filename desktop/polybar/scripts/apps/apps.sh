@@ -23,10 +23,10 @@ fi
 
 # CMDs (add your apps here)
 term_cmd='lightdm-settings'
-file_cmd='/home/mahalo/kali-vmware/kali-linux-2022.3-vmware-amd64.vmx'
+file_cmd='/home/mahalo/vitrual/kali-linux/kali-linux-2023.1-vmware-amd64.vmx'
 text_cmd='flatpak run com.jetbrains.CLion'
 web_cmd='firefox -no-remote -P School'
-music_cmd='flatpak run com.github.taiko2k.tauonmb'
+music_cmd='flatpak run com.discordapp.Discord'
 setting_cmd='steam'
 
 # Options
@@ -36,7 +36,7 @@ if [[ "$layout" == 'NO' ]]; then
 	option_2=" Kali <span weight='light' size='small'></span>"
 	option_3=" Clion <span weight='light' size='small'></span>"
 	option_4=" School<span weight='light' size='small'></span>"
-	option_5=" Music <span weight='light' size='small'></span>"
+	option_5=" Discord <span weight='light' size='small'></span>"
 	option_6=" Steam <span weight='light' size='small'></span>"
 else
 	option_1=" "
