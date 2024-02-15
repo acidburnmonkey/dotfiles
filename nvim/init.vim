@@ -92,11 +92,13 @@ nnoremap \ :Neotree focus<cr>
 nnoremap <leader>u :UndotreeToggle<CR>
 nnoremap <leader>- :IndentBlanklineToggle<CR>
 let g:peekup_open = '<F5>'
-"let g:peekup_paste_after = '<leader>0'
+" let g:peekup_paste_after = '<leader>0'
+map <leader>0 "*p
 
 :nmap P o<ESC>p
 nnoremap d "_d
 vnoremap d "_d
+noremap x "_x
 :map <F1> <nop>
 map <F1> <Esc>
 imap <F1> <Esc>

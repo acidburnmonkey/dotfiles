@@ -237,6 +237,7 @@ exec --no-startup-id bash ~/.config/i3/screenlayout.sh
 exec --no-startup-id /usr/bin/openrgb --startminimized --profile "ssx"
 exec --no-startup-id bash ~/scripts/startup.sh 
 exec --no-startup-id /usr/bin/nextcloud --background
+exec --no-startup-id xset s off -dpms
 
 exec_always --no-startup-id bash ~/.config/polybar/launch.sh
 # exec_always --no-startup-id feh --bg-fill /media/toxic/photos/cattpussin-mask.png
@@ -244,6 +245,6 @@ exec_always --no-startup-id dunst -config ~/.config/dunst/dunstrc
 exec_always --no-startup-id picom
 exec_always --no-startup-id nm-applet
 exec_always --no-startup-id ~/programs/Nextcloud-3.6.0-x86_64.AppImage --background
-exec_always --no-startup-id  blueman-applet --popup
+# exec_always --no-startup-id  blueman-applet
 exec_always --no-startup-id autotiling
 exec_always --no-startup-id nitrogen --restore
