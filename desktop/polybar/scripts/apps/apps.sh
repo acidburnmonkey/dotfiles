@@ -24,7 +24,7 @@ fi
 # CMDs (add your apps here)
 term_cmd='lightdm-settings'
 file_cmd='/home/mahalo/vitrual/kali-linux/kali-linux-2023.1-vmware-amd64.vmx'
-text_cmd='flatpak run com.jetbrains.CLion'
+text_cmd='flatpak run md.obsidian.Obsidian'
 web_cmd='firefox -no-remote -P School'
 music_cmd='flatpak run com.discordapp.Discord'
 setting_cmd='steam'
@@ -34,7 +34,7 @@ layout=`cat ${theme} | grep 'USE_ICON' | cut -d'=' -f2`
 if [[ "$layout" == 'NO' ]]; then
 	option_1=" Login Window <span weight='light' size='small'></span>"
 	option_2=" Kali <span weight='light' size='small'></span>"
-	option_3=" Clion <span weight='light' size='small'></span>"
+	option_3=" Obsidian<span weight='light' size='small'></span>"
 	option_4=" School<span weight='light' size='small'></span>"
 	option_5=" Discord <span weight='light' size='small'></span>"
 	option_6=" Steam <span weight='light' size='small'></span>"

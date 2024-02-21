@@ -114,11 +114,18 @@ for_window [urgent="latest" class="Xournal"] focus
 assign [class="Code"]  $ws4 
 for_window [urgent="latest" class="Code"] focus
 
+assign [class="yuzu"]  $ws5 
+for_window [urgent="latest" class="yuzu"] focus
+
 assign [class="discord"]  $ws6 
 for_window [urgent="latest" class="discord"] focus
 
 assign [class="TelegramDesktop"]  $ws6 
 for_window [urgent="latest" class="TelegramDesktop"] focus
+
+assign [class="obsidian"]  $ws6 
+for_window [urgent="latest" class="obsidian"] focus
+
 
 assign [class="thunderbird"] $ws7
 for_window [urgent="latest" class="thunderbird"] focus
