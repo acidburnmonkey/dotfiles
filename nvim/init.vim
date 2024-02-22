@@ -90,7 +90,7 @@ call plug#end()
 
 nnoremap \ :Neotree focus<cr>
 nnoremap <leader>u :UndotreeToggle<CR>
-nnoremap <leader>- :IndentBlanklineToggle<CR>
+nnoremap <leader>- :IBLToggle<CR>
 let g:peekup_open = '<F5>'
 " let g:peekup_paste_after = '<leader>0'
 map <leader>0 "*p
@@ -267,4 +267,9 @@ lua << EOF
 require("neo-tree").setup({
         close_if_last_window = true,
 })
+EOF
+
+"''''''''''IndentBlankline''''''''''````````````````````````````````````````````````
+lua << EOF
+    require("ibl").setup()
 EOF
