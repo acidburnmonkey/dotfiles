@@ -98,7 +98,6 @@ map <leader>0 "*p
 :nmap P o<ESC>p
 nnoremap d "_d
 vnoremap d "_d
-noremap x "_x
 :map <F1> <nop>
 map <F1> <Esc>
 imap <F1> <Esc>
@@ -120,10 +119,9 @@ nnoremap <TAB> :bnext<CR>
 nnoremap <S-TAB> :bprevious<CR>
 
 lua <<EOF
-
+vim.keymap.set("n", "x", [["_x]])
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
-vim.keymap.set("v", "<leader>c", [[:s/\(\w.*\)/]])
 vim.keymap.set("n", "<leader>r", [[:%s#\<<C-r><C-w>\>#<C-r><C-w>#gI<Left><Left><Left>]])
 vim.keymap.set("x", "<leader>p", [["_dP]])
 vim.keymap.set("n", "J", "mzJ`z")
@@ -143,24 +141,17 @@ EOF
 "#     Configs       # 
 "#####################
 
+"'''''''''''''''''''Markdown Preview ''''''''''''''''''''''''''''''''''
+let g:mkdp_auto_start = 1
+let g:mkdp_auto_close = 1
+let g:mkdp_browser = 'chromium-browser'
 
-"'''''''''''Force transparency if no compositor installed'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-lua <<EOF
-    function force_backgraund(color)
-        color = color or "catppuccin-mocha"
-        vim.cmd.colorscheme(color)
+"''''''''''''Coding'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+let g:deoplete#enable_at_startup = 1
 
-        vim.api.nvim_set_hl(0, "Normal",{bg = "none"} )
-        vim.api.nvim_set_hl(0, "NormalFloat",{bg = "none"} )
-    end
-
-EOF
-lua force_backgraund()
 "'''''''''''''''''''''''''''''''''LuaSnip'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 imap <silent><expr> <Tab> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>' 
 lua require("luasnip.loaders.from_vscode").lazy_load()
-"''''''''''''Coding'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-let g:deoplete#enable_at_startup = 1
 " <TAB>: completion.
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 autocmd FileType python map <buffer> <F10> :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
@@ -175,12 +166,48 @@ autocmd FileType rust nmap <F10> :w<CR>:!rustc % -o %:r && ./%:r<CR>
 "''''''''''''''' Theme '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 " lua  vim.cmd.colorscheme "catppuccin-mocha"
 
+"''''''''''''''''''''Airline Bar'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline_theme='catppuccin'
+set noshowmode 
+set showtabline=2
+let g:airline_section_z = airline#section#create(['%3p%% %L☰'])
+" let g:airline#extensions#tabline#enabled = 1
+
+"''''''''''''''''''''''FloatTerm'''''''''''''''''''''''''''''''''''''''''''
+let g:floaterm_keymap_toggle = '<F12>'
+autocmd filetype cpp nnoremap <silent> <F9> :w<bar> :FloatermNew --autoclose=0 g++ -g -Wall % && ./a.out<cr>
+autocmd FileType python nnoremap <silent> <F11> :w <bar> :FloatermNew --disposable --autoclose=0 python3 %<cr> 
+autocmd FileType rust nnoremap <silent> <F11> :w <bar> :FloatermNew --disposable --autoclose=0 rustc % -o %:r && ./%:r<CR>
+autocmd FileType cpp nnoremap <silent> <F11> :w <bar> :FloatermNew --disposable --autoclose=0 g++ -o %:p:r % <bar> /%:p:r<CR>
+
 "''''''''''''''''''''Font Icons '''''''''''''''''''''''''''''''''''''''
 set guifont=Hack\ Nerd\ Font\ 12
 let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 
-"'''''''''''''LSP''''''''''''''''''''''''''''''''''''''''''''''''''''''
+"##########
+"LUA Block#
+"##########
 lua <<EOF
+
+
+--"''''''''''''''''''nvim-colorizer'''''''''''''''''''''''''''''''''''''
+require'colorizer'.setup()
+
+--"'''''''''''Force transparency if no compositor installed'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+    function force_backgraund(color)
+        color = color or "catppuccin-mocha"
+        vim.cmd.colorscheme(color)
+
+        vim.api.nvim_set_hl(0, "Normal",{bg = "none"} )
+        vim.api.nvim_set_hl(0, "NormalFloat",{bg = "none"} )
+    end
+force_backgraund()
+
+--"'''''''LSP''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
 require("mason").setup({
 ui = {
     icons = {
@@ -205,9 +232,7 @@ require("lspconfig").jedi_language_server.setup {
     on_attach = on_attach 
     } 
 
-EOF
-"'''''''''''''''''''Bash lsp , installed trough dnf not plug '''''''''''
-lua <<EOF
+--"'''''''''''''''''''Bash lsp , installed trough dnf not plug '''''''''''
 vim.api.nvim_create_autocmd('FileType', {
   pattern = 'sh',
   callback = function()
@@ -217,15 +242,13 @@ vim.api.nvim_create_autocmd('FileType', {
     })
   end,
 })
-EOF
-"''''''''''''''''''''Zero Lsp''''''''''''''''''''''''''''''''''''''''''
-lua <<EOF
+
+--"''''''''''''''''''''Zero Lsp''''''''''''''''''''''''''''''''''''''''''
     local lsp = require('lsp-zero')
     lsp.preset('recommended')
     lsp.setup()
-EOF
-"'''''''''''''''''''Tree sitter highlight''''''''''''''''''''''''''''''
-lua <<EOF
+
+--"'''''''''''''''''''Tree sitter highlight''''''''''''''''''''''''''''''
 require'nvim-treesitter.configs'.setup {
   -- A list of parser names, or "all"
   ensure_installed = { "c", "lua", "rust","bash","python" },
@@ -236,40 +259,13 @@ require'nvim-treesitter.configs'.setup {
     additional_vim_regex_highlighting = false,
   },
 }
-EOF
-"''''''''''''''''''nvim-colorizer'''''''''''''''''''''''''''''''''''''
-lua require'colorizer'.setup()
 
-"'''''''''''''''''''Markdown Preview ''''''''''''''''''''''''''''''''''
-let g:mkdp_auto_start = 1
-let g:mkdp_auto_close = 1
-let g:mkdp_browser = 'chromium-browser'
-
-"''''''''''''''''''''''FloatTerm'''''''''''''''''''''''''''''''''''''''''''
-let g:floaterm_keymap_toggle = '<F12>'
-autocmd filetype cpp nnoremap <silent> <F9> :w<bar> :FloatermNew --autoclose=0 g++ -g -Wall % && ./a.out<cr>
-autocmd FileType python nnoremap <silent> <F11> :w <bar> :FloatermNew --disposable --autoclose=0 python3 %<cr> 
-autocmd FileType rust nnoremap <silent> <F11> :w <bar> :FloatermNew --disposable --autoclose=0 rustc % -o %:r && ./%:r<CR>
-autocmd FileType cpp nnoremap <silent> <F11> :w <bar> :FloatermNew --disposable --autoclose=0 g++ -o %:p:r % <bar> /%:p:r<CR>
-
-"''''''''''''''''''''Airline Bar'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
-let g:airline_theme='catppuccin'
-set noshowmode 
-set showtabline=2
-let g:airline_section_z = airline#section#create(['%3p%% %L☰'])
-let g:airline#extensions#tabline#enabled = 1
-
-"''''''''Neotree''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-lua << EOF
+--"''''''''Neotree''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 require("neo-tree").setup({
         close_if_last_window = true,
 })
-EOF
 
-"''''''''''IndentBlankline''''''''''````````````````````````````````````````````````
-lua << EOF
+--"''''''''''IndentBlankline''''''''''````````````````````````````````````````````````
     require("ibl").setup()
+
 EOF
