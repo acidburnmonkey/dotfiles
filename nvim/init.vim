@@ -218,15 +218,16 @@ ui = {
     }
     }
 })
- require("mason-lspconfig").setup {
-     ensure_installed = {"rust_analyzer","jedi_language_server", "clangd"},
- }
+require("mason-lspconfig").setup {
+    ensure_installed = {"rust_analyzer","jedi_language_server", "clangd"},
+}
 --shortcuts
 local on_attach = function(_,_) 
-   --Shift K for documentation
-   vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
-   vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {})
-   vim.keymap.set('n', 'gr', vim.lsp.buf.references, {})
+--Shift K for documentation
+    vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {})
+    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, {})
+    vim.keymap.set('n', 'gr', vim.lsp.buf.references, {})
 end     
 
 require("lspconfig").jedi_language_server.setup {
