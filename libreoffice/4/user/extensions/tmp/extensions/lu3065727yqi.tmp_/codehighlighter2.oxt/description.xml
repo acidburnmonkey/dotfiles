@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description xmlns   = "http://openoffice.org/extensions/description/2006"             
+  xmlns:d = "http://openoffice.org/extensions/description/2006"             
+  xmlns:l = "http://libreoffice.org/extensions/description/2011" 
+  xmlns:xlink="http://www.w3.org/1999/xlink">
+
+  <identifier value="javahelps.codehighlighter"/>
+
+  <version value="2.5.3"/>
+
+  <update-information>
+    <src xlink:href="https://raw.githubusercontent.com/jmzambon/libreoffice-code-highlighter/master/codehighlighter.update.xml" />
+  </update-information>
+
+  <icon>
+    <default xlink:href="images/icon_42.png" />
+  </icon>
+
+  <display-name>
+    <name>Code Highlighter 2</name>
+    <name lang="en">Code Highlighter 2</name>
+  </display-name>
+
+  <extension-description>
+    <src xlink:href="description/desc_en.txt"/>
+    <src xlink:href="description/desc_en.txt" lang="en" />
+    <src xlink:href="description/desc_fr.txt" lang="fr" />
+  </extension-description>
+
+  <dependencies>
+    <l:LibreOffice-minimal-version value="6.4" d:name="LibreOffice.org 6.4 or higher" />
+  </dependencies>
+
+  <registration>
+    <simple-license accept-by="admin" suppress-on-update="true">
+      <license-text xlink:href="license/license.txt" />
+      <license-text xlink:href="license/license.txt" lang="en-US" />
+    </simple-license>
+  </registration>
+
+</description>
