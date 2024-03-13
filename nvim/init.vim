@@ -88,7 +88,7 @@ call plug#end()
 "     Remaps         #
 "#####################
 
-nnoremap \ :Neotree focus<cr>
+" nnoremap \ :Neotree focus<cr>
 nnoremap <leader>u :UndotreeToggle<CR>
 nnoremap <leader>- :IBLToggle<CR>
 let g:peekup_open = '<F5>'
@@ -114,26 +114,25 @@ map S <Nop>
 command! BufOnly silent! execute "%bd|e#|bd#"
 nnoremap <leader>b :BufOnly<CR>
 
-"tabs 
-nnoremap <TAB> :bnext<CR>
-nnoremap <S-TAB> :bprevious<CR>
 
 lua <<EOF
-vim.keymap.set("n", "x", [["_x]])
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
-vim.keymap.set("n", "<leader>r", [[:%s#\<<C-r><C-w>\>#<C-r><C-w>#gI<Left><Left><Left>]])
-vim.keymap.set("v", "<leader>r", [[:s#\<<C-r><C-w>\>#<C-r><C-w>#gI<Left><Left><Left>]])
-vim.keymap.set("x", "<leader>p", [["_dP]])
-vim.keymap.set("n", "J", "mzJ`z")
-vim.keymap.set("n", "<C-d>", "<C-d>zz")
-vim.keymap.set("n", "<C-u>", "<C-u>zz")
+vim.keymap.set("n", "<leader><TAB>", ":bnext<CR>") -- Tab next 
+vim.keymap.set("n", "x", [["_x]]) --void x
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv") -- move block
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv") --  move block
+vim.keymap.set("n", "<leader>r", [[:%s#\<<C-r><C-w>\>#<C-r><C-w>#gI<Left><Left><Left>]]) -- global remap
+vim.keymap.set("v", "<leader>r", [[:s#\<<C-r><C-w>\>#<C-r><C-w>#gI<Left><Left><Left>]]) -- visial remap 
+vim.keymap.set("x", "<leader>p", [["_dP]]) -- void paste 
+vim.keymap.set("n", "J", "mzJ`z") -- append line
+vim.keymap.set("n", "<C-d>", "<C-d>zz") --move half page
+vim.keymap.set("n", "<C-u>", "<C-u>zz") --move half page
 
 --telescope
 vim.keymap.set('n', '<leader>ff', "<cmd>lua require'telescope.builtin'.find_files({ find_command = {'rg', '--files', '--hidden', '-g', '!.git' }})<cr>")
 vim.keymap.set('n', '<leader>fr', "<cmd>lua require'telescope.builtin'.buffers({ show_all_buffers = true })<cr>")
 vim.keymap.set('n', '<leader>fg', "<cmd>lua require('telescope.builtin').live_grep()<cr>")
 
+vim.cmd([[nnoremap \ :Neotree toggle<cr>]])
 vim.opt.hlsearch = false
 
 EOF
@@ -145,7 +144,7 @@ EOF
 "'''''''''''''''''''Markdown Preview ''''''''''''''''''''''''''''''''''
 let g:mkdp_auto_start = 1
 let g:mkdp_auto_close = 1
-let g:mkdp_browser = 'chromium-browser'
+let g:mkdp_browser = 'firefox'
 
 "''''''''''''Coding'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 let g:deoplete#enable_at_startup = 1
@@ -175,7 +174,7 @@ let g:airline_theme='catppuccin'
 set noshowmode 
 set showtabline=2
 let g:airline_section_z = airline#section#create(['%3p%% %L☰'])
-" let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#enabled = 1
 
 "''''''''''''''''''''''FloatTerm'''''''''''''''''''''''''''''''''''''''''''
 let g:floaterm_keymap_toggle = '<F12>'
@@ -233,6 +232,21 @@ end
 require("lspconfig").jedi_language_server.setup {
     on_attach = on_attach 
     } 
+
+require("lspconfig").tsserver.setup {
+    on_attach = on_attach 
+    } 
+
+--"'''''''''''''''''''Bash lsp , installed trough dnf not plug '''''''''''
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'sh',
+  callback = function()
+    vim.lsp.start({
+      name = 'bash-language-server',
+      cmd = { 'bash-language-server', 'start' },
+    })
+  end,
+})
 
 --"'''''''''''''''''''Bash lsp , installed trough dnf not plug '''''''''''
 vim.api.nvim_create_autocmd('FileType', {

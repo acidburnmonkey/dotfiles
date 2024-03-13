@@ -108,9 +108,6 @@ for_window [urgent="latest" class="jetbrains-pycharm-ce"] focus
 assign [class="jetbrains-clion"]  $ws4 
 for_window [urgent="latest" class="jetbrains-clion"] focus
 
-assign [class="Xournal"]  $ws4 
-for_window [urgent="latest" class="Xournal"] focus
-
 assign [class="Code"]  $ws4 
 for_window [urgent="latest" class="Code"] focus
 
@@ -126,13 +123,8 @@ for_window [urgent="latest" class="TelegramDesktop"] focus
 assign [class="obsidian"]  $ws6 
 for_window [urgent="latest" class="obsidian"] focus
 
-
 assign [class="thunderbird"] $ws7
 for_window [urgent="latest" class="thunderbird"] focus
-
-# assign [class="vlc"] $ws8
-# for_window [urgent="latest" class="vlc"] focus
-
 
 assign [class="Microsoft-edge"] $ws8
 for_window [urgent="latest" class="Microsoft-edge"] focus
@@ -244,7 +236,6 @@ exec --no-startup-id bash ~/.config/i3/screenlayout.sh
 exec --no-startup-id /usr/bin/openrgb --startminimized --profile "ssx"
 exec --no-startup-id bash ~/scripts/startup.sh 
 exec --no-startup-id /usr/bin/nextcloud --background
-exec --no-startup-id xset s off -dpms
 
 exec_always --no-startup-id bash ~/.config/polybar/launch.sh
 # exec_always --no-startup-id feh --bg-fill /media/toxic/photos/cattpussin-mask.png
