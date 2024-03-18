@@ -81,6 +81,9 @@ Plug 'vim-airline/vim-airline-themes'
 " ''''''''''''''''''''''''''''''''''''''''''''''''
 Plug 'tpope/vim-fugitive'
 "''''''''''''''''''''''''''''''''''''''''''''''''
+Plug 'nvimtools/none-ls.nvim'
+"''''''''''''''''''''''''''''''''''''''''''''
+
 
 call plug#end()
 
@@ -113,7 +116,8 @@ map S <Nop>
 "closes all buffers but current 
 command! BufOnly silent! execute "%bd|e#|bd#"
 nnoremap <leader>b :BufOnly<CR>
-
+"Remove all trailing whitespace by pressing F5
+nnoremap <F2> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 
 lua <<EOF
 vim.keymap.set("n", "<leader><TAB>", ":bnext<CR>") -- Tab next 
@@ -121,7 +125,7 @@ vim.keymap.set("n", "x", [["_x]]) --void x
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv") -- move block
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv") --  move block
 vim.keymap.set("n", "<leader>r", [[:%s#\<<C-r><C-w>\>#<C-r><C-w>#gI<Left><Left><Left>]]) -- global remap
-vim.keymap.set("v", "<leader>r", [[:s#\<<C-r><C-w>\>#<C-r><C-w>#gI<Left><Left><Left>]]) -- visial remap 
+vim.keymap.set("v", "<leader>r", [[:s#\<<C-r><C-w>\>#<C-r><C-w>#gI<Left><Left><Left>]]) -- visual remap 
 vim.keymap.set("x", "<leader>p", [["_dP]]) -- void paste 
 vim.keymap.set("n", "J", "mzJ`z") -- append line
 vim.keymap.set("n", "<C-d>", "<C-d>zz") --move half page
@@ -218,15 +222,17 @@ ui = {
     }
 })
 require("mason-lspconfig").setup {
-    ensure_installed = {"rust_analyzer","jedi_language_server", "clangd"},
+    ensure_installed = {"rust_analyzer","jedi_language_server", "clangd", 
+    'tsserver'},
 }
 --shortcuts
 local on_attach = function(_,_) 
 --Shift K for documentation
     vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
     vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {})
-    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, {})
+    vim.keymap.set('n', 'gj', vim.lsp.buf.declaration, {})
     vim.keymap.set('n', 'gr', vim.lsp.buf.references, {})
+    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, {})
 end     
 
 require("lspconfig").jedi_language_server.setup {
@@ -237,16 +243,9 @@ require("lspconfig").tsserver.setup {
     on_attach = on_attach 
     } 
 
---"'''''''''''''''''''Bash lsp , installed trough dnf not plug '''''''''''
-vim.api.nvim_create_autocmd('FileType', {
-  pattern = 'sh',
-  callback = function()
-    vim.lsp.start({
-      name = 'bash-language-server',
-      cmd = { 'bash-language-server', 'start' },
-    })
-  end,
-})
+--qrequire("lspconfig").eslint.setup {
+--     on_attach = on_attach 
+--     } 
 
 --"'''''''''''''''''''Bash lsp , installed trough dnf not plug '''''''''''
 vim.api.nvim_create_autocmd('FileType', {
@@ -263,6 +262,17 @@ vim.api.nvim_create_autocmd('FileType', {
     local lsp = require('lsp-zero')
     lsp.preset('recommended')
     lsp.setup()
+
+--''''''''''''''''Non-ls/null-ls''''''''''''''''
+local null_ls = require("null-ls")
+null_ls.setup({
+sources = {
+     null_ls.builtins.diagnostics.cppcheck,
+    -- null_ls.builtins.diagnostics.pylint.with({
+     --extra_args = { "--disable=C" }  }),
+    null_ls.builtins.completion.spell,
+},
+})
 
 --"'''''''''''''''''''Tree sitter highlight''''''''''''''''''''''''''''''
 require'nvim-treesitter.configs'.setup {
@@ -282,6 +292,8 @@ require("neo-tree").setup({
 })
 
 --"''''''''''IndentBlankline''''''''''````````````````````````````````````````````````
-    require("ibl").setup()
+require("ibl").setup()
 
+
+--''''''''''''''''''''''''''''''''''''''''''''''''''''''
 EOF

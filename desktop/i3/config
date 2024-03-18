@@ -22,7 +22,6 @@ bindsym $alt+0x2c exec nemo
 bindsym $alt+0x2f  exec firefox 
 bindsym Ctrl+$alt+l exec ~/.config/polybar/scripts/rofipowermenu/skpowermenu.sh
 bindsym $mod+t  exec alacritty
-bindsym Ctrl+Shift+u exec ibus emoji
 bindsym 0xff61 exec gnome-screenshot --interactive
 
 
