@@ -20,36 +20,36 @@ command! WipeReg for i in range(34,122) | silent! call setreg(nr2char(i), []) | 
 call plug#begin()
 
 Plug 'rust-lang/rust.vim'
-"''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+""''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 Plug 'voldikss/vim-floaterm'
-"''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+""''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
-"''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+""''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 Plug 'lukas-reineke/indent-blankline.nvim'
-"''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+""''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 Plug 'norcalli/nvim-colorizer.lua'
-"''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+""''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 Plug 'mbbill/undotree'
-"''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+""''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 Plug 'nvim-tree/nvim-web-devicons'
 Plug 'nvim-neo-tree/neo-tree.nvim'
 Plug 'MunifTanjim/nui.nvim'
-"''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+""''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
-"''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+""''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-"''''''''''''''''''''''''''''''''''''''''''''''"''''''''''''''''''
+""''''''''''''''''''''''''''''''''''''''''''''''"''''''''''''''''''
 Plug 'williamboman/mason.nvim'
 Plug 'williamboman/mason-lspconfig.nvim'
 Plug 'neovim/nvim-lspconfig'
-"''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+""''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 Plug 'L3MON4D3/LuaSnip'
 Plug 'rafamadriz/friendly-snippets'
-""""""""""""""""""""""""""'''''''''''''''''''''''''''''''''''""""
+"""""""""""""""""""""""""""'''''''''''''''''''''''''''''''''''""""
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-commentary'
-"''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+""''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 else
@@ -58,16 +58,16 @@ else
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
 Plug 'deoplete-plugins/deoplete-jedi'
-"''''''''''''''''''''''''''''''''''''''''''''''''''
+""''''''''''''''''''''''''''''''''''''''''''''''''''
 Plug 'gennaro-tedesco/nvim-peekup'
-"''''''''''''''''''''''''''''''''''''''''''''''''''
+""''''''''''''''''''''''''''''''''''''''''''''''''''
 Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
-"''''''''''''''''''''''''''''''''''''''''''''''''''
+""''''''''''''''''''''''''''''''''''''''''''''''''''
 Plug 'tpope/vim-surround'
-"'''''''''''''''''''''''''''''''''''''''''''''''''''
+""'''''''''''''''''''''''''''''''''''''''''''''''''''
 Plug 'ryanoasis/vim-devicons'
-"''''''''''''''''''''''''''''''''''''''''''''''''''
-" Autocompletion
+""''''''''''''''''''''''''''''''''''''''''''''''''''
+"" Autocompletion
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
@@ -75,14 +75,14 @@ Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-nvim-lua'
 Plug 'VonHeikemen/lsp-zero.nvim'
-" ''''''''''''''''''''''''''''''''''''''''''''''''
+"" ''''''''''''''''''''''''''''''''''''''''''''''''
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-" ''''''''''''''''''''''''''''''''''''''''''''''''
+"" ''''''''''''''''''''''''''''''''''''''''''''''''
 Plug 'tpope/vim-fugitive'
-"''''''''''''''''''''''''''''''''''''''''''''''''
+""''''''''''''''''''''''''''''''''''''''''''''''''
 Plug 'nvimtools/none-ls.nvim'
-"''''''''''''''''''''''''''''''''''''''''''''
+""''''''''''''''''''''''''''''''''''''''''''''
 
 
 call plug#end()
@@ -151,10 +151,10 @@ let g:mkdp_auto_close = 1
 let g:mkdp_browser = 'firefox'
 
 "''''''''''''Coding'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-let g:deoplete#enable_at_startup = 1
+" let g:deoplete#enable_at_startup = 1
 
 "'''''''''''''''''''''''''''''''''LuaSnip'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-imap <silent><expr> <Tab> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>' 
+" imap <silent><expr> <Tab> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>' 
 lua require("luasnip.loaders.from_vscode").lazy_load()
 " <TAB>: completion.
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
@@ -196,6 +196,12 @@ let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 "##########
 lua <<EOF
 
+--"''''''''''''''''''''Zero Lsp''''''''''''''''''''''''''''''''''''''''''
+local lsp = require('lsp-zero')
+lsp.preset('recommended')
+lsp.setup()
+-- Define capabilities
+local capabilities = vim.lsp.protocol.make_client_capabilities()
 
 --"''''''''''''''''''nvim-colorizer'''''''''''''''''''''''''''''''''''''
 require'colorizer'.setup()
@@ -222,7 +228,7 @@ ui = {
     }
 })
 require("mason-lspconfig").setup {
-    ensure_installed = {"rust_analyzer","jedi_language_server", "clangd", 
+    ensure_installed = {"rust_analyzer", "clangd", 
     'tsserver'},
 }
 --shortcuts
@@ -235,14 +241,20 @@ local on_attach = function(_,_)
     vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, {})
 end     
 
-require("lspconfig").jedi_language_server.setup {
-    on_attach = on_attach 
-    } 
+--require("lspconfig").jedi_language_server.setup {
+--    on_attach = on_attach, 
+--    capabilities = capabilities
+--    } 
 
 require("lspconfig").tsserver.setup {
-    on_attach = on_attach 
+    on_attach = on_attach,
+    capabilities = capabilities
     } 
 
+require("lspconfig").pyright.setup {
+    on_attach = on_attach,
+    capabilities = capabilities
+    } 
 --qrequire("lspconfig").eslint.setup {
 --     on_attach = on_attach 
 --     } 
@@ -258,10 +270,6 @@ vim.api.nvim_create_autocmd('FileType', {
   end,
 })
 
---"''''''''''''''''''''Zero Lsp''''''''''''''''''''''''''''''''''''''''''
-    local lsp = require('lsp-zero')
-    lsp.preset('recommended')
-    lsp.setup()
 
 --''''''''''''''''Non-ls/null-ls''''''''''''''''
 local null_ls = require("null-ls")
@@ -294,6 +302,35 @@ require("neo-tree").setup({
 --"''''''''''IndentBlankline''''''''''````````````````````````````````````````````````
 require("ibl").setup()
 
+  -- Set up nvim-cmp.
+  local cmp = require'cmp'
 
+  cmp.setup({
+    snippet = {
+      -- REQUIRED - you must specify a snippet engine
+      expand = function(args)
+         require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+      end,
+    },
+    window = {
+       completion = cmp.config.window.bordered(),
+       documentation = cmp.config.window.bordered(),
+    },
+    mapping = cmp.mapping.preset.insert({
+      ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+      ['<C-f>'] = cmp.mapping.scroll_docs(4),
+      ['<C-Space>'] = cmp.mapping.complete(),
+      ['<C-e>'] = cmp.mapping.abort(),
+      ['<Tab>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+    }),
+    
+
+    sources = cmp.config.sources({
+      { name = 'nvim_lsp' },
+       { name = 'luasnip' }, -- For luasnip users.
+    }, {
+      { name = 'buffer' },
+    })
+  })
 --''''''''''''''''''''''''''''''''''''''''''''''''''''''
 EOF
