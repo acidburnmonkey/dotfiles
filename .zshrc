@@ -11,23 +11,23 @@ export ZSH="$HOME/.oh-my-zsh"
 export PATH="$HOME/.local/bin:$PATH"
 export PYTHONUNBUFFERED=1
 export XDG_RUNTIME_DIR=/run/user/$(id -u)
-
+export PATH="$HOME/.cargo/bin:$PATH"
 
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
 
 # some more ls aliases
 alias update='sudo dnf update && sudo flatpak -y update'
-alias lion=' cd ~/Nextcloud/School/cppclass/clion/'
 alias cl='clear'
 alias goarchon='ssh root@192.168.1.118'
 alias src='source ~/.zshrc'
 alias neogit='onefetch'
-alias grub2-update='sudo grub2-mkconfig -o /boot/efi/EFI/fedora/grub.cfg'
+alias update-grub='sudo grub2-mkconfig -o /etc/grub2.cfg'
 alias vim='nvim'
 alias xc='xclip -sel clip'
 alias pycheck='python -m pylint --disable=R,C'
 alias goadum='ssh mal0@192.168.1.146'
+alias zz='/scripts/startup_sc.sh'
 
 ### Plugins ###
 plugins=(git zsh-autosuggestions python virtualenv)

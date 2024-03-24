@@ -17,7 +17,7 @@ bindsym XF86MonBrightnessDown exec --no-startup-id  ~/.config/i3/dunstthree/duns
 
 bindsym $mod+s  exec ~/.config/polybar/scripts/apps/apps.sh
 bindsym $mod+d exec ~/.config/polybar/scripts/rofimenu/launcher.sh 
-bindsym $mod+l exec ~/.local/bin/betterlockscreen -l -- -e
+bindsym $mod+l exec /usr/local/bin/betterlockscreen -l -- -e
 bindsym $alt+0x2c exec nemo 
 bindsym $alt+0x2f  exec firefox 
 bindsym Ctrl+$alt+l exec ~/.config/polybar/scripts/rofipowermenu/skpowermenu.sh
@@ -36,8 +36,7 @@ for_window [title="Library"] floating enable
 for_window [class="Pycalendar.py" instance="pycalendar.py"] floating enable; move absolute position top left 
 for_window [class="Pycalendar.py" instance="pycalendar.py"] move absolute position 3200 980 
 
-for_window [class="Qalculate-gtk"] floating enable
-for_window [class="Ibus-ui-emojier" instance="Ibus-ui-emojier" ] output DP-4
+for_window [class="qalculate-qt"] floating enable
 for_window [class="amberol" instance="amberol"] floating enable;
 
 # Define gaps between windows
