@@ -230,7 +230,7 @@ ui = {
 })
 require("mason-lspconfig").setup {
     ensure_installed = {"rust_analyzer", "clangd", 
-    'tsserver'},
+    'tsserver','pyright'},
 }
 --shortcuts
 local on_attach = function(_,_) 
