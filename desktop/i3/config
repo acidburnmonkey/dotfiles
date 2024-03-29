@@ -106,8 +106,8 @@ for_window [urgent="latest" class="jetbrains-pycharm-ce"] focus
 assign [class="jetbrains-clion"]  $ws4 
 for_window [urgent="latest" class="jetbrains-clion"] focus
 
-assign [class="Code"]  $ws4 
-for_window [urgent="latest" class="Code"] focus
+assign [class="VSCodium"]  $ws4 
+for_window [urgent="latest" class="VSCodium"] focus
 
 assign [class="yuzu"]  $ws5 
 for_window [urgent="latest" class="yuzu"] focus
