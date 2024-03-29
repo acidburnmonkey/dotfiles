@@ -1,18 +1,22 @@
 #!/bin/bash
 
+dotfiles="$HOME/repos/dotfiles/"
 
 #zhrc
-cp -r -u -v ~/.zshrc ~/repos/dotfiles
+cp -r -u -v ~/.zshrc  $dotfiles
+#.p10k.zh
+cp -r -u -v ~/.p10k.zsh $dotfiles
+
 #kitty
-cp -r -u -v ~/.config/kitty ~/repos/dotfiles
+cp -r -u -v ~/.config/kitty $dotfiles
 #ulauncher
-cp -r -u -v ~/.config/ulauncher ~/repos/dotfiles
+cp -r -u -v ~/.config/ulauncher $dotfiles
 #neofetch
-cp -r -u -v ~/.config/neofetch ~/repos/dotfiles
-# Cinnamon configs
-cp -r -u -v ~/cinnamon-configs ~/repos/dotfiles
+cp -r -u -v ~/.config/neofetch $dotfiles
 # Nvim
-cp -r -u -v ~/.config/nvim ~/repos/dotfiles
+cp -r -u -v ~/.config/nvim $dotfiles
+
+
 #desktop ---------
 #i3 
 cp -r -u -v ~/.config/i3 ~/repos/dotfiles/desktop/

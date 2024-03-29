@@ -101,25 +101,4 @@ xinput
 xorg-x
 xset
 zsh
-####### Flatpak #########
-Adobe Flash Player
-Axosoft
-Brave Software
-Discord Inc.
-WhatsApp for Linux
-Jellyfin Media Player
-Czkawka
-Flatseal
-Unrud
-Heroic Games Launcher
-CLion
-Spotify
-Metadata Cleaner
-Amberol
-jExifToolGUI
-Obsidian
-ProtonUp-Qt
-GNU Image Manipulation Program
-yuzu Emulator Team
-zoom.us
-CoBang
+
