@@ -233,14 +233,22 @@ require("mason-lspconfig").setup {
     'tsserver','pyright'},
 }
 --shortcuts
-local on_attach = function(_,_) 
---Shift K for documentation
-    vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
-    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {})
-    vim.keymap.set('n', 'gj', vim.lsp.buf.declaration, {})
-    vim.keymap.set('n', 'gr', vim.lsp.buf.references, {})
-    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, {})
-end     
+lsp.on_attach(function(client, bufnr)
+  local opts = {buffer = bufnr, remap = false}
+
+    vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
+    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
+    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+    vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
+    vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
+    vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
+    vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, opts)
+    vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
+    vim.keymap.set("n", "<leader>vca", function() vim.lsp.buf.code_action() end, opts)
+    vim.keymap.set("n", "gr", function() vim.lsp.buf.references() end, opts)
+    vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
+    vim.keymap.set("n", "<C-k>", function() vim.lsp.buf.signature_help() end, opts)
+    end)
 
 --require("lspconfig").jedi_language_server.setup {
 --    on_attach = on_attach, 
