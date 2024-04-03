@@ -142,9 +142,11 @@ for_window [urgent="latest" class="Virt-manager"] focus
 assign [class="zoom"] $ws9
 for_window [urgent="latest" class="zoom"] focus
 
+assign [title="Adobe Photoshop CC 2018"] $ws10  
 assign [class="photoshop.exe"] $ws10  
-for_window [urgent="latest" class="photoshop.exe"] focus 
-for_window [class="photoshop.exe"] resize set 1920 1080
+for_window [title="Adobe Photoshop CC 2018"] floating enable ; border none 
+# for_window [class="photoshop.exe" instance="photoshop.exe"] move absolute position 1880 1060 ; move absolute position center 
+# for_window [urgent="latest" class="photoshop.exe"] floating enable
 
 assign [class="Gimp-2.10"] $ws10  
 for_window [urgent="latest" class="Gimp-2.10"] focus 
@@ -234,6 +236,7 @@ exec --no-startup-id bash ~/.config/i3/screenlayout.sh
 exec --no-startup-id /usr/bin/openrgb --startminimized --profile "ssx"
 exec --no-startup-id bash ~/scripts/startup.sh 
 exec --no-startup-id /usr/bin/nextcloud --background
+exec --no-startup-id /usr/bin/xsettingsd
 
 exec_always --no-startup-id bash ~/.config/polybar/launch.sh
 # exec_always --no-startup-id feh --bg-fill /media/toxic/photos/cattpussin-mask.png
