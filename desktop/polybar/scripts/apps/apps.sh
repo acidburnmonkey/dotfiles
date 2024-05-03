@@ -23,7 +23,7 @@ fi
 
 # CMDs (add your apps here)
 term_cmd='lightdm-settings'
-file_cmd='/home/mahalo/vitrual/kali-linux/kali-linux-2023.1-vmware-amd64.vmx'
+file_cmd='flatpak run codes.merritt.FeelingFinder'
 text_cmd='flatpak run md.obsidian.Obsidian'
 web_cmd='firefox -no-remote -P School'
 music_cmd='flatpak run com.discordapp.Discord'
@@ -33,7 +33,7 @@ setting_cmd='steam'
 layout=`cat ${theme} | grep 'USE_ICON' | cut -d'=' -f2`
 if [[ "$layout" == 'NO' ]]; then
 	option_1=" Login Window <span weight='light' size='small'></span>"
-	option_2=" Kali <span weight='light' size='small'></span>"
+	option_2=" Emoji <span weight='light' size='small'></span>"
 	option_3=" Obsidian<span weight='light' size='small'></span>"
 	option_4=" School<span weight='light' size='small'></span>"
 	option_5=" Discord <span weight='light' size='small'></span>"
@@ -69,7 +69,7 @@ run_cmd() {
 	if [[ "$1" == '--opt1' ]]; then
 		${polkit_cmd} ${term_cmd}
 	elif [[ "$1" == '--opt2' ]]; then
-		${polkit_cmd} ${file_cmd}
+		${file_cmd}
 	elif [[ "$1" == '--opt3' ]]; then
 		${text_cmd}
 	elif [[ "$1" == '--opt4' ]]; then

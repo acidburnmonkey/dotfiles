@@ -8,7 +8,7 @@ ZSH_DISABLE_COMPFIX="true" #root comp
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 export EDITOR='nvim'
 export VISUAL='nvim'
-export PATH="$HOME/scripts:$PATH"
+export PATH="/home/mahalo/scripts:$PATH"
 export ZSH="$HOME/.oh-my-zsh"
 export PATH="$HOME/.local/bin:$PATH"
 export PYTHONUNBUFFERED=1
@@ -29,7 +29,7 @@ alias vim='nvim'
 alias xc='xclip -sel clip'
 alias pycheck='python -m pylint --disable=R,C'
 alias goadum='ssh mal0@192.168.1.146'
-alias zz='/scripts/startup_sc.sh'
+alias zz=' source ~/python/v-crawlers/bin/activate'
 
 ### Plugins ###
 plugins=(git zsh-autosuggestions python virtualenv)

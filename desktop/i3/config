@@ -236,7 +236,6 @@ exec --no-startup-id bash ~/.config/i3/screenlayout.sh
 exec --no-startup-id /usr/bin/openrgb --startminimized --profile "ssx"
 exec --no-startup-id bash ~/scripts/startup.sh 
 exec --no-startup-id /usr/bin/nextcloud --background
-exec --no-startup-id /usr/bin/xsettingsd
 
 exec_always --no-startup-id bash ~/.config/polybar/launch.sh
 # exec_always --no-startup-id feh --bg-fill /media/toxic/photos/cattpussin-mask.png
