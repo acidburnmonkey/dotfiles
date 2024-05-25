@@ -118,6 +118,7 @@ map S <Nop>
 "closes all buffers but current 
 command! BufOnly silent! execute "%bd|e#|bd#"
 nnoremap <leader>b :BufOnly<CR>
+nnoremap <leader>q :bd<CR>
 "Remove all trailing whitespace by pressing F5
 nnoremap <F2> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 
