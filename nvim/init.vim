@@ -84,6 +84,7 @@ Plug 'tpope/vim-fugitive'
 ""''''''''''''''''''''''''''''''''''''''''''''''''
 Plug 'nvimtools/none-ls.nvim'
 ""''''''''''''''''''''''''''''''''''''''''''''
+Plug 'windwp/nvim-ts-autotag'
 
 
 call plug#end()
@@ -162,6 +163,9 @@ inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 autocmd FileType python map <buffer> <F10> :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
 autocmd FileType python imap <buffer> <F10> <esc>:w<CR>:exec '!python3' shellescape(@%, 1)<CR>
 
+autocmd FileType javascript map <buffer> <F10> :w<CR>:exec '!node' shellescape(@%, 1)<CR>
+autocmd FileType javascript imap <buffer> <F10> <esc>:w<CR>:exec '!node' shellescape(@%, 1)<CR>
+
 autocmd FileType sh map <buffer> <F10> :w<CR>:exec '!/bin/bash' shellescape(@%, 1)<CR>
 autocmd FileType sh imap <buffer> <F10> <esc>:w<CR>:exec '!/bin/bash' shellescape(@%, 1)<CR>
 autocmd filetype cpp nnoremap <buffer> <F10> :!g++ -o %:p:r %<cr>:!%:p:r<cr>
@@ -187,6 +191,7 @@ autocmd filetype cpp nnoremap <silent> <F9> :w<bar> :FloatermNew --autoclose=0 g
 autocmd FileType python nnoremap <silent> <F11> :w <bar> :FloatermNew --disposable --autoclose=0 python3 %<cr> 
 autocmd FileType rust nnoremap <silent> <F11> :w <bar> :FloatermNew --disposable --autoclose=0 rustc % -o %:r && ./%:r<CR>
 autocmd FileType cpp nnoremap <silent> <F11> :w <bar> :FloatermNew --disposable --autoclose=0 g++ -o %:p:r % <bar> /%:p:r<CR>
+autocmd FileType javascript nnoremap <silent> <F11> :w <bar> :FloatermNew --disposable --autoclose=0 node %<cr> 
 
 "''''''''''''''''''''Font Icons '''''''''''''''''''''''''''''''''''''''
 set guifont=Hack\ Nerd\ Font\ 12
@@ -264,9 +269,12 @@ require("lspconfig").pyright.setup {
     on_attach = on_attach,
     capabilities = capabilities
     } 
---qrequire("lspconfig").eslint.setup {
---     on_attach = on_attach 
---     } 
+
+require("lspconfig").tailwindcss.setup {
+    on_attach = on_attach,
+    capabilities = capabilities
+    } 
+
 
 --"'''''''''''''''''''Bash lsp , installed trough dnf not plug '''''''''''
 vim.api.nvim_create_autocmd('FileType', {
@@ -349,5 +357,13 @@ require("ibl").setup()
       { name = 'buffer' },
     })
   })
---''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
+--'''''''''''''nvim-ts-autotag'''''''''''''''''''''''''''''''''''''''''
+require('nvim-ts-autotag').setup({
+  opts = {
+    enable_close = true, -- Auto close tags
+    enable_rename = true, -- Auto rename pairs of tags
+    enable_close_on_slash = false -- Auto close on trailing </
+  },
+})
 EOF
