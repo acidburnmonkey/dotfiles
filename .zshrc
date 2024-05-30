@@ -30,6 +30,8 @@ alias xc='xclip -sel clip'
 alias pycheck='python -m pylint --disable=R,C'
 alias goadum='ssh mal0@192.168.1.146'
 alias zz=' source ~/python/v-crawlers/bin/activate'
+alias docker-compose='docker compose'
+alias neofetch='neofetch --ascii $HOME/.config/neofetch/skull'
 
 ### Plugins ###
 plugins=(git zsh-autosuggestions python virtualenv)
