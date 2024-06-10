@@ -14,6 +14,7 @@ export PATH="$HOME/.local/bin:$PATH"
 export PYTHONUNBUFFERED=1
 export XDG_RUNTIME_DIR=/run/user/$(id -u)
 export PATH="$HOME/.cargo/bin:$PATH"
+export QT_QPA_PLATFORMTHEME=qt5ct
 
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
