@@ -33,6 +33,7 @@ alias goadum='ssh mal0@192.168.1.146'
 alias zz=' source ~/python/v-crawlers/bin/activate'
 alias docker-compose='docker compose'
 alias neofetch='neofetch --ascii $HOME/.config/neofetch/skull'
+alias ranger='source ranger'
 
 ### Plugins ###
 plugins=(git zsh-autosuggestions python virtualenv)
@@ -44,7 +45,6 @@ function cd {
 function .. {
     builtin cd .. "$@" && ls -F
 }
-
 
 source $ZSH/oh-my-zsh.sh
 
