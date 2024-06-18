@@ -91,6 +91,9 @@ bindsym $mod+space focus mode_toggle
 assign [class="kitty"] $ws1
 for_window [urgent="latest" class="kitty"] focus
 
+assign [class="Alacritty"] $ws1
+for_window [urgent="latest" class="Alacritty"] focus
+
 assign [class="firefox"] $ws2
 for_window [urgent="latest" class="firefox"] focus
 
@@ -158,16 +161,16 @@ bindsym $mod+Shift+less move container to output left
 
 
 #monitors
-workspace $ws1 output DP-4
-workspace $ws2 output DP-4
-workspace $ws3 output DP-4
-workspace $ws4 output DP-4
-workspace $ws5 output DP-4
-workspace $ws6 output DP-2
-workspace $ws7 output DP-2
-workspace $ws8 output DP-4
-workspace $ws9 output DP-4
-workspace $ws10 output DP-4 
+workspace $ws1 output DP-2
+workspace $ws2 output DP-2
+workspace $ws3 output DP-2
+workspace $ws4 output DP-2
+workspace $ws5 output DP-2
+workspace $ws6 output DP-0
+workspace $ws7 output DP-0
+workspace $ws8 output DP-2
+workspace $ws9 output DP-2
+workspace $ws10 output DP-2 
 
 
 # Set names for workspaces
