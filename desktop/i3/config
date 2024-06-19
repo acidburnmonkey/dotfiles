@@ -34,7 +34,7 @@ for_window [class="^.*"] border pixel 0
 for_window [title="Library"] floating enable
 
 for_window [class="Pycalendar.py" instance="pycalendar.py"] floating enable; move absolute position top left 
-for_window [class="Pycalendar.py" instance="pycalendar.py"] move absolute position 3200 980 
+for_window [class="Pycalendar.py" instance="pycalendar.py"] move absolute position 3200 1030 
 
 for_window [class="qalculate-qt"] floating enable
 for_window [class="amberol" instance="amberol"] floating enable;
