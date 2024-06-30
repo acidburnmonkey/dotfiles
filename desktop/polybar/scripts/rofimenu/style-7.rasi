@@ -17,7 +17,7 @@ configuration {
     display-window:             "WINDOW";
 	drun-display-format:        "{name}";
 	window-format:              "{w} · {c} · {t}";
-    dpi:                          144;
+    dpi:                          192;
 }
 
 /*****----- Global Properties -----*****/
@@ -38,7 +38,7 @@ window {
     location:                    center;
     anchor:                      center;
     fullscreen:                  false;
-    width:                       1000px;
+    width:                       1500px;
     x-offset:                    0px;
     y-offset:                    0px;
 
@@ -179,7 +179,7 @@ element selected.active {
 element-icon {
     background-color:            transparent;
     text-color:                  inherit;
-    size:                        32px;
+    size:                        64px;
     cursor:                      inherit;
 }
 element-text {

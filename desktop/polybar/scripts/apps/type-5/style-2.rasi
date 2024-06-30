@@ -10,7 +10,7 @@
 /*****----- Configuration -----*****/
 configuration {
     show-icons:                 false;
-    dpi:                          120;
+    dpi:                          192;
 }
 
 /*****----- Global Properties -----*****/
@@ -34,7 +34,7 @@ window {
     location:                    center;
     anchor:                      center;
     fullscreen:                  false;
-    width:                       600px;
+    width:                       900px;
     x-offset:                    0px;
     y-offset:                    0px;
     margin:                      0px;

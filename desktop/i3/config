@@ -33,8 +33,8 @@ floating_modifier $mod
 for_window [class="^.*"] border pixel 0
 for_window [title="Library"] floating enable
 
-for_window [class="Pycalendar.py" instance="pycalendar.py"] floating enable; move absolute position top left 
-for_window [class="Pycalendar.py" instance="pycalendar.py"] move absolute position 3980 890
+for_window [class="Pycalendar.py" instance="pycalendar.py"] floating enable; move absolute position top right 
+for_window [class="Pycalendar.py" instance="pycalendar.py"] move absolute position 5000 910
 
 for_window [class="qalculate-qt"] floating enable
 for_window [class="amberol" instance="amberol"] floating enable;
