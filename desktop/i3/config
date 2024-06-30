@@ -34,7 +34,7 @@ for_window [class="^.*"] border pixel 0
 for_window [title="Library"] floating enable
 
 for_window [class="Pycalendar.py" instance="pycalendar.py"] floating enable; move absolute position top left 
-for_window [class="Pycalendar.py" instance="pycalendar.py"] move absolute position 3200 1030 
+for_window [class="Pycalendar.py" instance="pycalendar.py"] move absolute position 3980 890
 
 for_window [class="qalculate-qt"] floating enable
 for_window [class="amberol" instance="amberol"] floating enable;
@@ -161,16 +161,16 @@ bindsym $mod+Shift+less move container to output left
 
 
 #monitors
-workspace $ws1 output DP-2
-workspace $ws2 output DP-2
-workspace $ws3 output DP-2
-workspace $ws4 output DP-2
-workspace $ws5 output DP-2
-workspace $ws6 output DP-0
-workspace $ws7 output DP-0
-workspace $ws8 output DP-2
-workspace $ws9 output DP-2
-workspace $ws10 output DP-2 
+workspace $ws1 output DP-0
+workspace $ws2 output DP-0
+workspace $ws3 output DP-0
+workspace $ws4 output DP-0
+workspace $ws5 output DP-0
+workspace $ws6 output DP-2
+workspace $ws7 output DP-2
+workspace $ws8 output DP-0
+workspace $ws9 output DP-0
+workspace $ws10 output DP-0 
 
 
 # Set names for workspaces
@@ -239,6 +239,7 @@ exec --no-startup-id bash ~/.config/i3/screenlayout.sh
 exec --no-startup-id /usr/bin/openrgb --startminimized --profile "ssx"
 exec --no-startup-id bash ~/scripts/startup.sh 
 exec --no-startup-id /usr/bin/nextcloud --background
+exec --no-startup-id xrdb -merge ~/.Xresources
 
 exec_always --no-startup-id bash ~/.config/polybar/launch.sh
 # exec_always --no-startup-id feh --bg-fill /media/toxic/photos/cattpussin-mask.png

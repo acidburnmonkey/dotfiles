@@ -10,6 +10,7 @@
 /*****----- Configuration -----*****/
 configuration {
     show-icons:                 false;
+    dpi:                          120;
 }
 
 /*****----- Global Properties -----*****/

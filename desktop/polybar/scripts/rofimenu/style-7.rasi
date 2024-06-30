@@ -17,6 +17,7 @@ configuration {
     display-window:             "WINDOW";
 	drun-display-format:        "{name}";
 	window-format:              "{w} · {c} · {t}";
+    dpi:                          144;
 }
 
 /*****----- Global Properties -----*****/
