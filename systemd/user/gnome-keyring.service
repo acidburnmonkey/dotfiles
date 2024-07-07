@@ -1,0 +1,11 @@
+[Unit]
+Description=GNOME Keyring
+
+[Service]
+ExecStart=/usr/bin/gnome-keyring-daemon --start --components=secrets
+Environment=WAYLAND_DISPLAY=wayland-0
+Environment=XDG_RUNTIME_DIR=/run/user/%U
+
+[Install]
+WantedBy=default.target
+

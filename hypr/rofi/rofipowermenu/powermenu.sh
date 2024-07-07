@@ -8,20 +8,20 @@
 ## Available Styles
 #
 ## style-1   style-2   style-3   style-4   style-5
-## style-6   style-7   style-8   style-9   style-10
 
 # Current Theme
-dir="$HOME/.config/polybar/scripts/rofipowermenu/"
-theme='style-8'
+dir="$HOME/.config/hypr/rofi/rofipowermenu/"
+theme='style-2'
 
 # CMDs
+lastlogin="`last $USER | head -n1 | tr -s ' ' | cut -d' ' -f5,6,7`"
 uptime="`uptime -p | sed -e 's/up //g'`"
 host=`hostname`
-
 
 # Options
 shutdown=''
 reboot=''
+lock=''
 logout=''
 yes=''
 no=''
@@ -29,8 +29,8 @@ no=''
 # Rofi CMD
 rofi_cmd() {
 	rofi -dmenu \
-		-p "Uptime: $uptime" \
-		-mesg "Uptime: $uptime" \
+		-p " $USER@$host" \
+		-mesg " Last Login: $lastlogin |  Uptime: $uptime" \
 		-theme ${dir}/${theme}.rasi
 }
 
@@ -54,8 +54,9 @@ confirm_exit() {
 
 # Pass variables to rofi dmenu
 run_rofi() {
-	echo -e "$logout\n$reboot\n$shutdown" | rofi_cmd
+       echo -e "$reboot\n$shutdown\n$logout\n$lock" | rofi_cmd
 }
+
 # Execute Command
 run_cmd() {
 	selected="$(confirm_exit)"
@@ -63,9 +64,9 @@ run_cmd() {
        	
                
                 if [[ $1 == '--shutdown' ]]; then
-			systemctl poweroff 
+		       systemctl poweroff 
 		elif [[ $1 == '--reboot' ]]; then
-			 systemctl reboot 
+			 systemctl reboot
 	        elif [[ $1 == '--logout' ]]; then
 		        kill -9 -1  		
 	fi
@@ -82,6 +83,9 @@ case ${chosen} in
         ;;
     $reboot)
 		run_cmd --reboot
+        ;;
+    $lock)
+        i3lock  -t -i ~/.config/i3/lock.png 
         ;;
     $logout)
 		run_cmd --logout
