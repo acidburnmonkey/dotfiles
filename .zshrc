@@ -3,7 +3,8 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 ZSH_DISABLE_COMPFIX="true" #root comp
-
+ZSH_THEME="powerlevel10k/powerlevel10k"
+#
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 export EDITOR='nvim'
@@ -15,8 +16,7 @@ export PYTHONUNBUFFERED=1
 export XDG_RUNTIME_DIR=/run/user/$(id -u)
 export PATH="$HOME/.cargo/bin:$PATH"
 export QT_QPA_PLATFORMTHEME=qt5ct
-
-ZSH_THEME="powerlevel10k/powerlevel10k"
+export SSH_AUTH_SOCK=/run/user/$(id -u)/ssh-agent.socket
 
 
 # some more ls aliases

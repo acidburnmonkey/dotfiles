@@ -4,7 +4,9 @@
 }
 
 window#waybar {
-	background: #292b2e;
+    background: transparent;
+    /* background: rgba(41, 43, 46, 0.5); */
+	/* background: #292b2e; */
 	color: #fdf6e3;
 }
 
@@ -14,10 +16,12 @@ window#waybar {
 }
 #custom-right-arrow-light,
 #custom-left-arrow-light {
-	color: #292b2e;
+	color: transparent;
 	background: #1a1a1a;
 }
 
+#custom-firefox,
+#custom-nemo,
 #workspaces,
 #clock.1,
 #clock.2,
@@ -45,6 +49,7 @@ window#waybar {
 	border: #1a1a1a;
 	padding: 0 3px;
 }
+
 
 #pulseaudio {
 	color: #268bd2;

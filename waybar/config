@@ -9,6 +9,15 @@
 		"custom/right-arrow-dark"
 	],
 	"modules-center": [
+	"custom/left-arrow-dark",
+    "custom/firefox",
+    "custom/nemo",
+    "custom/right-arrow-dark"
+	],
+	"modules-right": [
+		"custom/left-arrow-dark",
+		"pulseaudio",
+		"custom/left-arrow-light",
 		"custom/left-arrow-dark",
 		"clock#1",
 		"custom/left-arrow-light",
@@ -17,22 +26,6 @@
 		"custom/right-arrow-dark",
 		"custom/right-arrow-light",
 		"clock#3",
-		"custom/right-arrow-dark"
-	],
-	"modules-right": [
-		"custom/left-arrow-dark",
-		"pulseaudio",
-		"custom/left-arrow-light",
-		"custom/left-arrow-dark",
-		"memory",
-		"custom/left-arrow-light",
-		"custom/left-arrow-dark",
-		"cpu",
-		"custom/left-arrow-light",
-		"custom/left-arrow-dark",
-		"battery",
-		"custom/left-arrow-light",
-		"custom/left-arrow-dark",
 		"custom/left-arrow-light",
 		"custom/left-arrow-dark",
 		"tray"
@@ -71,12 +64,25 @@
 	                }
         },
 
-	"clock#1": {
+    "custom/firefox": {
+        "format": "{}  ",
+        "tooltip": false,
+        "on-click": "firefox"
+    },
+	
+
+    "custom/nemo": {
+        "format": "{}  ",
+        "tooltip": false,
+        "on-click": "nemo"
+    },
+	
+    "clock#1": {
 		"format": "{:%a}",
 		"tooltip": false
 	},
 	"clock#2": {
-		"format": "{:%H:%M}",
+		"format": "{:%I:%M}",
 		"tooltip": false
 	},
 	"clock#3": {
@@ -89,25 +95,18 @@
 		"format-bluetooth": "{icon}  {volume}%",
 		"format-muted": "MUTE",
 		"format-icons": {
-			"headphones": "",
+			"headphones": " ",
 			"default": [
-				"",
-				""
+				" ",
+				" "
 			]
 		},
 		"scroll-step": 5,
 		"on-click": "pamixer -t",
 		"on-click-right": "pavucontrol"
 	},
-	"memory": {
-		"interval": 5,
-		"format": "Mem {}%"
-	},
-	"cpu": {
-		"interval": 5,
-		"format": "CPU {usage:2}%"
-	},
-		"tray": {
-		"icon-size": 20
+	
+    "tray": {
+		"icon-size": 18
 	}
 }
