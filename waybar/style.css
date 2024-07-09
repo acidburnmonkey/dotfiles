@@ -10,34 +10,30 @@ window#waybar {
 	color: #fdf6e3;
 }
 
-#custom-right-arrow-dark,
-#custom-left-arrow-dark {
+#custom-right-arrow-dark {
 	color: #1a1a1a;
 }
-#custom-right-arrow-light,
-#custom-left-arrow-light {
-	color: transparent;
-	background: #1a1a1a;
-}
 
+#custom-updates,
+#clock.1,
 #custom-firefox,
 #custom-nemo,
 #workspaces,
-#clock.1,
-#clock.2,
-#clock.3,
 #pulseaudio,
-#memory,
-#cpu,
 #tray {
 	background: #1a1a1a;
+    padding: 0 5px;
+    border-radius: 15px 15px 15px 15px;
 }
+
+
+
 
 #workspaces button {
 	padding: 0 2px;
 	color: #fdf6e3;
 }
-#workspaces button.focused {
+#workspaces button.visible {
 	color: #268bd2;
 }
 #workspaces button:hover {
@@ -53,9 +49,6 @@ window#waybar {
 
 #pulseaudio {
 	color: #268bd2;
-}
-#memory {
-	color: #2aa198;
 }
 #cpu {
 	color: #6c71c4;

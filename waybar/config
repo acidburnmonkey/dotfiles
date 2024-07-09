@@ -6,50 +6,23 @@
 
 	"modules-left": [
 		"hyprland/workspaces",
-		"custom/right-arrow-dark"
 	],
 	"modules-center": [
-	"custom/left-arrow-dark",
     "custom/firefox",
     "custom/nemo",
-    "custom/right-arrow-dark"
+    "custom/updates"
 	],
 	"modules-right": [
-		"custom/left-arrow-dark",
 		"pulseaudio",
-		"custom/left-arrow-light",
-		"custom/left-arrow-dark",
 		"clock#1",
-		"custom/left-arrow-light",
-		"custom/left-arrow-dark",
-		"clock#2",
-		"custom/right-arrow-dark",
-		"custom/right-arrow-light",
-		"clock#3",
-		"custom/left-arrow-light",
-		"custom/left-arrow-dark",
 		"tray"
 	],
 
-	"custom/left-arrow-dark": {
-		"format": "",
-		"tooltip": false
-	},
-	"custom/left-arrow-light": {
-		"format": "",
-		"tooltip": false
-	},
-	"custom/right-arrow-dark": {
-		"format": "",
-		"tooltip": false
-	},
-	"custom/right-arrow-light": {
-		"format": "",
-		"tooltip": false
-	},
+
+
 
  "hyprland/workspaces": {
-	"format": "{name}: {icon}",
+	"format": " {icon} ",
 	"format-icons": {
            "1": " ",
            "2": " ",
@@ -77,16 +50,16 @@
         "on-click": "nemo"
     },
 	
+    "custom/updates": {
+        "format": "{} ",
+        "interval": 300,
+        "exec": "dnf check-update| grep -Ec ' updates$'",
+        "tooltip": false,
+    },
+
+
     "clock#1": {
-		"format": "{:%a}",
-		"tooltip": false
-	},
-	"clock#2": {
-		"format": "{:%I:%M}",
-		"tooltip": false
-	},
-	"clock#3": {
-		"format": "{:%m-%d}",
+		"format": "{:%a %I:%M %m-%d}",
 		"tooltip": false
 	},
 
