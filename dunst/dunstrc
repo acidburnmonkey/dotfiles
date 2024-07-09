@@ -4,7 +4,7 @@
     ### Display ###
 
     # Which monitor should the notifications be displayed on.
-    monitor = 0
+    monitor = 1
 
     # Display notification on focused monitor.  Possible modes are:
     #   mouse: follow mouse pointer
@@ -24,7 +24,6 @@
     # dynamic width from 0 to 300
     # width = (0, 300)
     # constant width of 300
-    geometry = "0x0-30+20"
 
     # # The maximum height of a single notification, excluding the frame.
     # height = 300
@@ -71,7 +70,7 @@
     # The transparency of the window.  Range: [0; 100].
     # This option will only work if a compositing window manager is
     # present (e.g. xcompmgr, compiz, etc.). (X11 only)
-    transparency = 0 
+    transparency = 40
 
     # Draw a line of "separator_height" pixel height between two
     # notifications.
@@ -199,7 +198,7 @@
     enable_recursive_icon_lookup = true
 
     # Set icon theme (only used for recursive icon lookup)
-    icon_theme = Adwaita
+    icon_theme = candy-icons
     # You can also set multiple icon themes, with the leftmost one being used first.
     # icon_theme = "Adwaita, breeze"
 
@@ -311,21 +310,21 @@
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the "#" and following would be interpreted as a comment.
-    background = "#aa2F343F"
+    background = "#2F343F"
     foreground = "#888888"
     timeout = 10
     # Icon for notifications with low urgency, uncomment to enable
     # default_icon = ~/.config/dunst/icons/volume.png
 
 [urgency_normal]
-    background = "#aa2F343F"
+    background = "#2F343F"
     foreground = "#c783f7"
     timeout = 10
     # Icon for notifications with normal urgency, uncomment to enable
     #default_icon = /path/to/icon
 
 [urgency_critical]
-    background = "#FF00003F"
+    background = "#00003F"
     foreground = "#FF0000"
     timeout = 0
     # Icon for notifications with critical urgency, uncomment to enable
