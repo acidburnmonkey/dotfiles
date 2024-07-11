@@ -16,8 +16,6 @@ window#waybar {
 
 #custom-updates,
 #clock.1,
-#custom-firefox,
-#custom-nemo,
 #workspaces,
 #pulseaudio,
 #tray {
@@ -26,7 +24,17 @@ window#waybar {
     border-radius: 15px 15px 15px 15px;
 }
 
+#custom-nemo{
+	background: #1a1a1a;
+    padding: 0 5px;
+    border-radius: 0 15px 15px 0;
+}
 
+#custom-firefox{
+	background: #1a1a1a;
+    padding: 0 5px;
+    border-radius: 15px 0 0 15px;
+}
 
 
 #workspaces button {
