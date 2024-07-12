@@ -1,8 +1,10 @@
 // -*- mode: json -*-
 
+
 {
 	"layer": "top",
 	"position": "top",
+    "output":   "DP-1",
 
 	"modules-left": [
 		"hyprland/workspaces",
@@ -15,9 +17,9 @@
 	"modules-right": [
 		"pulseaudio",
 		"clock#1",
-		"tray"
-	],
-
+		"tray",
+        "custom/powermenu"
+	],  
 
 
 
@@ -53,7 +55,7 @@
     "custom/updates": {
         "format": "{} ",
         "interval": 300,
-        "exec": "dnf check-update| grep -Ec ' updates$'",
+        "exec": "dnf check-update --refresh| grep -Ec ' updates$'",
         "tooltip": false,
     },
 
@@ -82,5 +84,12 @@
 	
     "tray": {
 		"icon-size": 18
-	}
+	},
+
+    "custom/powermenu": {
+        "format": "{} ",
+        "tooltip": false,
+        "on-click": "~/.config/hypr/rofi/rofipowermenu/powermenu.sh"
+    }
+
 }

@@ -21,7 +21,7 @@ elif [[ ( "$theme" == *'type-2'* ) || ( "$theme" == *'type-4'* ) ]]; then
 fi
 
 # CMDs (add your apps here)
-term_cmd='lightdm-settings'
+term_cmd='thunderbird'
 file_cmd='flatpak run codes.merritt.FeelingFinder'
 text_cmd='flatpak run md.obsidian.Obsidian'
 web_cmd='firefox -no-remote -P School'
@@ -31,7 +31,7 @@ setting_cmd='steam'
 # Options
 layout=`cat ${theme} | grep 'USE_ICON' | cut -d'=' -f2`
 if [[ "$layout" == 'NO' ]]; then
-	option_1=" Login Window <span weight='light' size='small'></span>"
+	option_1=" Thunderbird<span weight='light' size='small'></span>"
 	option_2=" Emoji <span weight='light' size='small'></span>"
 	option_3=" Obsidian<span weight='light' size='small'></span>"
 	option_4=" School<span weight='light' size='small'></span>"
@@ -64,9 +64,8 @@ run_rofi() {
 
 # Execute Command
 run_cmd() {
-	polkit_cmd="pkexec env PATH=$PATH DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY"
 	if [[ "$1" == '--opt1' ]]; then
-		${polkit_cmd} ${term_cmd}
+		 ${term_cmd}
 	elif [[ "$1" == '--opt2' ]]; then
 		${file_cmd}
 	elif [[ "$1" == '--opt3' ]]; then
