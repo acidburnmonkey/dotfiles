@@ -60,6 +60,7 @@
 
     "clock#1": {
 		"format": "{:%a %I:%M %m-%d}",
+        "on-click": "bash $HOME/.config/waybar/scripts/calendar.sh",
 		"tooltip": false
 	},
 
