@@ -61,7 +61,7 @@ mainbox {
 imagebox {
     padding:                     20px;
     background-color:            transparent;
-    background-image:            url("~/.config/polybar/scripts/rofimenu/k.png", height);
+    background-image:            url("~/.config/hypr/rofi/rofimenu/k.png", height);
     orientation:                 vertical;
     children:                    [ "inputbar", "dummy", "mode-switcher" ];
 }

@@ -53,11 +53,12 @@
     },
 	
     "custom/updates": {
-        "format": "{} ",
+        "return-type": "json", 
+        "text": "{text}  ",
         "interval": 300,
-        "exec": "dnf check-update --refresh| grep -Ec ' updates$'",
-        "tooltip": false,
-    },
+        "exec": "$HOME/.config/waybar/scripts/dnf-updates.sh",
+        "tooltip": "{tooltip} " 
+        },
 
 
     "clock#1": {
