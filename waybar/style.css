@@ -37,6 +37,11 @@ window#waybar {
     border-radius: 15px 0 0 15px;
 }
 
+#custom-updates.updates{
+	color: #268bd2;
+}
+
+
 
 #workspaces button {
 	padding: 0 2px;
@@ -45,21 +50,19 @@ window#waybar {
 #workspaces button.visible {
 	color: #268bd2;
 }
+
 #workspaces button:hover {
 	box-shadow: inherit;
 	text-shadow: inherit;
 }
+
 #workspaces button:hover {
 	background: #1a1a1a;
 	border: #1a1a1a;
 	padding: 0 3px;
 }
 
-
 #pulseaudio {
 	color: #268bd2;
-}
-#cpu {
-	color: #6c71c4;
 }
 

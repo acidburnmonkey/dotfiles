@@ -11,11 +11,14 @@ waybar_tooltip() {
 }
 
 # Get the number of updates
-number=$(dnf check-update --refresh 2>/tmp/dnf-updates-error.log | grep -Ec ' updates$')
+number=$(dnf check-update --refresh | awk 'NF < 4 {print $1}' |wc -l)
 
 # Get the packages with updates
-tooltip=$(dnf check-update --refresh 2>>/tmp/dnf-updates-error.log | grep ' updates$' | awk '{print $1}' )
+tooltip=$(dnf check-update --refresh  | awk 'NF < 4 {print $1}' )
 
-# printf '{ "text": "%s", "tooltip": "%s", "class": "updates" }' "$number" "$(waybar_tooltip "$tooltip")"
-json_output=$(printf '{ "text": "%s ", "tooltip": "%s", "class": "updates" }' "$number" "$(waybar_tooltip "$tooltip")")
-echo "$json_output"
+if [ $number == 0 ]; then
+    exit 0
+else
+    json_output=$(printf '{ "text": "%s ", "tooltip": "%s", "class": "updates" }' "$number" "$(waybar_tooltip "$tooltip")")
+    echo "$json_output"
+fi

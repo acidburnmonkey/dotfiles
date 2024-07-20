@@ -5,3 +5,4 @@ if [[ -z $(pgrep gnome-calendar) ]]; then
 else
     pkill gnome-calendar
 fi
+

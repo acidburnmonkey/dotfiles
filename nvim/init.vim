@@ -119,7 +119,7 @@ map S <Nop>
 command! BufOnly silent! execute "%bd|e#|bd#"
 nnoremap <leader>b :BufOnly<CR>
 nnoremap <leader>q :bd<CR>
-"Remove all trailing whitespace by pressing F5
+"Remove all trailing whitespace by pressing F2
 nnoremap <F2> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 
 lua <<EOF
@@ -296,7 +296,7 @@ sources = {
      null_ls.builtins.diagnostics.cppcheck,
     -- null_ls.builtins.diagnostics.pylint.with({
      --extra_args = { "--disable=C" }  }),
-    null_ls.builtins.completion.spell,
+    --null_ls.builtins.completion.spell,
 },
 })
 
