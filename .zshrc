@@ -36,7 +36,7 @@ alias neofetch='neofetch --ascii $HOME/.config/neofetch/skull'
 alias ranger='source ranger'
 
 ### Plugins ###
-plugins=(git zsh-autosuggestions python virtualenv)
+plugins=(git zsh-autosuggestions python virtualenv fzf)
 
 function cd {
     builtin cd "$@" && ls -F
@@ -50,6 +50,9 @@ source $ZSH/oh-my-zsh.sh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+source $HOME/repos/fzf-git.sh/fzf-git.sh
+
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
