@@ -34,6 +34,7 @@ alias zz=' source ~/python/v-crawlers/bin/activate'
 alias docker-compose='docker compose'
 alias neofetch='neofetch --ascii $HOME/.config/neofetch/skull'
 alias ranger='source ranger'
+alias wsudo='sudo -E'
 
 ### Plugins ###
 plugins=(git zsh-autosuggestions python virtualenv fzf)
