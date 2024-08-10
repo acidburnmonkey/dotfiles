@@ -6,7 +6,7 @@
 ## Applets : Favorite Applications
 
 # Import Current Theme
-source "$HOME"/.config/hypr/rofi/apps/theme.bash
+source "$HOME"/.config/rofi/apps/theme.bash
 theme="$type/$style"
 
 # Theme Elements

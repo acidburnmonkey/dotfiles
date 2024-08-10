@@ -10,7 +10,7 @@
 ## style-1   style-2   style-3   style-4   style-5
 
 # Current Theme
-dir="$HOME/.config/polybar/scripts/rofipowermenu/"
+dir="$HOME/.config/rofi/rofipowermenu/"
 theme='style-2'
 
 # CMDs

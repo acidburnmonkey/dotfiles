@@ -10,7 +10,6 @@
 /*****----- Configuration -----*****/
 configuration {
     show-icons:                 false;
-    dpi:                          192;
 }
 
 /*****----- Global Properties -----*****/
@@ -34,7 +33,7 @@ window {
     location:                    center;
     anchor:                      center;
     fullscreen:                  false;
-    width:                       900px;
+    width:                       600px;
     x-offset:                    0px;
     y-offset:                    0px;
     margin:                      0px;
@@ -61,7 +60,7 @@ mainbox {
 imagebox {
     border-radius:               20px;
     background-color:            transparent;
-    background-image:            url("~/.config/hypr/rofi/apps/j.jpg", height);
+    background-image:            url("~/.config/rofi/apps/j.jpg", height);
     children:                    [ "dummy", "inputbar", "dummy" ];
 }
 
@@ -80,7 +79,7 @@ dummy{
 textbox-prompt-colon {
     enabled:                     true;
     expand:                      false;
-    str:                         "";
+    str:                         " ";
     padding:                     10px 13px;
     border-radius:               15px;
     background-color:            @urgent;
@@ -133,7 +132,7 @@ element {
     border:                      0px solid;
     border-radius:               15px;
     border-color:                @selected;
-    background-color:            transparent;
+    background-color:            inherit;
     text-color:                  @foreground;
     cursor:                      pointer;
 }

@@ -205,7 +205,6 @@ lua <<EOF
 
 --"''''''''''''''''''''Zero Lsp''''''''''''''''''''''''''''''''''''''''''
 local lsp = require('lsp-zero')
-lsp.preset('recommended')
 lsp.setup()
 -- Define capabilities
 local capabilities = vim.lsp.protocol.make_client_capabilities()

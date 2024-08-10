@@ -17,7 +17,6 @@ configuration {
     display-window:             "WINDOW";
 	drun-display-format:        "{name}";
 	window-format:              "{w} · {c} · {t}";
-    dpi:                          192;
 }
 
 /*****----- Global Properties -----*****/
@@ -38,7 +37,7 @@ window {
     location:                    center;
     anchor:                      center;
     fullscreen:                  false;
-    width:                       1500px;
+    width:                       1000px;
     x-offset:                    0px;
     y-offset:                    0px;
 
@@ -61,7 +60,7 @@ mainbox {
 imagebox {
     padding:                     20px;
     background-color:            transparent;
-    background-image:            url("~/.config/hypr/rofi/rofimenu/k.png", height);
+    background-image:            url("~/.config/rofi/rofimenu/k.png", height);
     orientation:                 vertical;
     children:                    [ "inputbar", "dummy", "mode-switcher" ];
 }
@@ -179,7 +178,7 @@ element selected.active {
 element-icon {
     background-color:            transparent;
     text-color:                  inherit;
-    size:                        64px;
+    size:                        32px;
     cursor:                      inherit;
 }
 element-text {

@@ -90,7 +90,7 @@
     "custom/powermenu": {
         "format": "{} ",
         "tooltip": false,
-        "on-click": "~/.config/hypr/rofi/rofipowermenu/powermenu.sh"
+        "on-click": "~/.config/rofi/rofipowermenu/powermenu.sh"
     }
 
 }
