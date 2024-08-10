@@ -118,7 +118,8 @@ map S <Nop>
 "closes all buffers but current 
 command! BufOnly silent! execute "%bd|e#|bd#"
 nnoremap <leader>b :BufOnly<CR>
-nnoremap <leader>q :bd<CR>
+"close this one
+nnoremap <leader>q :bd<CR> 
 "Remove all trailing whitespace by pressing F2
 nnoremap <F2> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 
@@ -128,7 +129,7 @@ vim.keymap.set("n", "x", [["_x]]) --void x
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv") -- move block
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv") --  move block
 vim.keymap.set("n", "<leader>r", [[:%s#\<<C-r><C-w>\>#<C-r><C-w>#gI<Left><Left><Left>]]) -- global remap
-vim.keymap.set("v", "<leader>r", [[:s#\<<C-r><C-w>\>#<C-r><C-w>#gI<Left><Left><Left>]]) -- visual remap 
+vim.api.nvim_set_keymap('v', '<Leader>r', ':<C-U>call ReplaceWordUnderCursorInSelection()<CR>', { noremap = true, silent = true }) -- visual remap
 vim.keymap.set("x", "<leader>p", [["_dP]]) -- void paste 
 vim.keymap.set("n", "J", "mzJ`z") -- append line
 vim.keymap.set("n", "<C-d>", "<C-d>zz") --move half page
@@ -211,6 +212,13 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 
 --"''''''''''''''''''nvim-colorizer'''''''''''''''''''''''''''''''''''''
 require'colorizer'.setup()
+-- this is an autocomand to force colorizer to attatch to some files
+vim.api.nvim_exec([[
+    augroup ColorizerAttach
+        autocmd!
+        autocmd BufRead,BufNewFile *.config,*.rasi,*.conf :ColorizerAttachToBuffer
+    augroup END
+]], false)
 
 --"'''''''''''Force transparency if no compositor installed'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
     function force_backgraund(color)
@@ -366,4 +374,27 @@ require('nvim-ts-autotag').setup({
     enable_close_on_slash = false -- Auto close on trailing </
   },
 })
+
+
+
+-- ###########
+-- #Functions#
+-- ###########
+
+-- Function to replace the word under the cursor in the selected lines
+vim.cmd([[
+function! ReplaceWordUnderCursorInSelection()
+    let l:current_pos = getpos(".")
+    normal! gv
+    let l:word = expand("<cword>")
+    let l:replacement = input("Replace '" . l:word . "' with: ")
+    call setpos('.', l:current_pos)
+    if !empty(l:replacement)
+        let l:start = line("'<")
+        let l:end = line("'>")
+        execute l:start . "," . l:end . "s/" . l:word . "/" . l:replacement . "/g"
+    endif
+endfunction
+]])
+
 EOF
