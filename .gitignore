@@ -1,2 +1,5 @@
 desktop/polybar/scripts/polybar-calendar/__pycache__
 1
+systemd/user/default.target.wants/
+systemd/user/graphical-session.target.wants/
+systemd/user/sockets.target.wants/
