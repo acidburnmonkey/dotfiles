@@ -105,14 +105,14 @@
     mouse_right_click = close_all
 
 [experimental]
-       per_monitor_dpi = false
+   per_monitor_dpi = false
 
 
 [urgency_low]
- 
     background = "#2F343F"
     foreground = "#888888"
     timeout = 10
+    icon_position=off
     # Icon for notifications with low urgency, uncomment to enable
     # default_icon = ~/.config/dunst/icons/volume.png
 
@@ -134,4 +134,4 @@
 [screenshot]
     summary = "Screenshot Saved"
     new_icon = gnome-screenshot
-    
+    timeout = 3   

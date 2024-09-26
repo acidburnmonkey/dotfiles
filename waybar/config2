@@ -5,7 +5,7 @@
  "name": "bar2",
 	"layer": "top",
 	"position": "top",
-    "output":   "DP-2",
+    "output":   "DP-5",
 
 	"modules-center": [
 		"hyprland/workspaces",

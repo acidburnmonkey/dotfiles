@@ -37,18 +37,12 @@ vnoremap <CapsLock> <Esc>
 " autocmd VimEnter * WipeReg
 
 
-" Tab next
-nnoremap <leader><TAB> :bnext<CR>
 " Void x
 nnoremap x "_x
 " Move block down in visual mode
 vnoremap J :m '>+1<CR>gv=gv
 " Move block up in visual mode
 vnoremap K :m '<-2<CR>gv=gv
-" Global remap in normal mode
-nnoremap <leader>r :%s#\<<C-r><C-w>\>#<C-r><C-w>#gI<Left><Left><Left>
-" Visual remap in visual mode
-vnoremap <leader>r :s#\<<C-r><C-w>\>#<C-r><C-w>#gI<Left><Left><Left>
 " Void paste in visual mode
 xnoremap <leader>p "_dP
 " Append line in normal mode
