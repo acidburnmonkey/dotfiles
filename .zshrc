@@ -17,6 +17,7 @@ export XDG_RUNTIME_DIR=/run/user/$(id -u)
 export PATH="$HOME/.cargo/bin:$PATH"
 export QT_QPA_PLATFORMTHEME=qt5ct
 export SSH_AUTH_SOCK=/run/user/$(id -u)/ssh-agent.socket
+export $(dbus-launch)
 
 
 # some more ls aliases
@@ -29,7 +30,7 @@ alias update-grub='grub2-mkconfig -o /boot/grub2/grub.cfg & grub2-mkconfig -o /b
 alias vim='nvim'
 alias xc='wl-copy'
 alias pycheck='python -m pylint --disable=R,C'
-alias goadum='ssh mal0@192.168.1.146'
+alias goadum='ssh -X mal0@192.168.1.146'
 alias zz=' source $HOME/scripts/virtuals.sh'
 alias docker-compose='docker compose'
 alias neofetch='neofetch --ascii $HOME/.config/neofetch/skull'

@@ -135,3 +135,9 @@
     summary = "Screenshot Saved"
     new_icon = gnome-screenshot
     timeout = 3   
+
+# [Tauon]
+#     appname = Tauon
+#     summary = "Next track"
+#     new_icon = /home/mahalo/photos/icons/svgs/music.svg
+#     timeout = 2
