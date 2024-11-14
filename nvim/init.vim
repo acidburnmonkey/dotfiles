@@ -126,6 +126,7 @@ nnoremap <F2> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 lua <<EOF
 vim.keymap.set("n", "<leader><TAB>", ":bnext<CR>") -- Tab next 
 vim.keymap.set("n", "x", [["_x]]) --void x
+vim.keymap.set("n", "E", "ge") -- go back
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv") -- move block
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv") --  move block
 vim.keymap.set("n", "<leader>r", [[:%s#\<<C-r><C-w>\>#<C-r><C-w>#gI<Left><Left><Left>]]) -- global remap
@@ -243,7 +244,7 @@ ui = {
 })
 require("mason-lspconfig").setup {
     ensure_installed = {"rust_analyzer", "clangd", 
-    'tsserver','pyright'},
+    'ts_ls','pyright'},
 }
 --shortcuts
 lsp.on_attach(function(client, bufnr)
@@ -268,7 +269,7 @@ lsp.on_attach(function(client, bufnr)
 --    capabilities = capabilities
 --    } 
 
-require("lspconfig").tsserver.setup {
+require("lspconfig").ts_ls.setup {
     on_attach = on_attach,
     capabilities = capabilities
     } 
