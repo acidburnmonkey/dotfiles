@@ -242,10 +242,13 @@ ui = {
     }
     }
 })
+
+local servers = { "rust_analyzer", "clangd", "ts_ls", "pyright", "tailwindcss" }
 require("mason-lspconfig").setup {
-    ensure_installed = {"rust_analyzer", "clangd", 
-    'ts_ls','pyright'},
+    ensure_installed = servers,
 }
+
+
 --shortcuts
 lsp.on_attach(function(client, bufnr)
   local opts = {buffer = bufnr, remap = false}
@@ -269,20 +272,12 @@ lsp.on_attach(function(client, bufnr)
 --    capabilities = capabilities
 --    } 
 
-require("lspconfig").ts_ls.setup {
-    on_attach = on_attach,
-    capabilities = capabilities
-    } 
-
-require("lspconfig").pyright.setup {
-    on_attach = on_attach,
-    capabilities = capabilities
-    } 
-
-require("lspconfig").tailwindcss.setup {
-    on_attach = on_attach,
-    capabilities = capabilities
-    } 
+for _, server in ipairs(servers) do
+    require("lspconfig")[server].setup {
+        on_attach = on_attach,
+        capabilities = capabilities,
+    }
+end
 
 
 --"'''''''''''''''''''Bash lsp , installed trough dnf not plug '''''''''''

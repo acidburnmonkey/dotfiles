@@ -35,7 +35,7 @@ alias zz=' source $HOME/scripts/virtuals.sh'
 alias docker-compose='docker compose'
 alias neofetch='neofetch --ascii $HOME/.config/neofetch/skull'
 alias ranger='source ranger'
-alias wsudo='sudo -E'
+alias dps='docker container ls --format "table {{.ID}}\t{{.Names}}\t{{.Ports}}" -a' 
 
 ### Plugins ###
 plugins=(git zsh-autosuggestions python virtualenv fzf)
