@@ -118,8 +118,6 @@ map S <Nop>
 "closes all buffers but current 
 command! BufOnly silent! execute "%bd|e#|bd#"
 nnoremap <leader>b :BufOnly<CR>
-"close this one
-nnoremap <leader>q :bd<CR> 
 "Remove all trailing whitespace by pressing F2
 nnoremap <F2> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 
@@ -144,16 +142,20 @@ vim.keymap.set('n', '<leader>fg', "<cmd>lua require('telescope.builtin').live_gr
 vim.cmd([[nnoremap \ :Neotree toggle<cr>]])
 vim.opt.hlsearch = false
 
+-- To avoid neotree from crashing all vim, closes the tab
+local bufremove = require('bufremove')
+vim.keymap.set("n", "<leader>q", bufremove.bufremove, { desc = "Delete buffer" })
+
 EOF
 
 "#####################
 "#     Configs       # 
 "#####################
 
-"'''''''''''''''''''Markdown Preview ''''''''''''''''''''''''''''''''''
+"''''''''''''''''''' Markdown Preview ''''''''''''''''''''''''''''''''''
 let g:mkdp_auto_start = 1
 let g:mkdp_auto_close = 1
-let g:mkdp_browser = 'firefox'
+let g:mkdp_browser = 'chromium-browser'
 
 "''''''''''''Coding'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 " let g:deoplete#enable_at_startup = 1
@@ -392,5 +394,6 @@ function! ReplaceWordUnderCursorInSelection()
     endif
 endfunction
 ]])
+
 
 EOF
