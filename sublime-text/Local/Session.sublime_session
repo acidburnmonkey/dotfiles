@@ -1,11 +1,23 @@
 {
 	"file_history":
 	[
+		"/home/mahalo/repos/agemo/agemo.py",
+		"/home/mahalo/repos/agemo/agemo.json",
+		"/media/veracrypt1/pass",
+		"/home/mahalo/repos/agemo/thumbnail_cache.json",
+		"/home/mahalo/python/jason/states.json",
+		"/home/mahalo/python/jason/hyprctl.json",
+		"/home/mahalo/repos/agemo/thumnailer.py",
+		"/home/mahalo/python/oop/2-super.py",
+		"/home/mahalo/python/oop/main.py",
+		"/home/mahalo/python/oop/inventary.py",
+		"/home/mahalo/python/oop/1.py",
+		"/home/mahalo/practicevim.txt",
+		"/home/mahalo/practicevim",
 		"/home/mahalo/test.sh",
 		"/home/mahalo/trasher.py",
 		"/home/mahalo/.config/sublime-text/Packages/User/Preferences.sublime-settings",
 		"/home/mahalo/.config/sublime-text/Packages/Default/Preferences.sublime-settings",
-		"/home/mahalo/practicevim",
 		"/home/mahalo/repos/dotfiles/data.txt",
 		"/home/mahalo/.config/sublime-text/Packages/User/Package Control.sublime-settings",
 		"/home/mahalo/.config/sublime-text/Packages/Theme - Default/Default Dark.sublime-theme",
@@ -17,7 +29,7 @@
 	"last_version": 4189,
 	"last_window_id": 6,
 	"log_indexing": false,
-	"next_update_check": 1735014052,
+	"next_update_check": 1735419046,
 	"settings":
 	{
 		"new_window_full_screen": false,
@@ -75,11 +87,23 @@
 			},
 			"file_history":
 			[
+				"/home/mahalo/repos/agemo/agemo.py",
+				"/home/mahalo/repos/agemo/agemo.json",
+				"/media/veracrypt1/pass",
+				"/home/mahalo/repos/agemo/thumbnail_cache.json",
+				"/home/mahalo/python/jason/states.json",
+				"/home/mahalo/python/jason/hyprctl.json",
+				"/home/mahalo/repos/agemo/thumnailer.py",
+				"/home/mahalo/python/oop/2-super.py",
+				"/home/mahalo/python/oop/main.py",
+				"/home/mahalo/python/oop/inventary.py",
+				"/home/mahalo/python/oop/1.py",
+				"/home/mahalo/practicevim.txt",
+				"/home/mahalo/practicevim",
 				"/home/mahalo/test.sh",
 				"/home/mahalo/trasher.py",
 				"/home/mahalo/.config/sublime-text/Packages/User/Preferences.sublime-settings",
 				"/home/mahalo/.config/sublime-text/Packages/Default/Preferences.sublime-settings",
-				"/home/mahalo/practicevim",
 				"/home/mahalo/repos/dotfiles/data.txt",
 				"/home/mahalo/.config/sublime-text/Packages/User/Package Control.sublime-settings"
 			],
@@ -222,11 +246,23 @@
 			},
 			"file_history":
 			[
+				"/home/mahalo/repos/agemo/agemo.py",
+				"/home/mahalo/repos/agemo/agemo.json",
+				"/media/veracrypt1/pass",
+				"/home/mahalo/repos/agemo/thumbnail_cache.json",
+				"/home/mahalo/python/jason/states.json",
+				"/home/mahalo/python/jason/hyprctl.json",
+				"/home/mahalo/repos/agemo/thumnailer.py",
+				"/home/mahalo/python/oop/2-super.py",
+				"/home/mahalo/python/oop/main.py",
+				"/home/mahalo/python/oop/inventary.py",
+				"/home/mahalo/python/oop/1.py",
+				"/home/mahalo/practicevim.txt",
+				"/home/mahalo/practicevim",
 				"/home/mahalo/test.sh",
 				"/home/mahalo/trasher.py",
 				"/home/mahalo/.config/sublime-text/Packages/User/Preferences.sublime-settings",
 				"/home/mahalo/.config/sublime-text/Packages/Default/Preferences.sublime-settings",
-				"/home/mahalo/practicevim",
 				"/home/mahalo/repos/dotfiles/data.txt",
 				"/home/mahalo/.config/sublime-text/Packages/User/Package Control.sublime-settings"
 			],
@@ -276,7 +312,7 @@
 				"height": 0.0
 			},
 			"pinned_build_system": "",
-			"position": "0,1,0,0,0,0,0,1876,1012,1920,1080,0",
+			"position": "0,1,0,0,0,0,0,931,1012,1920,1080,0",
 			"replace":
 			{
 				"height": 56.0

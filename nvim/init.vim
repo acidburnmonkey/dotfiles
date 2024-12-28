@@ -85,6 +85,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'nvimtools/none-ls.nvim'
 ""''''''''''''''''''''''''''''''''''''''''''''
 Plug 'windwp/nvim-ts-autotag'
+"''''''''''''''''''''''''''''''''''''''''''''''
+Plug 'kshenoy/vim-signature'
 
 
 call plug#end()
@@ -257,7 +259,8 @@ lsp.on_attach(function(client, bufnr)
 
     vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
     vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
-    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+    vim.keymap.set('n', 'gi', vim.lsp.buf.document_highlight,  opts)
+    vim.keymap.set('n', 'gI', vim.lsp.buf.clear_references,  opts)
     vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
     vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
     vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
@@ -280,6 +283,7 @@ for _, server in ipairs(servers) do
         capabilities = capabilities,
     }
 end
+
 
 
 --"'''''''''''''''''''Bash lsp , installed trough dnf not plug '''''''''''
@@ -394,6 +398,11 @@ function! ReplaceWordUnderCursorInSelection()
     endif
 endfunction
 ]])
+
+
+--require("highlight")
+
+
 
 
 EOF
