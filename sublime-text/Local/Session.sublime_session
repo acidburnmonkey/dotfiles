@@ -1,9 +1,11 @@
 {
 	"file_history":
 	[
-		"/home/mahalo/repos/agemo/agemo.py",
 		"/home/mahalo/repos/agemo/agemo.json",
 		"/media/veracrypt1/pass",
+		"/media/veracrypt1/links",
+		"/home/mahalo/thumbnail_cache.json",
+		"/home/mahalo/repos/agemo/agemo.py",
 		"/home/mahalo/repos/agemo/thumbnail_cache.json",
 		"/home/mahalo/python/jason/states.json",
 		"/home/mahalo/python/jason/hyprctl.json",
@@ -29,7 +31,7 @@
 	"last_version": 4189,
 	"last_window_id": 6,
 	"log_indexing": false,
-	"next_update_check": 1735419046,
+	"next_update_check": 1736369446,
 	"settings":
 	{
 		"new_window_full_screen": false,
@@ -87,9 +89,11 @@
 			},
 			"file_history":
 			[
-				"/home/mahalo/repos/agemo/agemo.py",
 				"/home/mahalo/repos/agemo/agemo.json",
 				"/media/veracrypt1/pass",
+				"/media/veracrypt1/links",
+				"/home/mahalo/thumbnail_cache.json",
+				"/home/mahalo/repos/agemo/agemo.py",
 				"/home/mahalo/repos/agemo/thumbnail_cache.json",
 				"/home/mahalo/python/jason/states.json",
 				"/home/mahalo/python/jason/hyprctl.json",
@@ -246,9 +250,11 @@
 			},
 			"file_history":
 			[
-				"/home/mahalo/repos/agemo/agemo.py",
 				"/home/mahalo/repos/agemo/agemo.json",
 				"/media/veracrypt1/pass",
+				"/media/veracrypt1/links",
+				"/home/mahalo/thumbnail_cache.json",
+				"/home/mahalo/repos/agemo/agemo.py",
 				"/home/mahalo/repos/agemo/thumbnail_cache.json",
 				"/home/mahalo/python/jason/states.json",
 				"/home/mahalo/python/jason/hyprctl.json",

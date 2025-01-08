@@ -131,10 +131,12 @@ vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv") -- move block
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv") --  move block
 vim.keymap.set("n", "<leader>r", [[:%s#\<<C-r><C-w>\>#<C-r><C-w>#gI<Left><Left><Left>]]) -- global remap
 vim.api.nvim_set_keymap('v', '<Leader>r', ':<C-U>call ReplaceWordUnderCursorInSelection()<CR>', { noremap = true, silent = true }) -- visual remap
-vim.keymap.set("x", "<leader>p", [["_dP]]) -- void paste 
+vim.keymap.set("x", "p", [["_dP]]) -- void paste 
 vim.keymap.set("n", "J", "mzJ`z") -- append line
 vim.keymap.set("n", "<C-d>", "<C-d>zz") --move half page
 vim.keymap.set("n", "<C-u>", "<C-u>zz") --move half page
+vim.api.nvim_set_keymap('x', 'W', 'iW', { noremap = true, silent = true }) -- remaps viW to just vW
+
 
 --telescope
 vim.keymap.set('n', '<leader>ff', "<cmd>lua require'telescope.builtin'.find_files({ find_command = {'rg', '--files', '--hidden', '-g', '!.git' }})<cr>")
@@ -201,7 +203,7 @@ autocmd FileType cpp nnoremap <silent> <F11> :w <bar> :FloatermNew --disposable 
 autocmd FileType javascript nnoremap <silent> <F11> :w <bar> :FloatermNew --disposable --autoclose=0 node %<cr> 
 
 "''''''''''''''''''''Font Icons '''''''''''''''''''''''''''''''''''''''
-set guifont=Hack\ Nerd\ Font\ 12
+" set guifont=FiraCodeNerdFont-Regular
 let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 
 "##########
@@ -312,7 +314,7 @@ sources = {
 --"'''''''''''''''''''Tree sitter highlight''''''''''''''''''''''''''''''
 require'nvim-treesitter.configs'.setup {
   -- A list of parser names, or "all"
-  ensure_installed = { "c", "lua", "rust","bash","python" },
+  ensure_installed = { "c", "lua", "rust","bash","python"},
   sync_install = false,
   auto_install = true,
   highlight = {
@@ -321,12 +323,16 @@ require'nvim-treesitter.configs'.setup {
   },
 }
 
---"''''''''Neotree''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+--"''''''''Neotree''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 require("neo-tree").setup({
         close_if_last_window = true,
 })
 
---"''''''''''IndentBlankline''''''''''````````````````````````````````````````````````
+--"nvim-web-devicons'''''''''''''''''''''''''''''''''''''''''''''''''''''
+require('web-devicons')
+
+
+--"''''''''''IndentBlankline''''''''''``````````````````````````````````
 require("ibl").setup()
 
   -- Set up nvim-cmp.
@@ -346,7 +352,9 @@ require("ibl").setup()
     
     mapping = {
         ['<Down>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
+        ['<C-j>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
         ['<Up>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
+        ['<C-k>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
         ['<C-d>'] = cmp.mapping.scroll_docs(-4),
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
         ['<C-Space>'] = cmp.mapping.complete(),
@@ -401,8 +409,6 @@ endfunction
 
 
 --require("highlight")
-
-
 
 
 EOF
