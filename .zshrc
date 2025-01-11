@@ -18,7 +18,7 @@ export PATH="$HOME/.cargo/bin:$PATH"
 export QT_QPA_PLATFORMTHEME=qt5ct
 export SSH_AUTH_SOCK=/run/user/$(id -u)/ssh-agent.socket
 export $(dbus-launch)
-
+export DOCKER_HOST=unix:///var/run/docker.sock
 
 # some more ls aliases
 alias update='sudo dnf update && sudo flatpak -y update'

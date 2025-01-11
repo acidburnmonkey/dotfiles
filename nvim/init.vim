@@ -87,7 +87,8 @@ Plug 'nvimtools/none-ls.nvim'
 Plug 'windwp/nvim-ts-autotag'
 "''''''''''''''''''''''''''''''''''''''''''''''
 Plug 'kshenoy/vim-signature'
-
+"''''''''''''''''''''''''''''''''''''''''''''''
+Plug 'stevearc/oil.nvim'
 
 call plug#end()
 
@@ -406,6 +407,9 @@ function! ReplaceWordUnderCursorInSelection()
     endif
 endfunction
 ]])
+
+--'''''''''''''''OIL'''''''''''''''''''''''''''''''''''''''''''''''
+require("oil").setup()
 
 
 --require("highlight")

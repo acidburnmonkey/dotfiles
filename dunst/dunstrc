@@ -111,7 +111,7 @@
 [urgency_low]
     background = "#2F343F"
     foreground = "#888888"
-    timeout = 10
+    timeout = 3
     icon_position=off
     # Icon for notifications with low urgency, uncomment to enable
     # default_icon = ~/.config/dunst/icons/volume.png
@@ -119,7 +119,7 @@
 [urgency_normal]
     background = "#2F343F"
     foreground = "#ffffff"
-    timeout = 10
+    timeout = 4
     # Icon for notifications with normal urgency, uncomment to enable
     #default_icon = /path/to/icon
 
@@ -134,6 +134,16 @@
 [screenshot]
     summary = "Screenshot Saved"
     new_icon = gnome-screenshot
+    timeout = 3   
+
+[Phone-conected]
+    summary = "Phone Pluged"
+    new_icon = phone
+    timeout = 3   
+
+[Phone-disconected]
+    summary = "Phone Disconected"
+    new_icon = phone
     timeout = 3   
 
 # [Tauon]
