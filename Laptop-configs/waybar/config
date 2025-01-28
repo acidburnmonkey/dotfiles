@@ -1,0 +1,116 @@
+// -*- mode: json -*-
+
+
+{
+	"layer": "top",
+	"position": "top",
+    "output":   "eDP-1",
+
+	"modules-left": [
+		"hyprland/workspaces",
+	],
+	"modules-center": [
+    "custom/firefox",
+    "custom/nemo",
+    "custom/updates"
+	],
+	"modules-right": [
+        "battery",
+		"pulseaudio",
+		"clock#1",
+		"tray",
+        "custom/powermenu"
+	],  
+
+
+
+ "hyprland/workspaces": {
+	"format": " {icon} ",
+	"format-icons": {
+           "1": " ",
+           "2": " ",
+           "3": " ",
+           "4": " ",
+           "5": " ",
+           "6": " ",
+           "7": " ",
+           "8": " ",
+           "9": " ",
+           "10": " " 
+	                }
+        },
+
+    "custom/firefox": {
+        "format": "{}  ",
+        "tooltip": false,
+        "on-click": "firefox"
+    },
+	
+
+    "custom/nemo": {
+        "format": "{}  ",
+        "tooltip": false,
+        "on-click": "nemo"
+    },
+	
+    "custom/updates": {
+        "return-type": "json", 
+        "text": "{text}  ",
+        "interval": 300,
+        "exec": "$HOME/.config/waybar/scripts/dnf-updates.sh",
+        "tooltip": "{tooltip} " 
+        },
+
+"battery": {
+        "interval": 5,
+        "states": {
+            // "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon}{capacity}%",
+        "format-charging": " {capacity}%",
+        "format-plugged": " ",
+        "format-icons": [
+            "  ",
+            "  ",
+            "  ",
+            "  ",
+            "  "
+        ],
+        "tooltip-format": "{capacity}%"
+    },
+
+    "clock#1": {
+		"format": "{:%a %I:%M %m-%d}",
+        "on-click": "bash $HOME/.config/waybar/scripts/calendar.sh",
+		"tooltip": false
+	},
+
+	"pulseaudio": {
+		"format": "{icon} {volume:2}%",
+		"format-bluetooth": "{icon}  {volume}%",
+		"format-muted": "MUTE",
+		"format-icons": {
+			"headphones": " ",
+			"default": [
+				" ",
+				" "
+			]
+		},
+		"scroll-step": 5,
+		"on-click": "pamixer -t",
+		"on-click-right": "pavucontrol"
+	},
+	
+    "tray": {
+		"icon-size": 18
+	},
+
+    "custom/powermenu": {
+        "format": "{} ",
+        "tooltip": false,
+        "on-click": "~/.config/rofi/rofipowermenu/powermenu.sh"
+    }
+
+}

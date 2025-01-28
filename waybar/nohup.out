@@ -1,0 +1,11 @@
+[2024-07-14 18:18:16.679] [info] Using configuration file /home/mahalo/.config/waybar/config
+[2024-07-14 18:18:16.681] [info] Discovered appearance 'dark'
+[2024-07-14 18:18:16.681] [info] Using CSS file /home/mahalo/.config/waybar/style.css
+[2024-07-14 18:18:16.683] [info] Hyprland IPC starting
+[2024-07-14 18:18:16.683] [warning] $XDG_RUNTIME_DIR/hypr does not exist, falling back to /tmp/hypr
+[2024-07-14 18:18:16.684] [info] Loading persistent workspaces from Hyprland workspace rules
+[2024-07-14 18:18:16.702] [info] Bar configured (width: 1920, height: 24) for output: DP-1
+
+** (waybar:40524): WARNING **: 18:18:16.704: Status Notifier Item with bus name ':1.6' and object path '/org/ayatana/NotificationItem/nm_applet' is already registered
+last: write error
+Gdk-Message: 18:45:44.244: Error reading events from display: Connection reset by peer

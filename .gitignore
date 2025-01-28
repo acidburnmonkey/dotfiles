@@ -1,0 +1,8 @@
+desktop/polybar/scripts/polybar-calendar/__pycache__
+systemd/user/default.target.wants/
+systemd/user/graphical-session.target.wants/
+systemd/user/sockets.target.wants/
+/ranger/plugins/__pycache__/
+sublime-text/Local/*
+/sublime-text/Log/*
+/sublime-text/Trash/*

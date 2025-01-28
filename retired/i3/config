@@ -1,0 +1,157 @@
+# Set mod key
+set $mod Mod4
+set $alt Mod1
+
+# Set window title font
+font Hack Nerd Font 11
+
+# Volume keys
+bindsym XF86AudioMute exec ~/.config/i3/dunstthree/dunstthree.sh mute 
+bindsym XF86AudioRaiseVolume exec ~/.config/i3/dunstthree/dunstthree.sh vup 
+bindsym XF86AudioLowerVolume exec ~/.config/i3/dunstthree/dunstthree.sh vdown 
+# Brightness 
+bindsym XF86MonBrightnessUp exec --no-startup-id ~/.config/i3/dunstthree/dunstthree.sh bup
+bindsym XF86MonBrightnessDown exec --no-startup-id  ~/.config/i3/dunstthree/dunstthree.sh bdown
+############### MY stuff ##########
+bindsym $mod+d exec ~/.config/polybar/scripts/rofimenu/launcher.sh 
+bindsym $mod+l exec ~/.config/polybar/scripts/rofipowermenu/skpowermenu.sh
+bindsym $mod+Return exec kitty 
+bindsym $alt+0x2c exec nemo 
+bindsym $alt+0x2f  exec firefox 
+bindsym Ctrl+$alt+l  exec dm-tool lock
+bindsym $mod+0x2e exec alacritty -e "ranger"
+# smart_gaps on
+# smart_borders on
+
+# Align window title
+title_align center
+floating_modifier $mod
+# Window rules
+for_window [class="^.*"] border pixel 0
+for_window [title="Library"] floating enable
+
+# Define gaps between windows
+gaps inner 20
+
+bindsym $mod+r exec kitty
+#Drag floating windows (Mouse + $mod)
+floating_modifier $mod
+
+# Kill focused window
+bindsym $mod+q kill
+
+# Open applications
+bindsym Print exec gnome-screenshot
+#rofi -no-config -no-lazy-grab -show drun -modi drun -theme ~/.config/polybar/scripts/rofi/launcher.rasi
+# Change window focus
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# Move focused window
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# Split window in horizontal
+bindsym $mod+h split h
+
+# Split window in vertical
+bindsym $mod+v split v
+
+# Enter fullscreen mode for the focused window
+bindsym $mod+f fullscreen toggle
+
+# Change window layout (Stacked, tabbed or toggle split)
+bindsym $mod+e layout toggle split
+
+# Toggle between tiling and floating
+bindsym $mod+Shift+space floating toggle
+
+# Change focus between tiling and floating windows
+bindsym $mod+space focus mode_toggle
+
+# Focus the parent container
+bindsym $mod+a focus parent
+
+# Focus the child container
+#bindsym $mod+d focus child
+
+# ASSIGN
+assign [class="firefox"] $ws2
+for_window [urgent="latest" class="firefox"] focus
+
+assign [class="kitty"] $ws1
+for_window [urgent="latest" class="kitty"] focus
+
+assign [class="jetbrains-pycharm-ce"] $ws4
+for_window [urgent="latest" class="jetbrains-pycharm-ce"] focus
+
+assign [class="jetbrains-clion"]  $ws4 
+for_window [urgent="latest" class="jetbrains-clion"] focus
+
+assign  [class="Nemo"] $ws3
+for_window [urgent="latest" class="Nemo"] focus
+
+assign [class="thunderbird"] $ws5
+for_window [urgent="latest" class="thunderbird"] focus
+
+for_window [urgent="latest" class="Alacritty"] focus
+assign  [class="Alacritty"] $ws3
+
+# Set names for workspaces
+set $ws1 " Main"
+set $ws2 " Web"
+set $ws3 " Nemo"
+set $ws4 " Code"
+set $ws5 " Files"
+
+# Switch to workspaces
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+
+# Move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+
+# Reload the configuration file
+bindsym $mod+Shift+c reload
+
+# Restart i3 session inplace
+bindsym $mod+Shift+r restart
+
+# Resize window
+bindsym $mod+Shift+h move left 20px
+bindsym $mod+Shift+j move down 20px
+bindsym $mod+Shift+k move up 20px
+bindsym $mod+Shift+l move right 20px
+
+# Resizing Windows
+bindsym $mod+Ctrl+l resize shrink width 10 px or 10 ppt
+bindsym $mod+Ctrl+k resize grow height 10 px or 10 ppt
+bindsym $mod+Ctrl+j resize shrink height 10 px or 10 ppt
+bindsym $mod+Ctrl+h resize grow width 10 px or 10 ppt	
+
+# Customize colors
+client.focused          #b8bb26 #b8bb26 #ebdbb2 #b8bb26 #b8bb26
+client.focused_inactive #282828 #282828 #ebdbb2 #282828 #282828
+client.unfocused        #282828 #282828 #ebdbb2 #282828 #282828
+client.urgent           #282828 #282828 #fb4934 #282828 #282828
+client.placeholder      #282828 #282828 #ebdbb2 #282828 #282828
+
+# Run commands on startup
+exec_always --no-startup-id bash ~/.config/polybar/launch.sh
+exec_always --no-startup-id feh --bg-fill ~/Pictures/wallhaven-k7g6md.jpg
+exec_always --no-startup-id dunst -config ~/.config/dunst/dunstrc
+exec_always --no-startup-id picom
+exec_always --no-startup-id nm-applet
+exec_always --no-startup-id ~/appimages/Nextcloud-3.6.4-x86_64.AppImage --background
+

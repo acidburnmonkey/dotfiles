@@ -1,0 +1,30 @@
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[usenames]{color}
+\usepackage{ifxetex}
+\usepackage{ifluatex}
+
+% XeLaTeX compiler
+\ifxetex
+
+    \usepackage{fontspec}
+    \usepackage{unicode-math}
+
+    % Uncomment these lines for alternative fonts
+    %\setmainfont{FreeSerif}
+    %\setmathfont{FreeSerif}
+
+% LuaLaTeX compiler
+\else\ifluatex
+
+    \usepackage{fontspec}
+    \usepackage{lualatex-math}
+
+% LaTeX compiler
+\else
+
+    % Uncomment this line for sans-serif maths font
+    %\everymath{\mathsf{\xdef\mysf{\mathgroup\the\mathgroup\relax}}\mysf}
+
+\fi\fi
+

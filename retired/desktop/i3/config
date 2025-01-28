@@ -1,0 +1,252 @@
+# Set mod key
+set $mod Mod4
+set $alt Mod1
+
+# Set window title font
+font Hack Nerd Font 11
+
+# Volume keys
+bindsym XF86AudioMute exec ~/.config/i3/dunstthree/dunstthree.sh mute 
+bindsym XF86AudioRaiseVolume exec ~/.config/i3/dunstthree/dunstthree.sh vup 
+bindsym XF86AudioLowerVolume exec ~/.config/i3/dunstthree/dunstthree.sh vdown 
+# Brightness 
+bindsym XF86MonBrightnessUp exec --no-startup-id ~/.config/i3/dunstthree/dunstthree.sh bup
+bindsym XF86MonBrightnessDown exec --no-startup-id  ~/.config/i3/dunstthree/dunstthree.sh bdown
+
+############### Applications Shortcuts ##########
+
+bindsym $mod+s  exec ~/.config/polybar/scripts/apps/apps.sh
+bindsym $mod+d exec ~/.config/polybar/scripts/rofimenu/launcher.sh 
+bindsym $mod+l exec /usr/local/bin/betterlockscreen -l -- -e
+bindsym $alt+0x2c exec nemo 
+bindsym $alt+0x2f  exec firefox 
+bindsym Ctrl+$alt+l exec ~/.config/polybar/scripts/rofipowermenu/skpowermenu.sh
+bindsym $mod+t  exec alacritty
+bindsym 0xff61 exec gnome-screenshot --interactive
+
+
+# Align window title
+title_align center
+floating_modifier $mod
+
+# Window rules
+for_window [class="^.*"] border pixel 0
+for_window [title="Library"] floating enable
+
+for_window [class="Pycalendar.py" instance="pycalendar.py"] floating enable; move absolute position top right 
+for_window [class="Pycalendar.py" instance="pycalendar.py"] move absolute position 5000 910
+
+for_window [class="qalculate-qt"] floating enable
+for_window [class="amberol" instance="amberol"] floating enable;
+
+# Define gaps between windows
+gaps inner 20
+# smart_gaps on
+# smart_borders onibus-ui-emojier
+
+bindsym $mod+r exec kitty
+#Drag floating windows (Mouse + $mod)
+floating_modifier $mod
+
+# Kill focused window
+bindsym $mod+q kill
+
+# Change window focus
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# Move focused window
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# Split window in horizontal
+bindsym $mod+h split h
+
+# Split window in vertical
+bindsym $mod+v split v
+
+# Enter fullscreen mode for the focused window
+bindsym $mod+f fullscreen toggle
+
+# Change window layout (Stacked, tabbed or toggle split)
+bindsym $mod+e layout toggle split
+
+# Toggle between tiling and floating
+bindsym $mod+Shift+space floating toggle
+
+# Change focus between tiling and floating windows
+bindsym $mod+space focus mode_toggle
+
+# Focus the parent container
+# bindsym $mod+a focus parent
+
+# Focus the child container
+#bindsym $mod+d focus child
+
+# ASSIGN
+assign [class="kitty"] $ws1
+for_window [urgent="latest" class="kitty"] focus
+
+assign [class="Alacritty"] $ws1
+for_window [urgent="latest" class="Alacritty"] focus
+
+assign [class="firefox"] $ws2
+for_window [urgent="latest" class="firefox"] focus
+
+assign  [class="Nemo"] $ws3
+for_window [urgent="latest" class="Nemo"] focus
+
+assign  [class="Sublime_text"] $ws3
+for_window [urgent="latest" class="Sublime_text"] focus
+
+assign [class="jetbrains-pycharm-ce"] $ws4
+for_window [urgent="latest" class="jetbrains-pycharm-ce"] focus
+
+assign [class="jetbrains-clion"]  $ws4 
+for_window [urgent="latest" class="jetbrains-clion"] focus
+
+assign [class="VSCodium"]  $ws4 
+for_window [urgent="latest" class="VSCodium"] focus
+
+assign [class="yuzu"]  $ws5 
+for_window [urgent="latest" class="yuzu"] focus
+
+assign [class="discord"]  $ws6 
+for_window [urgent="latest" class="discord"] focus
+
+assign [class="TelegramDesktop"]  $ws6 
+for_window [urgent="latest" class="TelegramDesktop"] focus
+
+assign [class="obsidian"]  $ws6 
+for_window [urgent="latest" class="obsidian"] focus
+
+assign [class="thunderbird"] $ws7
+for_window [urgent="latest" class="thunderbird"] focus
+
+assign [class="Microsoft-edge"] $ws8
+for_window [urgent="latest" class="Microsoft-edge"] focus
+
+assign [class="Jellyfin Media Player"] $ws8
+for_window [urgent="latest" class="Jellyfin Media Player"] focus
+
+assign [class="steam"] $ws9
+for_window [urgent="latest" class="steam"] focus
+
+assign [class="vmplayer"] $ws9
+for_window [urgent="latest" class="vmplayer"] focus
+
+assign [class="Virt-manager"] $ws9
+for_window [urgent="latest" class="Virt-manager"] focus
+
+assign [class="zoom"] $ws9
+for_window [urgent="latest" class="zoom"] focus
+
+assign [title="Adobe Photoshop CC 2018"] $ws10  
+assign [class="photoshop.exe"] $ws10  
+for_window [title="Adobe Photoshop CC 2018"] floating enable ; border none 
+# for_window [class="photoshop.exe" instance="photoshop.exe"] move absolute position 1880 1060 ; move absolute position center 
+# for_window [urgent="latest" class="photoshop.exe"] floating enable
+
+assign [class="Gimp-2.10"] $ws10  
+for_window [urgent="latest" class="Gimp-2.10"] focus 
+
+
+# move focused window between monitors
+bindsym $mod+Shift+greater move container to output right
+bindsym $mod+Shift+less move container to output left
+
+
+#monitors
+workspace $ws1 output DP-0
+workspace $ws2 output DP-0
+workspace $ws3 output DP-0
+workspace $ws4 output DP-0
+workspace $ws5 output DP-0
+workspace $ws6 output DP-2
+workspace $ws7 output DP-2
+workspace $ws8 output DP-0
+workspace $ws9 output DP-0
+workspace $ws10 output DP-0 
+
+
+# Set names for workspaces
+set $ws1 " Main"
+set $ws2 " Web"
+set $ws3 " Nemo"
+set $ws4 " Code"
+set $ws5 " +=+"
+set $ws6 " zen" 
+set $ws7 " Mail" 
+set $ws8 " Media" 
+set $ws9 " Alan" 
+set $ws10 " Photoshop" 
+
+# Switch to workspaces
+bindsym $mod+1 workspace $ws1 
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
+
+# Move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1; workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2; workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3; workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4; workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5; workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6; workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7; workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9; workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10; workspace $ws10
+
+# Reload the configuration file
+bindsym $mod+Shift+c reload
+
+# Restart i3 session inplace
+bindsym $mod+Shift+r restart
+
+# Resize window
+bindsym $mod+Shift+h move left 20px
+bindsym $mod+Shift+j move down 20px
+bindsym $mod+Shift+k move up 20px
+bindsym $mod+Shift+l move right 20px
+
+# Resizing Windows
+bindsym $mod+Ctrl+l resize shrink width 10 px or 10 ppt
+bindsym $mod+Ctrl+k resize grow height 10 px or 10 ppt
+bindsym $mod+Ctrl+j resize shrink height 10 px or 10 ppt
+bindsym $mod+Ctrl+h resize grow width 10 px or 10 ppt	
+
+# Customize colors
+client.focused          #b8bb26 #b8bb26 #ebdbb2 #b8bb26 #b8bb26
+client.focused_inactive #282828 #282828 #ebdbb2 #282828 #282828
+client.unfocused        #282828 #282828 #ebdbb2 #282828 #282828
+client.urgent           #282828 #282828 #fb4934 #282828 #282828
+client.placeholder      #282828 #282828 #ebdbb2 #282828 #282828
+
+# Run commands on startup
+exec --no-startup-id bash ~/.config/i3/screenlayout.sh
+exec --no-startup-id /usr/bin/openrgb --startminimized --profile "ssx"
+exec --no-startup-id bash ~/scripts/startup.sh 
+exec --no-startup-id /usr/bin/nextcloud --background
+exec --no-startup-id xrdb -merge ~/.Xresources
+
+exec_always --no-startup-id bash ~/.config/polybar/launch.sh
+# exec_always --no-startup-id feh --bg-fill /media/toxic/photos/cattpussin-mask.png
+exec_always --no-startup-id dunst -config ~/.config/dunst/dunstrc
+exec_always --no-startup-id picom
+exec_always --no-startup-id nm-applet
+exec_always --no-startup-id ~/programs/Nextcloud-3.6.0-x86_64.AppImage --background
+# exec_always --no-startup-id  blueman-applet
+exec_always --no-startup-id autotiling
+exec_always --no-startup-id nitrogen --restore

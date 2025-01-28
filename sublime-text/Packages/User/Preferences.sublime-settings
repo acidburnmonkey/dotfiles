@@ -1,0 +1,11 @@
+{
+	"theme": "ayu-dark.sublime-theme",
+	"color_scheme": "ayu-dark.sublime-color-scheme",
+	"ignored_packages":
+	[
+		"Vintage",
+	],
+	"index_files": true,
+	"remember_open_files": false,
+	"hot_exit": false
+}

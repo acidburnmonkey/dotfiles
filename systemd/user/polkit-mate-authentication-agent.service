@@ -1,0 +1,10 @@
+[Unit]
+Description=Polkit Mate Authentication Agent
+
+[Service]
+ExecStart=/usr/libexec/polkit-mate-authentication-agent-1
+Restart=always
+
+[Install]
+WantedBy=default.target
+
