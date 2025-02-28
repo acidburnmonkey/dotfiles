@@ -26,7 +26,7 @@ alias cl='clear'
 alias goarchon='ssh root@192.168.1.118'
 alias src='source ~/.zshrc'
 alias neogit='onefetch'
-alias update-grub='grub2-mkconfig -o /boot/grub2/grub.cfg & grub2-mkconfig -o /boot/efi/EFI/fedora/grub.cfg'
+alias update-grub='sudo grub2-mkconfig -o /boot/grub2/grub.cfg & grub2-mkconfig -o /boot/efi/EFI/fedora/grub.cfg'
 alias vim='nvim'
 alias xc='wl-copy'
 alias pycheck='python -m pylint --disable=R,C'
@@ -70,3 +70,4 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+alias virsh='virsh -c qemu:///system'

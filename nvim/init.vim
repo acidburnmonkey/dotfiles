@@ -255,10 +255,11 @@ ui = {
     }
 })
 
-local servers = {"clangd", "ts_ls", "pyright", "tailwindcss",'html'}
+local servers = {"clangd", "ts_ls", "pyright", "tailwindcss",'html','stimulus_ls','cssls'}
 require("mason-lspconfig").setup {
     ensure_installed = servers,
 }
+
 
 --shortcuts
 lsp.on_attach(function(client, bufnr)
@@ -284,6 +285,10 @@ lsp.on_attach(function(client, bufnr)
 --    capabilities = capabilities
 --    } 
 
+--cssls
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+
 for _, server in ipairs(servers) do
     require("lspconfig")[server].setup {
         on_attach = on_attach,
@@ -291,7 +296,10 @@ for _, server in ipairs(servers) do
     }
 end
 
-
+  
+ -- require'lspconfig'.cssls.setup {
+   -- capabilities = capabilities,
+  --}
 
 --"'''''''''''''''''''Bash lsp , installed trough dnf not plug '''''''''''
 vim.api.nvim_create_autocmd('FileType', {
