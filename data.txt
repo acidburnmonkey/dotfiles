@@ -171,6 +171,7 @@ gnome-text-editor
 gnome-user-docs
 gnome-user-share
 gnupg
+golang
 google-carlito-fonts
 google-crosextra-caladea-fonts
 google-droid-sans-fonts
@@ -336,6 +337,7 @@ nxpwireless-firmware
 obs-studio
 open-sans-fonts
 open-vm-tools-desktop
+openrazer-meta
 openresolv
 openrgb
 opensc
@@ -368,7 +370,6 @@ plexus-utils
 plocate
 plymouth
 plymouth-system-theme
-podman
 policycoreutils
 policycoreutils-python-utils
 polkit
@@ -446,7 +447,6 @@ thunderbird
 time
 tiwilink-firmware
 tldr
-toolbox
 traceroute
 tracker
 tracker-miners
@@ -481,6 +481,7 @@ xcb-util-xrm-devel
 xdg-desktop-portal
 xdg-desktop-portal-gnome
 xdg-desktop-portal-gtk
+xdg-desktop-portal-wlr
 xdg-user-dirs-gtk
 xfsprogs
 yelp
@@ -503,6 +504,7 @@ com.rtosta.zapzap
 com.vscodium.codium
 io.bassi.Amberol
 io.github.Qalculate
+io.gitlab.adhami3310.Converter
 md.obsidian.Obsidian
 org.flatpak.Builder.BaseApp
 org.gnome.Calendar
