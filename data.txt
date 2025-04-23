@@ -1,3 +1,4 @@
+[Programs] 
 aajohan-comfortaa-fonts
 abrt-cli
 abrt-desktop
@@ -488,7 +489,7 @@ yelp
 zip
 zram-generator-defaults
 zsh
-####### Flatpak #########
+[Flatpak] 
 codes.merritt.FeelingFinder
 com.adobe.Flash-Player-Projector
 com.bitwarden.desktop
@@ -509,9 +510,23 @@ md.obsidian.Obsidian
 org.flatpak.Builder.BaseApp
 org.gnome.Calendar
 org.gnome.gitlab.somas.Apostrophe
-org.shotcut.Shotcut
+org.shortcut.Shortcut
 org.signal.Signal
 org.telegram.desktop
 us.zoom.Zoom
 vn.hoabinh.quan.CoBang
 xyz.z3ntu.razergenie
+
+[Repolist]
+https://repository.mullvad.net/rpm/stable/mullvad.repo
+https://download.opensuse.org/repositories/hardware:/razer/Fedora_/hardware:razer.repo
+https://download.docker.com/linux/fedora/docker-ce.repo
+https://nvidia.github.io/libnvidia-container/experimental/rpm/nvidia-container-toolkit.repo
+https://download.sublimetext.com/rpm/stable/x86_64/sublime-text.repo
+https://nvidia.github.io/libnvidia-container/stable/rpm/nvidia-container-toolkit.repo
+
+[Copr]
+acidburnmonkey/purge-command
+acidburnmonkey/rname
+atim/lazygit
+zeno/scrcpy

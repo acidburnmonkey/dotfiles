@@ -14,6 +14,10 @@ let mapleader=' '
 set encoding=utf-8
 set termguicolors 
 command! WipeReg for i in range(34,122) | silent! call setreg(nr2char(i), []) | endfor
+
+
+
+
 "############
 "#   Pugins #
 "############
@@ -40,6 +44,7 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 ""''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 ""''''''''''''''''''''''''''''''''''''''''''''''"''''''''''''''''''
 Plug 'williamboman/mason.nvim'
 Plug 'williamboman/mason-lspconfig.nvim'
@@ -93,8 +98,10 @@ Plug 'stevearc/oil.nvim'
 Plug 'L3MON4D3/LuaSnip', {'tag': 'v2.*', 'do': 'make install_jsregexp'} 
 "''''''''''''''''''''''''''''''''''''''''''''''''''''''
 Plug 'HiPhish/rainbow-delimiters.nvim'
+"''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
 call plug#end()
+
 
 "#####################
 "     Remaps         #
@@ -131,7 +138,7 @@ nnoremap <F2> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 lua <<EOF
 vim.keymap.set("n", "<leader><TAB>", ":bnext<CR>") -- Tab next 
 vim.keymap.set("n", "x", [["_x]]) --void x
-vim.keymap.set("n", "E", "ge") -- go back
+vim.keymap.set({"n",'v'}, "E", "ge") -- go back
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv") -- move block
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv") --  move block
 vim.keymap.set("n", "<leader>r", [[:%s#\<<C-r><C-w>\>#<C-r><C-w>#gI<Left><Left><Left>]]) -- global remap
@@ -149,11 +156,11 @@ vim.keymap.set('n', '<leader>fr', "<cmd>lua require'telescope.builtin'.buffers({
 vim.keymap.set('n', '<leader>fg', "<cmd>lua require('telescope.builtin').live_grep()<cr>")
 
 vim.cmd([[nnoremap \ :Neotree toggle<cr>]])
-vim.opt.hlsearch = false
 
 -- To avoid neotree from crashing all vim, closes the tab
 local bufremove = require('bufremove')
 vim.keymap.set("n", "<leader>q", bufremove.bufremove, { desc = "Delete buffer" })
+
 
 EOF
 
@@ -216,6 +223,13 @@ let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 "LUA Block#
 "##########
 lua <<EOF
+
+-- Spell generall options
+vim.opt.spelllang = 'en_us'
+vim.opt.spell = false
+vim.opt.hlsearch = false
+
+
 
 --"''''''''''''''''''''Zero Lsp''''''''''''''''''''''''''''''''''''''''''
 local lsp = require('lsp-zero')
@@ -315,26 +329,24 @@ vim.api.nvim_create_autocmd('FileType', {
 
 --''''''''''''''''Non-ls/null-ls''''''''''''''''
 local null_ls = require("null-ls")
+
 null_ls.setup({
-    sources = {
-        null_ls.builtins.diagnostics.cppcheck,
-        -- null_ls.builtins.diagnostics.semgrep, --jsx and others
-        null_ls.builtins.formatting.prettierd.with({  -- Enforce single quotes
-        extra_args = { "--single-quote" }     }), 
-        -- null_ls.builtins.diagnostics.pylint.with({
-        --extra_args = { "--disable=C" }  }),
-        --null_ls.builtins.completion.spell,
-        },
-    on_attach = function(client, bufnr)
+  sources = {
+    null_ls.builtins.diagnostics.cppcheck,
+    null_ls.builtins.formatting.prettierd.with({
+      extra_args = { "--single-quote" },
+    }),
+  },
+  on_attach = function(client, bufnr)
     if client.supports_method("textDocument/formatting") then
-        vim.api.nvim_create_autocmd("BufWritePre", {
-            buffer = bufnr,
-            callback = function()
-            vim.lsp.buf.format({ bufnr = bufnr })
-            end,
-        })
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        buffer = bufnr,
+        callback = function()
+          vim.lsp.buf.format({ bufnr = bufnr })
+        end,
+      })
     end
-end,
+  end,
 })
 
 --"'''''''''''''''''''Tree sitter highlight''''''''''''''''''''''''''''''
@@ -345,7 +357,7 @@ sync_install = false,
 indent = {
     enable = true,
     disable = function(lang, bufnr)
-      local enabled_langs = { "html", "javascript", "tsx" } -- Enable indent only for these languages
+      local enabled_langs = { "html", "javascript", "tsx" } -- Enable auto indent only for these languages
       return not vim.tbl_contains(enabled_langs, lang)
     end,
   },
@@ -353,6 +365,35 @@ auto_install = true,
 highlight = {
     enable = true,
     additional_vim_regex_highlighting = false,
+  },
+  textobjects = {
+    select = {
+      enable = true,
+      lookahead = true,
+      keymaps = {
+        ["af"] = "@function.outer",
+        ["if"] = "@function.inner",
+        ["ac"] = "@class.outer",
+        ["ic"] = { query = "@class.inner", desc = "Select inner part of a class region" },
+        ["as"] = { query = "@local.scope", query_group = "locals", desc = "Select language scope" },
+      },
+      selection_modes = {
+        ['@parameter.outer'] = 'v', -- charwise
+        ['@function.outer'] = 'V', -- linewise
+        ['@class.outer'] = '<c-v>', -- blockwise
+      },
+      include_surrounding_whitespace = true,
+    },
+move = {
+  enable = true,
+  set_jumps = true,
+  goto_next_start = {
+    ["<C-f>"] = "@function.outer", -- jump to next function
+  },
+  goto_previous_start = {
+    ["<A-f>"] = "@function.outer", -- jump to previous function
+  },
+},
   },
 }
                     
@@ -394,7 +435,7 @@ require("ibl").setup()
         ['<C-e>'] = cmp.mapping.close(),
         ['<Tab>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 's' }),
         ['<CR>'] = cmp.mapping.confirm({
-        behavior = cmp.ConfirmBehavior.Replace,
+        behavior = cmp.ConfirmBehavior.Insert,
         select = true,
         })
         }, 
@@ -444,6 +485,8 @@ require('rainbow-delimiters.setup').setup {
         -- ...
     },
 }
+
+--'''''''''''''''''''''''''Terminal'''''''''''''''''''''''''''''''''''''''''
 
 
 -- ###########
