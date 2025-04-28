@@ -1,0 +1,36 @@
+local opts = { noremap = true, silent = true }
+
+vim.keymap.set("n", "<leader><TAB>", ":bnext<CR>") -- Tab next 
+vim.keymap.set({"x",'v'}, "E", "ge") -- go back
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv") -- move block
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv") --  move block
+vim.keymap.set("n", "<leader>r", [[:%s#\<<C-r><C-w>\>#<C-r><C-w>#gI<Left><Left><Left>]]) -- global remap
+vim.api.nvim_set_keymap('v', '<Leader>r', ':<C-U>call ReplaceWordUnderCursorInSelection()<CR>', opts) -- visual remap
+vim.keymap.set("n", "J", "mzJ`z") -- append line
+vim.keymap.set("n", "<C-d>", "<C-d>zz") --move half page
+vim.keymap.set("n", "<C-u>", "<C-u>zz") --move half page
+
+
+
+
+-- ############################
+-- Default behabior overrides #
+-- ############################
+
+vim.keymap.set("n", "x", [["_x]]) --void x
+vim.keymap.set("x", "p", [["_dP]]) -- void paste 
+vim.keymap.set('n', 'Q', 'q', opts) -- Remap 'Q' to start recording macros
+vim.api.nvim_set_keymap('x', 'W', 'iW', opts) -- remaps viW to just vW
+vim.api.nvim_set_keymap('x', 'w', 'iw', opts) -- remaps viw to just vw
+vim.keymap.set('n', 'P', 'o<Esc>p', opts) --void P
+vim.keymap.set('n', 'd', '"_d', opts) --void d
+vim.keymap.set('v', 'd', '"_d', opts)
+
+
+-- Disable 
+vim.keymap.set('', '<F1>', '<Nop>', opts)
+vim.keymap.set('n', '<F1>', '<Esc>', opts)
+vim.keymap.set('i', '<F1>', '<Esc>', opts)
+vim.keymap.set('n', 's', '<Nop>', opts)
+vim.keymap.set('n', 'S', '<Nop>', opts)
+vim.keymap.set('n', 'q', '<Nop>', opts)

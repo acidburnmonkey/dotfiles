@@ -1,23 +1,3 @@
-set nu rnu
-set clipboard+=unnamedplus
-filetype plugin on
-set noswapfile
-set completeopt=menu,menuone,noselect
-set scrolloff=7
-set backspace=indent,eol,start
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-set expandtab
-set autoindent
-let mapleader=' '
-set encoding=utf-8
-set termguicolors 
-command! WipeReg for i in range(34,122) | silent! call setreg(nr2char(i), []) | endfor
-
-
-
-
 "############
 "#   Pugins #
 "############
@@ -120,14 +100,11 @@ vnoremap d "_d
 :map <F1> <nop>
 map <F1> <Esc>
 imap <F1> <Esc>
-map q <Nop>
 map s <Nop>
 map S <Nop>
 
 :map <leader>d daw 
-:map <nowait> vw viw
 :map <nowait> cw ciw
-" autocmd VimEnter * WipeReg
 
 "closes all buffers but current 
 command! BufOnly silent! execute "%bd|e#|bd#"
@@ -136,19 +113,6 @@ nnoremap <leader>b :BufOnly<CR>
 nnoremap <F2> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 
 lua <<EOF
-vim.keymap.set("n", "<leader><TAB>", ":bnext<CR>") -- Tab next 
-vim.keymap.set("n", "x", [["_x]]) --void x
-vim.keymap.set({"n",'v'}, "E", "ge") -- go back
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv") -- move block
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv") --  move block
-vim.keymap.set("n", "<leader>r", [[:%s#\<<C-r><C-w>\>#<C-r><C-w>#gI<Left><Left><Left>]]) -- global remap
-vim.api.nvim_set_keymap('v', '<Leader>r', ':<C-U>call ReplaceWordUnderCursorInSelection()<CR>', { noremap = true, silent = true }) -- visual remap
-vim.keymap.set("x", "p", [["_dP]]) -- void paste 
-vim.keymap.set("n", "J", "mzJ`z") -- append line
-vim.keymap.set("n", "<C-d>", "<C-d>zz") --move half page
-vim.keymap.set("n", "<C-u>", "<C-u>zz") --move half page
-vim.api.nvim_set_keymap('x', 'W', 'iW', { noremap = true, silent = true }) -- remaps viW to just vW
-
 
 --telescope
 vim.keymap.set('n', '<leader>ff', "<cmd>lua require'telescope.builtin'.find_files({ find_command = {'rg', '--files', '--hidden', '-g', '!.git' }})<cr>")
@@ -207,7 +171,6 @@ let g:airline_section_z = airline#section#create(['%3p%% %L☰'])
 let g:airline#extensions#tabline#enabled = 1
 
 "''''''''''''''''''''''FloatTerm'''''''''''''''''''''''''''''''''''''''''''
-let g:floaterm_keymap_toggle = '<F12>'
 autocmd filetype cpp nnoremap <silent> <F9> :w<bar> :FloatermNew --autoclose=0 g++ -g -Wall % && ./a.out<cr>
 autocmd FileType python nnoremap <silent> <F11> :w <bar> :FloatermNew --disposable --autoclose=0 python3 %<cr> 
 autocmd FileType rust nnoremap <silent> <F11> :w <bar> :FloatermNew --disposable --autoclose=0 rustc % -o %:r && ./%:r<CR>
@@ -224,11 +187,10 @@ let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 "##########
 lua <<EOF
 
--- Spell generall options
-vim.opt.spelllang = 'en_us'
-vim.opt.spell = false
-vim.opt.hlsearch = false
-
+-- General settings
+require('options')
+-- keymaps
+require('keymaps')
 
 
 --"''''''''''''''''''''Zero Lsp''''''''''''''''''''''''''''''''''''''''''
@@ -509,5 +471,20 @@ function! ReplaceWordUnderCursorInSelection()
 endfunction
 ]])
 
+-- Function to toggle Floaterm behavior
+local function toggle_floaterm()
+  -- Check if a floaterm buffer exists
+  local bufnr = vim.fn 
+  if bufnr ~= -1 then
+    -- There is a floaterm open
+    vim.cmd('FloatermHide')
+  else
+    -- No floaterm open
+    vim.notify("No Floaterm open.", vim.log.levels.INFO)
+  end
+end
 
+
+-- Map F12 in normal mode to close floaterm
+vim.keymap.set('n', '<F12>', toggle_floaterm, { noremap = true, silent = true })
 EOF
