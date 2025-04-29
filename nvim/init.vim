@@ -75,111 +75,12 @@ Plug 'kshenoy/vim-signature'
 "''''''''''''''''''''''''''''''''''''''''''''''
 Plug 'stevearc/oil.nvim'
 "''''''''''''''''''''''''''''''''''''''''''''''
-Plug 'L3MON4D3/LuaSnip', {'tag': 'v2.*', 'do': 'make install_jsregexp'} 
+Plug 'L3MON4D3/LuaSnip', {'tag': 'v2.*', 'do': 'make install_jsregexp'}
 "''''''''''''''''''''''''''''''''''''''''''''''''''''''
 Plug 'HiPhish/rainbow-delimiters.nvim'
 "''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
 call plug#end()
-
-
-"#####################
-"     Remaps         #
-"#####################
-
-" nnoremap \ :Neotree focus<cr>
-nnoremap <leader>u :UndotreeToggle<CR>
-nnoremap <leader>- :IBLToggle<CR>
-let g:peekup_open = '<F5>'
-" let g:peekup_paste_after = '<leader>0'
-map <leader>0 "*p
-
-:nmap P o<ESC>p
-nnoremap d "_d
-vnoremap d "_d
-:map <F1> <nop>
-map <F1> <Esc>
-imap <F1> <Esc>
-map s <Nop>
-map S <Nop>
-
-:map <leader>d daw 
-:map <nowait> cw ciw
-
-"closes all buffers but current 
-command! BufOnly silent! execute "%bd|e#|bd#"
-nnoremap <leader>b :BufOnly<CR>
-"Remove all trailing whitespace by pressing F2
-nnoremap <F2> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
-
-lua <<EOF
-
---telescope
-vim.keymap.set('n', '<leader>ff', "<cmd>lua require'telescope.builtin'.find_files({ find_command = {'rg', '--files', '--hidden', '-g', '!.git' }})<cr>")
-vim.keymap.set('n', '<leader>fr', "<cmd>lua require'telescope.builtin'.buffers({ show_all_buffers = true })<cr>")
-vim.keymap.set('n', '<leader>fg', "<cmd>lua require('telescope.builtin').live_grep()<cr>")
-
-vim.cmd([[nnoremap \ :Neotree toggle<cr>]])
-
--- To avoid neotree from crashing all vim, closes the tab
-local bufremove = require('bufremove')
-vim.keymap.set("n", "<leader>q", bufremove.bufremove, { desc = "Delete buffer" })
-
-
-EOF
-
-"#####################
-"#     Configs       # 
-"#####################
-
-"''''''''''''''''''' Markdown Preview ''''''''''''''''''''''''''''''''''
-let g:mkdp_auto_start = 1
-let g:mkdp_auto_close = 1
-let g:mkdp_browser = 'chromium-browser'
-
-"''''''''''''Coding'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-" let g:deoplete#enable_at_startup = 1
-
-"'''''''''''''''''''''''''''''''''LuaSnip'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-" imap <silent><expr> <Tab> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>' 
-lua require("luasnip.loaders.from_vscode").lazy_load()
-" <TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-autocmd FileType python map <buffer> <F10> :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
-autocmd FileType python imap <buffer> <F10> <esc>:w<CR>:exec '!python3' shellescape(@%, 1)<CR>
-
-autocmd FileType javascript map <buffer> <F10> :w<CR>:exec '!node' shellescape(@%, 1)<CR>
-autocmd FileType javascript imap <buffer> <F10> <esc>:w<CR>:exec '!node' shellescape(@%, 1)<CR>
-
-autocmd FileType sh map <buffer> <F10> :w<CR>:exec '!/bin/bash' shellescape(@%, 1)<CR>
-autocmd FileType sh imap <buffer> <F10> <esc>:w<CR>:exec '!/bin/bash' shellescape(@%, 1)<CR>
-autocmd filetype cpp nnoremap <buffer> <F10> :!g++ -o %:p:r %<cr>:!%:p:r<cr>
-autocmd FileType rust nmap <F10> :w<CR>:!rustc % -o %:r && ./%:r<CR>
-
-"" nnoremap <silent> <F8> :!g++ -Wall % && ./a.out<cr>
-"''''''''''''''' Theme '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-" lua  vim.cmd.colorscheme "catppuccin-mocha"
-
-"''''''''''''''''''''Airline Bar'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
-let g:airline_theme='catppuccin'
-set noshowmode 
-set showtabline=2
-let g:airline_section_z = airline#section#create(['%3p%% %L☰'])
-let g:airline#extensions#tabline#enabled = 1
-
-"''''''''''''''''''''''FloatTerm'''''''''''''''''''''''''''''''''''''''''''
-autocmd filetype cpp nnoremap <silent> <F9> :w<bar> :FloatermNew --autoclose=0 g++ -g -Wall % && ./a.out<cr>
-autocmd FileType python nnoremap <silent> <F11> :w <bar> :FloatermNew --disposable --autoclose=0 python3 %<cr> 
-autocmd FileType rust nnoremap <silent> <F11> :w <bar> :FloatermNew --disposable --autoclose=0 rustc % -o %:r && ./%:r<CR>
-autocmd FileType cpp nnoremap <silent> <F11> :w <bar> :FloatermNew --disposable --autoclose=0 g++ -o %:p:r % <bar> /%:p:r<CR>
-autocmd FileType javascript nnoremap <silent> <F11> :w <bar> :FloatermNew --disposable --autoclose=0 node %<cr> 
-
-"''''''''''''''''''''Font Icons '''''''''''''''''''''''''''''''''''''''
-" set guifont=FiraCodeNerdFont-Regular
-let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 
 
 "##########
@@ -191,6 +92,14 @@ lua <<EOF
 require('options')
 -- keymaps
 require('keymaps')
+
+-- Luasnip
+require("luasnip.loaders.from_vscode").lazy_load()
+-- Code runners 
+require('coderun')
+--plugin short settings
+require('pluginSettings')
+
 
 
 --"''''''''''''''''''''Zero Lsp''''''''''''''''''''''''''''''''''''''''''
@@ -257,9 +166,9 @@ lsp.on_attach(function(client, bufnr)
     end)
 
 --require("lspconfig").jedi_language_server.setup {
---    on_attach = on_attach, 
+--    on_attach = on_attach,
 --    capabilities = capabilities
---    } 
+--    }
 
 --cssls
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -272,7 +181,7 @@ for _, server in ipairs(servers) do
     }
 end
 
-  
+
  -- require'lspconfig'.cssls.setup {
    -- capabilities = capabilities,
   --}
@@ -358,7 +267,7 @@ move = {
 },
   },
 }
-                    
+
 --"''''''''Neotree''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 require("neo-tree").setup({
         close_if_last_window = true,
@@ -385,7 +294,7 @@ require("ibl").setup()
        completion = cmp.config.window.bordered(),
        documentation = cmp.config.window.bordered(),
     },
-    
+
     mapping = {
         ['<Down>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
         ['<C-j>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
@@ -400,13 +309,13 @@ require("ibl").setup()
         behavior = cmp.ConfirmBehavior.Insert,
         select = true,
         })
-        }, 
+        },
 
     sources = cmp.config.sources({
       { name = 'nvim_lsp' },
        { name = 'luasnip' }, -- For luasnip users.
-         { name = 'path' }      
-        }, 
+         { name = 'path' }
+        },
     {
       { name = 'buffer' },
     })
@@ -448,43 +357,5 @@ require('rainbow-delimiters.setup').setup {
     },
 }
 
---'''''''''''''''''''''''''Terminal'''''''''''''''''''''''''''''''''''''''''
 
-
--- ###########
--- #Functions#
--- ###########
-
--- Function to replace the word under the cursor in the selected lines
-vim.cmd([[
-function! ReplaceWordUnderCursorInSelection()
-    let l:current_pos = getpos(".")
-    normal! gv
-    let l:word = expand("<cword>")
-    let l:replacement = input("Replace '" . l:word . "' with: ")
-    call setpos('.', l:current_pos)
-    if !empty(l:replacement)
-        let l:start = line("'<")
-        let l:end = line("'>")
-        execute l:start . "," . l:end . "s/" . l:word . "/" . l:replacement . "/g"
-    endif
-endfunction
-]])
-
--- Function to toggle Floaterm behavior
-local function toggle_floaterm()
-  -- Check if a floaterm buffer exists
-  local bufnr = vim.fn 
-  if bufnr ~= -1 then
-    -- There is a floaterm open
-    vim.cmd('FloatermHide')
-  else
-    -- No floaterm open
-    vim.notify("No Floaterm open.", vim.log.levels.INFO)
-  end
-end
-
-
--- Map F12 in normal mode to close floaterm
-vim.keymap.set('n', '<F12>', toggle_floaterm, { noremap = true, silent = true })
 EOF
