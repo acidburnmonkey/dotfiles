@@ -1,0 +1,155 @@
+
+-- Bootstrap lazy.nvim
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+  local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+  local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+  if vim.v.shell_error ~= 0 then
+    vim.api.nvim_echo({
+      { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
+      { out, "WarningMsg" },
+      { "\nPress any key to exit..." },
+    }, true, {})
+    vim.fn.getchar()
+    os.exit(1)
+  end
+end
+vim.opt.rtp:prepend(lazypath)
+
+local plugins = {
+
+    -- Terminal floating window
+    { "voldikss/vim-floaterm" },
+
+    -- Markdown Preview
+    {
+        "iamcco/markdown-preview.nvim",
+        build = "cd app && npm install",
+        ft = { "markdown" },
+    },
+
+    -- Indent guides
+    {
+        "lukas-reineke/indent-blankline.nvim",
+        main = "ibl",
+        opts = {},
+    },
+
+    -- Color highlighting
+    { "norcalli/nvim-colorizer.lua" },
+
+    -- Undo tree viewer
+    { "mbbill/undotree" },
+
+    -- Devicons
+    { "nvim-tree/nvim-web-devicons", opts = {} },
+
+    -- Neo-tree file explorer
+    {
+        "nvim-neo-tree/neo-tree.nvim",
+        branch = "v3.x",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvim-tree/nvim-web-devicons", 
+            "MunifTanjim/nui.nvim",
+        },
+        lazy = false,
+        opts = { },
+    },
+
+
+    -- Telescope fuzzy finder
+    {
+        'nvim-telescope/telescope.nvim', tag = '0.1.8',
+        dependencies = { 'nvim-lua/plenary.nvim' }
+    },
+
+
+    -- Treesitter
+    {
+        "nvim-treesitter/nvim-treesitter",
+        build = ":TSUpdate",
+    },
+    { "nvim-treesitter/nvim-treesitter-textobjects" },
+
+
+    -- Mason package manager
+    {
+        "williamboman/mason.nvim",
+        "williamboman/mason-lspconfig.nvim",
+        "neovim/nvim-lspconfig",
+    },
+
+
+    -- LuaSnip engine
+    {
+        "L3MON4D3/LuaSnip",
+        tag = "v2.*",
+        build = "make install_jsregexp",
+    },
+    -- LuaSnip snippets
+    { "rafamadriz/friendly-snippets" },
+
+    -- Autopairs
+    { "jiangmiao/auto-pairs" },
+
+    -- Commenting utility
+    { "tpope/vim-commentary" },
+
+    -- Peekup clipboard manager
+    { "gennaro-tedesco/nvim-peekup" },
+
+
+    -- Catppuccin theme
+    { "catppuccin/nvim", 
+    name = "catppuccin", 
+    priority = 1000 },
+
+    -- Surround plugin
+    { "tpope/vim-surround" },
+
+    -- Git integration
+    { "tpope/vim-fugitive" },
+
+    -- Formatter/Linter integration
+    { "nvimtools/none-ls.nvim" },
+
+    -- Treesitter auto-closing tags
+    { "windwp/nvim-ts-autotag" },
+
+    -- Signature marks
+    { "kshenoy/vim-signature" },
+
+    -- Oil file explorer
+    {
+        'stevearc/oil.nvim',
+        opts = {},
+        dependencies = { { "echasnovski/mini.icons", opts = {} } },
+        lazy = false,
+    },
+
+    -- Rainbow delimiters
+    { "HiPhish/rainbow-delimiters.nvim" },
+
+
+    -- Completion engine
+    { "hrsh7th/nvim-cmp" },
+    { "hrsh7th/cmp-buffer" },
+    { "hrsh7th/cmp-path" },
+    { "saadparwaiz1/cmp_luasnip" },
+    { "hrsh7th/cmp-nvim-lsp" },
+    { "hrsh7th/cmp-nvim-lua" },
+
+    -- LSP Zero 
+    { "VonHeikemen/lsp-zero.nvim" },
+
+    -- Airline status/tabline bar
+    { "vim-airline/vim-airline" },
+    { "vim-airline/vim-airline-themes" },
+
+    -- File icons
+    { "ryanoasis/vim-devicons" },
+}
+
+requiere('lazy').setup(plugins)
+

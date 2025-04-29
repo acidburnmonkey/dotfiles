@@ -129,7 +129,6 @@ vim.api.nvim_exec([[
 force_backgraund()
 
 --"'''''''LSP''''''''''''''''''''''''''''''''''''''''''''''''''''''
-
 require("mason").setup({
 ui = {
     icons = {
@@ -165,10 +164,6 @@ lsp.on_attach(function(client, bufnr)
     vim.keymap.set("n", "<C-k>", function() vim.lsp.buf.signature_help() end, opts)
     end)
 
---require("lspconfig").jedi_language_server.setup {
---    on_attach = on_attach,
---    capabilities = capabilities
---    }
 
 --cssls
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -181,10 +176,6 @@ for _, server in ipairs(servers) do
     }
 end
 
-
- -- require'lspconfig'.cssls.setup {
-   -- capabilities = capabilities,
-  --}
 
 --"'''''''''''''''''''Bash lsp , installed trough dnf not plug '''''''''''
 vim.api.nvim_create_autocmd('FileType', {
@@ -223,7 +214,7 @@ null_ls.setup({
 --"'''''''''''''''''''Tree sitter highlight''''''''''''''''''''''''''''''
 require'nvim-treesitter.configs'.setup {
   -- A list of parser names, or "all"
-ensure_installed = { "c", "lua", "rust","bash","python"},
+ensure_installed = { "c", "lua","bash","python"},
 sync_install = false,
 indent = {
     enable = true,
@@ -340,6 +331,7 @@ lsp_file_methods = {
     }
 })
 
+-- highlight function off default
 require("highlight")
 --''''''''''''''''''''''''My snippets''''''''''''''''''''''''''''''''''
 require("lsnip")
@@ -356,6 +348,5 @@ require('rainbow-delimiters.setup').setup {
         -- ...
     },
 }
-
 
 EOF
