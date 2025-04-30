@@ -1,97 +1,10 @@
-"############
-"#   Pugins #
-"############
 
-call plug#begin()
-
-Plug 'rust-lang/rust.vim'
-""''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-Plug 'voldikss/vim-floaterm'
-""''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
-""''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-Plug 'lukas-reineke/indent-blankline.nvim'
-""''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-Plug 'norcalli/nvim-colorizer.lua'
-""''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-Plug 'mbbill/undotree'
-""''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-Plug 'nvim-tree/nvim-web-devicons'
-Plug 'nvim-neo-tree/neo-tree.nvim'
-Plug 'MunifTanjim/nui.nvim'
-""''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
-""''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'nvim-treesitter/nvim-treesitter-textobjects'
-""''''''''''''''''''''''''''''''''''''''''''''''"''''''''''''''''''
-Plug 'williamboman/mason.nvim'
-Plug 'williamboman/mason-lspconfig.nvim'
-Plug 'neovim/nvim-lspconfig'
-""''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-Plug 'L3MON4D3/LuaSnip'
-Plug 'rafamadriz/friendly-snippets'
-"""""""""""""""""""""""""""'''''''''''''''''''''''''''''''''''""""
-Plug 'jiangmiao/auto-pairs'
-Plug 'tpope/vim-commentary'
-""''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
-Plug 'deoplete-plugins/deoplete-jedi'
-""''''''''''''''''''''''''''''''''''''''''''''''''''
-Plug 'gennaro-tedesco/nvim-peekup'
-""''''''''''''''''''''''''''''''''''''''''''''''''''
-Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
-""''''''''''''''''''''''''''''''''''''''''''''''''''
-Plug 'tpope/vim-surround'
-""'''''''''''''''''''''''''''''''''''''''''''''''''''
-Plug 'ryanoasis/vim-devicons'
-""''''''''''''''''''''''''''''''''''''''''''''''''''
-"" Autocompletion
-Plug 'hrsh7th/nvim-cmp'
-Plug 'hrsh7th/cmp-buffer'
-Plug 'hrsh7th/cmp-path'
-Plug 'saadparwaiz1/cmp_luasnip'
-Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'hrsh7th/cmp-nvim-lua'
-Plug 'VonHeikemen/lsp-zero.nvim'
-"" ''''''''''''''''''''''''''''''''''''''''''''''''
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-"" ''''''''''''''''''''''''''''''''''''''''''''''''
-Plug 'tpope/vim-fugitive'
-""''''''''''''''''''''''''''''''''''''''''''''''''
-Plug 'nvimtools/none-ls.nvim'
-""''''''''''''''''''''''''''''''''''''''''''''
-Plug 'windwp/nvim-ts-autotag'
-"''''''''''''''''''''''''''''''''''''''''''''''
-Plug 'kshenoy/vim-signature'
-"''''''''''''''''''''''''''''''''''''''''''''''
-Plug 'stevearc/oil.nvim'
-"''''''''''''''''''''''''''''''''''''''''''''''
-Plug 'L3MON4D3/LuaSnip', {'tag': 'v2.*', 'do': 'make install_jsregexp'}
-"''''''''''''''''''''''''''''''''''''''''''''''''''''''
-Plug 'HiPhish/rainbow-delimiters.nvim'
-"''''''''''''''''''''''''''''''''''''''''''''''''''''''
-
-call plug#end()
-
-
-"##########
-"LUA Block#
-"##########
-lua <<EOF
-
+require('plugins')
 -- General settings
 require('options')
 -- keymaps
 require('keymaps')
+
 
 -- Luasnip
 require("luasnip.loaders.from_vscode").lazy_load()
@@ -99,7 +12,6 @@ require("luasnip.loaders.from_vscode").lazy_load()
 require('coderun')
 --plugin short settings
 require('pluginSettings')
-
 
 
 --"''''''''''''''''''''Zero Lsp''''''''''''''''''''''''''''''''''''''''''
@@ -339,14 +251,65 @@ require("lsnip")
 --''''''''''''''''''''''''rainbow'''''''''''''''''''''''''''''''''''''''
 require('rainbow-delimiters.setup').setup {
     strategy = {
-        -- ...
     },
     query = {
-        -- ...
     },
     highlight = {
-        -- ...
     },
 }
 
-EOF
+--''''''''''Lualine''''''''''''''''''''''''''''''''''''''''''''''''''''
+require('lualine').setup {
+  options = {
+    theme = 'catppuccin',
+    icons_enabled = true,
+    component_separators = { left = ' ', right = ' ' },
+    section_separators = { left = '|', right = '|' },
+  },
+
+  sections = {
+    lualine_z = {
+      function()
+        local line = vim.fn.line('.')
+        local total = vim.fn.line('$')
+        local percent = math.floor((line / total) * 100)
+        return string.format("%3d%%%% %d☰", percent, total)
+      end
+    }
+  }
+}
+
+--'''''''''Barbar''''''''''''''''''''''''''''''''''''''''''''''''''' 
+require('barbar').setup({
+  animation = false,
+  auto_hide = false,
+  tabpages = false,
+  clickable = true,
+  icons = {
+    buffer_index = true,
+    buffer_number = false,
+    diagnostics = {
+      [vim.diagnostic.severity.ERROR] = { enabled = true, icon = ' ' },
+      [vim.diagnostic.severity.WARN] = { enabled = true, icon = ' ' },
+      [vim.diagnostic.severity.INFO] = { enabled = false },
+      [vim.diagnostic.severity.HINT] = { enabled = false },
+    },
+    filetype = {
+      enabled = true,
+    },
+    separator = { left = '▎', right = '' },
+    modified = { button = '●' },
+    pinned = { button = '車', filename = true },
+  },
+})
+
+
+
+
+
+
+
+
+
+
+

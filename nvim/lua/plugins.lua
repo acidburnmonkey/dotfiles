@@ -84,7 +84,6 @@ local plugins = {
     -- LuaSnip engine
     {
         "L3MON4D3/LuaSnip",
-        tag = "v2.*",
         build = "make install_jsregexp",
     },
     -- LuaSnip snippets
@@ -143,13 +142,31 @@ local plugins = {
     -- LSP Zero 
     { "VonHeikemen/lsp-zero.nvim" },
 
-    -- Airline status/tabline bar
-    { "vim-airline/vim-airline" },
-    { "vim-airline/vim-airline-themes" },
-
+    -- Lualine
+    { 'nvim-lualine/lualine.nvim',
+        dependencies = { 'nvim-tree/nvim-web-devicons' } },
+    
     -- File icons
     { "ryanoasis/vim-devicons" },
+
+    -- barbar
+    {
+        'romgrk/barbar.nvim',
+        dependencies = {
+            'nvim-tree/nvim-web-devicons'
+        },
+        init = function()
+            vim.g.barbar_auto_setup = false -- disable auto-setup
+        end,
+        opts = {},
+    },
+
+
+
+
 }
 
-requiere('lazy').setup(plugins)
+local opts = {}
+
+require('lazy').setup(plugins, opts)
 
