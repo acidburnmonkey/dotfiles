@@ -8,17 +8,28 @@ require('keymaps')
 
 -- Luasnip
 require("luasnip.loaders.from_vscode").lazy_load()
--- Code runners 
+-- Code runners
 require('coderun')
 --plugin short settings
 require('pluginSettings')
+
+--############
+-- # Autorun #
+-- ###########
+
+-- remove_trailing_whitespace  on save
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = "*",
+  callback = function()
+    require('functions').remove_trailing_whitespace()
+  end,
+})
+
 
 
 --"''''''''''''''''''''Zero Lsp''''''''''''''''''''''''''''''''''''''''''
 local lsp = require('lsp-zero')
 lsp.setup()
--- Define capabilities
-local capabilities = vim.lsp.protocol.make_client_capabilities()
 
 --"''''''''''''''''''nvim-colorizer'''''''''''''''''''''''''''''''''''''
 require'colorizer'.setup()
@@ -30,7 +41,7 @@ vim.api.nvim_exec([[
     augroup END
 ]], false)
 
---"'''''''''''Force transparency if no compositor installed'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+--'''''''''''''' Theme ''''''''''''''''''''''''''''''''''''''''''''''''
     function force_backgraund(color)
         color = color or "catppuccin-mocha"
         vim.cmd.colorscheme(color)
@@ -39,7 +50,6 @@ vim.api.nvim_exec([[
         vim.api.nvim_set_hl(0, "NormalFloat",{bg = "none"} )
     end
 force_backgraund()
-
 --"'''''''LSP''''''''''''''''''''''''''''''''''''''''''''''''''''''
 require("mason").setup({
 ui = {
@@ -51,7 +61,7 @@ ui = {
     }
 })
 
-local servers = {"clangd", "ts_ls", "pyright", "tailwindcss",'html','stimulus_ls','cssls'}
+local servers = {"clangd", "ts_ls", "pyright", "tailwindcss",'html','stimulus_ls','cssls','lua_ls'}
 require("mason-lspconfig").setup {
     ensure_installed = servers,
 }
@@ -99,6 +109,17 @@ vim.api.nvim_create_autocmd('FileType', {
     })
   end,
 })
+
+
+-- lua_ls
+require'lspconfig'.lua_ls.setup{settings = {
+    Lua = {
+        diagnostics = {
+            globals = { 'vim' }
+        }
+    }
+} }
+
 
 
 --''''''''''''''''Non-ls/null-ls''''''''''''''''
@@ -176,13 +197,15 @@ require("neo-tree").setup({
         close_if_last_window = true,
 })
 
---"nvim-web-devicons'''''''''''''''''''''''''''''''''''''''''''''''''''''
-require('web-devicons')
+--'''''''''''''''''' web-devicons ''''''''''''''''''''''''''''''''''
+require('nvim-web-devicons').setup{}
+
 
 
 --"''''''''''IndentBlankline''''''''''``````````````````````````````````
 require("ibl").setup()
 
+-- '''''''''''''' cmp  ''''''''''''''''''''''''''''''''''''''''''''''''
   -- Set up nvim-cmp.
   local cmp = require'cmp'
 
@@ -261,10 +284,11 @@ require('rainbow-delimiters.setup').setup {
 --''''''''''Lualine''''''''''''''''''''''''''''''''''''''''''''''''''''
 require('lualine').setup {
   options = {
-    theme = 'catppuccin',
+   theme = 'catppuccin',
     icons_enabled = true,
     component_separators = { left = ' ', right = ' ' },
     section_separators = { left = '|', right = '|' },
+    globalstatus = true,
   },
 
   sections = {
@@ -279,10 +303,10 @@ require('lualine').setup {
   }
 }
 
---'''''''''Barbar''''''''''''''''''''''''''''''''''''''''''''''''''' 
+--'''''''''Barbar'''''''''''''''''''''''''''''''''''''''''''''''''''
 require('barbar').setup({
   animation = false,
-  auto_hide = false,
+  auto_hide = 1,
   tabpages = false,
   clickable = true,
   icons = {
@@ -302,14 +326,6 @@ require('barbar').setup({
     pinned = { button = '車', filename = true },
   },
 })
-
-
-
-
-
-
-
-
 
 
 

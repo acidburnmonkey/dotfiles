@@ -11,6 +11,8 @@ vim.g.mkdp_browser = 'chromium-browser'
 -- vim.g.airline_section_z = vim.fn['airline#section#create']({ '%3p%% %L☰' })
 -- vim.g['airline#extensions#tabline#enabled'] = 1
 
+--lualine overide command area color
+vim.api.nvim_set_hl(0, 'MsgArea', { bg = 'NONE' })
 
 
 vim.opt.showmode = false

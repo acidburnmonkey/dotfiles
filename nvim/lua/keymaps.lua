@@ -36,7 +36,7 @@ vim.keymap.set('n', '<leader>d', 'daw', opts)
 vim.keymap.set('n', 'cw', 'ciw', { noremap = true, nowait = true, silent = true }) -- cw = ciw
 
 --use Tab to navigate menu snipets menu
-vim.keymap.set('i', '<Tab>', function() 
+vim.keymap.set('i', '<Tab>', function()
   if vim.fn.pumvisible() == 1 then
     return '<C-n>'
   else

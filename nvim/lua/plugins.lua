@@ -162,8 +162,6 @@ local plugins = {
     },
 
 
-
-
 }
 
 local opts = {}
