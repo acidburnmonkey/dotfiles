@@ -1,23 +1,23 @@
 local opts = { noremap = true, silent = true }
 -- Require functions file
-local funcs = require('functions')
+local functions = require('functions')
 
 
 vim.keymap.set("n", "<leader><TAB>", ":bnext<CR>") -- Tab next
-vim.keymap.set({"x",'v'}, "E", "ge") -- go back
+vim.keymap.set({"x",'v','n'}, "E", "ge") -- go back
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv") -- move block
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv") --  move block
 vim.keymap.set("n", "<leader>r", [[:%s#\<<C-r><C-w>\>#<C-r><C-w>#gI<Left><Left><Left>]]) -- global remap
-vim.keymap.set('v', '<Leader>r',funcs.replace_word_under_cursor_in_selection, opts) -- visual remap
+vim.keymap.set('v', '<leader>r',functions.replace_word_under_cursor_in_selection, opts) -- visual remap
 vim.keymap.set("n", "J", "mzJ`z") -- append line
 vim.keymap.set("n", "<C-d>", "<C-d>zz") --move half page
 vim.keymap.set("n", "<C-u>", "<C-u>zz") --move half page
 
 -- Remove all trailing whitespace by pressing F2
-vim.keymap.set('n', '<F2>', funcs.remove_trailing_whitespace, opts)
+vim.keymap.set('n', '<F2>', functions.remove_trailing_whitespace, opts)
 
 -- Close all buffers (tabs) but the current one
-vim.keymap.set('n', '<leader>b', funcs.bufonly, opts)
+vim.keymap.set('n', '<leader>b', functions.bufonly, opts)
 
 
 -- ############################
@@ -57,16 +57,11 @@ vim.keymap.set('n', 'q', '<Nop>', opts)
 -- ############################
 
 vim.cmd([[nnoremap \ :Neotree toggle<cr>]])
-vim.keymap.set('n', '<F12>', funcs.toggle_floaterm, opts)
+vim.keymap.set('n', '<F12>', functions.toggle_floaterm, opts)
 
 -- To avoid neotree from crashing all vim, closes the tab
-local bufremove = require('bufremove')
-vim.keymap.set("n", "<leader>q", bufremove.bufremove, { desc = "Delete buffer" })
+vim.keymap.set("n", "<leader>q", functions.bufremove, { desc = "Delete buffer" })
 
-
--- To avoid neotree from crashing all vim, closes the tab
-local bufremove = require('bufremove')
-vim.keymap.set("n", "<leader>q", bufremove.bufremove, { desc = "Delete buffer" })
 
 
 --telescope

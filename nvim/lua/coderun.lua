@@ -49,3 +49,21 @@ vim.api.nvim_create_autocmd('FileType', {
     buf_map('n', '<F11>', ':w<bar>:FloatermNew --disposable --autoclose=0 rustc % -o %:r && ./%:r<CR>')
   end,
 })
+
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'lua',
+  callback = function()
+    buf_map('n', '<F10>', ':w<CR>:!lua %<CR>')
+    buf_map('n', '<F11>', ':w<bar>:FloatermNew --disposable --autoclose=0 lua %<CR>')
+  end,
+})
+
+
+vim.api.nvim_create_autocmd('FileType', {
+    pattern = 'typescript',
+    callback = function()
+        buf_map('n', '<F10>', ':w<CR>:!npx tsx %<CR>')
+        buf_map('i', '<F10>', '<Esc>:w<CR>:!npx tsx %<CR>')
+        buf_map('n', '<F11>', ':w<CR>:FloatermNew --disposable --autoclose=0 npx tsx %<CR>')
+    end,
+})

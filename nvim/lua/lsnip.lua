@@ -26,7 +26,7 @@ vim.keymap.set({"i", "s"}, "<S-Tab>", function()
 end, {silent = true})
 
 
---js 
+--js
 ls.add_snippets("javascript",{
     s("soto",{
         t('console.log('),
@@ -36,18 +36,18 @@ ls.add_snippets("javascript",{
 })
 
 ls.add_snippets("javascript",{
-    s("fore", { 
-        i(1), 
-        t(".forEach(item => {"), 
+    s("fore", {
+        i(1),
+        t(".forEach(item => {"),
         t({"", "    "}),
-        i(0), 
-        t({"", "})"}) 
+        i(0),
+        t({"", "})"})
     })
 })
 
 ls.add_snippets("javascript",{
-    s("for", { 
-        t("for (let i =0; i <"), 
+    s("for", {
+        t("for (let i =0; i <"),
         i(1,'array'),
         t('.lenght ; i++){'),
         t({"", "    "}),
@@ -58,12 +58,12 @@ ls.add_snippets("javascript",{
 
 --react
 ls.add_snippets("javascriptreact",{
-    s("fore", { 
-        i(1), 
-        t(".forEach(item => {"), 
+    s("fore", {
+        i(1),
+        t(".forEach(item => {"),
         t({"", "    "}),
-        i(0), 
-        t({"", "})"}) 
+        i(0),
+        t({"", "})"})
     })
 })
 
@@ -76,8 +76,8 @@ ls.add_snippets("javascriptreact",{
 })
 
 ls.add_snippets("javascriptreact",{
-    s("for", { 
-        t("for (let i =0; i <"), 
+    s("for", {
+        t("for (let i =0; i <"),
         i(1,'array'),
         t('.lenght ; i++){'),
         t({"", "    "}),

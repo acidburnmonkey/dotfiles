@@ -10,9 +10,16 @@ config.font_size = 12.0
 config.line_height = 1.0
 
 
+config.window_padding = {
+  left = 0,
+  right = 0,
+  top = 0,
+  bottom = 0,
+}
+
 -- Window appearance
 config.window_background_opacity = 0.92
-config.enable_tab_bar = true
+-- config.enable_tab_bar = true
 config.use_fancy_tab_bar = false
 config.tab_bar_at_bottom = false
 
@@ -34,8 +41,50 @@ config.keys = {
     { key = "t", mods = "ALT", action = wezterm.action.SpawnTab "CurrentPaneDomain" },
     { key = "q", mods = "ALT", action = wezterm.action.CloseCurrentPane { confirm = false } },
 }
-
 -- Theme
 config.color_scheme = "Catppuccin Mocha"
+
+
+local tabline = wezterm.plugin.require("https://github.com/michaelbrusegard/tabline.wez")
+tabline.setup({
+  options = {
+    icons_enabled = true,
+    theme = 'Catppuccin Mocha',
+    tabs_enabled = true,
+    theme_overrides = {},
+    section_separators = {
+      left = wezterm.nerdfonts.pl_left_hard_divider,
+      right = wezterm.nerdfonts.pl_right_hard_divider,
+    },
+    component_separators = {
+      left = wezterm.nerdfonts.pl_left_soft_divider,
+      right = wezterm.nerdfonts.pl_right_soft_divider,
+    },
+    tab_separators = {
+      left = wezterm.nerdfonts.pl_left_hard_divider,
+      right = wezterm.nerdfonts.pl_right_hard_divider,
+    },
+  },
+  sections = {
+    tabline_a = {nil},
+    tabline_b = {nil},
+    tabline_c = {nil},
+    tab_active = {
+      'index',
+      { 'parent', padding = 0 },
+      '/',
+      { 'cwd', padding = { left = 0, right = 1 } },
+      { 'zoomed', padding = 0 },
+    },
+    tab_inactive = { 'index', { 'process', padding = { left = 0, right = 1 } } },
+    tabline_x = {nil},
+    tabline_y = {nil},
+    tabline_z = {nil},
+  },
+  extensions = {},
+})
+
+
+
 
 return config

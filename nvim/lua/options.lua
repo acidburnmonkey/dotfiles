@@ -20,3 +20,7 @@ vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.spelllang = 'en_us'
 vim.opt.spell = false
 vim.opt.hlsearch = false
+
+vim.opt.showmode = false
+vim.opt.showtabline = 2
+vim.opt.cmdheight = 1

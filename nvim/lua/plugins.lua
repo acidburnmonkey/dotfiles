@@ -50,7 +50,7 @@ local plugins = {
         branch = "v3.x",
         dependencies = {
             "nvim-lua/plenary.nvim",
-            "nvim-tree/nvim-web-devicons", 
+            "nvim-tree/nvim-web-devicons",
             "MunifTanjim/nui.nvim",
         },
         lazy = false,
@@ -100,8 +100,8 @@ local plugins = {
 
 
     -- Catppuccin theme
-    { "catppuccin/nvim", 
-    name = "catppuccin", 
+    { "catppuccin/nvim",
+    name = "catppuccin",
     priority = 1000 },
 
     -- Surround plugin
@@ -139,13 +139,13 @@ local plugins = {
     { "hrsh7th/cmp-nvim-lsp" },
     { "hrsh7th/cmp-nvim-lua" },
 
-    -- LSP Zero 
+    -- LSP Zero
     { "VonHeikemen/lsp-zero.nvim" },
 
     -- Lualine
     { 'nvim-lualine/lualine.nvim',
         dependencies = { 'nvim-tree/nvim-web-devicons' } },
-    
+
     -- File icons
     { "ryanoasis/vim-devicons" },
 
@@ -160,7 +160,9 @@ local plugins = {
         end,
         opts = {},
     },
-
+  {
+      'tzachar/local-highlight.nvim',
+  },
 
 }
 
