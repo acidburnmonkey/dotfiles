@@ -95,10 +95,6 @@ local plugins = {
     -- Commenting utility
     { "tpope/vim-commentary" },
 
-    -- Peekup clipboard manager
-    { "gennaro-tedesco/nvim-peekup" },
-
-
     -- Catppuccin theme
     { "catppuccin/nvim",
     name = "catppuccin",
