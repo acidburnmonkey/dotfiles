@@ -29,12 +29,11 @@ alias neogit='onefetch'
 alias update-grub='sudo grub2-mkconfig -o /boot/grub2/grub.cfg & grub2-mkconfig -o /boot/efi/EFI/fedora/grub.cfg'
 alias vim='nvim'
 alias xc='wl-copy'
-alias pycheck='python -m pylint --disable=R,C'
 alias goadum='ssh -X mal0@192.168.1.146'
 alias zz=' source $HOME/scripts/virtuals.sh'
 alias docker-compose='docker compose'
 alias ranger='source ranger'
-alias dps='docker container ls --format "table {{.ID}}\t{{.Names}}\t{{.Ports}}" -a' 
+alias dps='docker container ls --format "table {{.ID}}\t{{.Names}}\t{{.Ports}}" -a'
 
 ### Plugins ###
 plugins=(git zsh-autosuggestions python virtualenv fzf)

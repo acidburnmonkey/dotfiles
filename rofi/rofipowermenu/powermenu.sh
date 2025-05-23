@@ -61,14 +61,14 @@ run_rofi() {
 run_cmd() {
 	selected="$(confirm_exit)"
 	if [[ "$selected" == "$yes" ]]; then
-       	
-               
+
+
                 if [[ $1 == '--shutdown' ]]; then
-		       systemctl poweroff 
+		       systemctl poweroff
 		elif [[ $1 == '--reboot' ]]; then
 			 systemctl reboot
 	        elif [[ $1 == '--logout' ]]; then
-		        kill -9 -1  		
+		        kill -9 -1
 	fi
        else
 		exit 0
@@ -85,7 +85,7 @@ case ${chosen} in
 		run_cmd --reboot
         ;;
     $lock)
-        i3lock  -t -i ~/.config/i3/lock.png 
+        i3lock  -t -i ~/.config/i3/lock.png
         ;;
     $logout)
 		run_cmd --logout

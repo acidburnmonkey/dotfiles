@@ -21,7 +21,7 @@ ui = {
     }
 })
 
-local servers = {"clangd", "ts_ls", "pyright", "tailwindcss",'html','stimulus_ls','cssls','lua_ls'}
+local servers = {"clangd", "ts_ls", "pyright", "tailwindcss",'html' ,'stimulus_ls','cssls','lua_ls'}
 require("mason-lspconfig").setup {
     ensure_installed = servers,
 }
@@ -75,7 +75,7 @@ vim.api.nvim_create_autocmd('FileType', {
 require'lspconfig'.lua_ls.setup{settings = {
     Lua = {
         diagnostics = {
-            globals = { 'vim' }
+            globals = { 'vim' ,'require'}
         }
     }
 } }
@@ -83,12 +83,11 @@ require'lspconfig'.lua_ls.setup{settings = {
 --ts_ls
 require("lspconfig").ts_ls.setup{
   settings = {
-    implicitProjectConfiguration = {
-      checkJs = true
-    },
+    -- implicitProjectConfiguration = {
+    --   checkJs = true
+    -- },
   }
 }
-
 
 --''''''''''''''''Non-ls/null-ls''''''''''''''''
 local null_ls = require("null-ls")

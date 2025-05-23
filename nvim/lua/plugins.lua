@@ -107,7 +107,10 @@ local plugins = {
     { "tpope/vim-fugitive" },
 
     -- Formatter/Linter integration
-    { "nvimtools/none-ls.nvim" },
+    { "nvimtools/none-ls.nvim" ,
+        dependencies = {
+        "nvimtools/none-ls-extras.nvim",},
+    } ,
 
     -- Treesitter auto-closing tags
     { "windwp/nvim-ts-autotag" },

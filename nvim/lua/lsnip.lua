@@ -7,13 +7,13 @@ local i = ls.insert_node
 
 
 -- Keybindings for LuaSnip jumping
-vim.keymap.set({"i", "s"}, "<Tab>", function()
+vim.keymap.set({"i", "s"}, '<C-j>', function()
     if require("luasnip").expand_or_jumpable() then
         require("luasnip").jump(1)
     end
 end, {silent = true})
 
-vim.keymap.set({"i", "s"}, "<S-Tab>", function()
+vim.keymap.set({"i", "s"}, "<C-K>", function()
     if require("luasnip").jumpable(-1) then
         require("luasnip").jump(-1)
     end

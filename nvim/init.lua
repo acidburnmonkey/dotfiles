@@ -26,6 +26,9 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   end,
 })
 
+--''''''''''''''''''''''''My snippets''''''''''''''''''''''''''''''''''
+require("lsnip")
+
 --"''''''''''''''''''nvim-colorizer'''''''''''''''''''''''''''''''''''''
 require'colorizer'.setup()
 -- this is an autocomand to force colorizer to attatch to some files
@@ -57,13 +60,12 @@ require('nvim-web-devicons').setup{}
 --"''''''''''IndentBlankline''''''''''``````````````````````````````````
 require("ibl").setup()
 
--- '''''''''''''' cmp  ''''''''''''''''''''''''''''''''''''''''''''''''
+-- '''''''''''''' cmp ''''''''''''''''''''''''''''''''''''''''''''''''
   -- Set up nvim-cmp.
   local cmp = require'cmp'
 
-  cmp.setup({
+cmp.setup({
     snippet = {
-      -- REQUIRED - you must specify a snippet engine
       expand = function(args)
          require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
       end,
@@ -82,12 +84,20 @@ require("ibl").setup()
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
         ['<C-Space>'] = cmp.mapping.complete(),
         ['<C-e>'] = cmp.mapping.close(),
-        ['<Tab>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 's' }),
         ['<CR>'] = cmp.mapping.confirm({
         behavior = cmp.ConfirmBehavior.Insert,
         select = true,
-        })
-        },
+        }),
+
+['<Tab>'] = cmp.mapping(function(fallback)
+  if cmp.visible() then
+    cmp.select_next_item()
+  else
+    fallback()
+  end
+end, { 'i', 's' }),
+
+},
 
     sources = cmp.config.sources({
       { name = 'nvim_lsp' },
@@ -118,8 +128,6 @@ lsp_file_methods = {
     }
 })
 
---''''''''''''''''''''''''My snippets''''''''''''''''''''''''''''''''''
-require("lsnip")
 
 --''''''''''''''''''''''''rainbow'''''''''''''''''''''''''''''''''''''''
 require('rainbow-delimiters.setup').setup {

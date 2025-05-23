@@ -35,6 +35,7 @@ vim.keymap.set('v', 'd', '"_d', opts)
 vim.keymap.set('n', '<leader>d', 'daw', opts)
 vim.keymap.set('n', 'cw', 'ciw', { noremap = true, nowait = true, silent = true }) -- cw = ciw
 
+
 --use Tab to navigate menu snipets menu
 vim.keymap.set('i', '<Tab>', function()
   if vim.fn.pumvisible() == 1 then
@@ -80,6 +81,14 @@ vim.api.nvim_create_autocmd('FileType', {
   pattern = 'python',
   callback = function()
       vim.fn.setreg('l',"yoprint('".. esc.. "pa:"  ..esc.. "la," .. esc .. "pl")
+  end,
+})
+
+--prints seclected value @l
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = {'javascript','typescript'},
+  callback = function()
+      vim.fn.setreg('l',"yoconsole.log('".. esc.. "pa:"  ..esc.. "la," .. esc .. "pl")
   end,
 })
 
