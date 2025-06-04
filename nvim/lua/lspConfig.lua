@@ -50,15 +50,10 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 
-for _, server in ipairs(servers) do
-    require("lspconfig")[server].setup {
-        on_attach = lsp_attach,
-        capabilities = capabilities,
-    }
-end
-
-
+lsp.on_attach(lsp_attach)
+lsp.default_capabilities = capabilities
 lsp.setup()
+
 --"'''''''''''''''''''Bash lsp , installed trough dnf not plug '''''''''''
 vim.api.nvim_create_autocmd('FileType', {
   pattern = 'sh',
