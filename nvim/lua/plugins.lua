@@ -138,8 +138,6 @@ local plugins = {
     { "hrsh7th/cmp-nvim-lsp" },
     { "hrsh7th/cmp-nvim-lua" },
 
-    -- LSP Zero
-    { "VonHeikemen/lsp-zero.nvim" },
 
     -- Lualine
     { 'nvim-lualine/lualine.nvim',
@@ -159,10 +157,20 @@ local plugins = {
         end,
         opts = {},
     },
+-- highlight
   {
       'tzachar/local-highlight.nvim',
   },
 
+
+{
+    'ChuufMaster/buffer-vacuum',
+    opts = {
+      max_buffers = 2,
+      count_pinned_buffers = false,
+      enable_messages = false,
+    },
+  },
 }
 
 local opts = {}

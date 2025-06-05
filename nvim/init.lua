@@ -188,5 +188,4 @@ require('barbar').setup({
 -- '''''''''''' highlight ''''''''''''''''''''''''''''''''''''''''
 require('local-highlight').setup({ animate = { enabled = false}})
 
--- '''''''''' peekup ''''''''''''''''''''''''''''''''''''''''''''
 
