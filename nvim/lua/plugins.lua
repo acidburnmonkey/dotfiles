@@ -90,7 +90,11 @@ local plugins = {
     { "rafamadriz/friendly-snippets" },
 
     -- Autopairs
-    { "jiangmiao/auto-pairs" },
+    {
+        'windwp/nvim-autopairs',
+        event = "InsertEnter",
+        config = true
+    },
 
     -- Commenting utility
     { "tpope/vim-commentary" },

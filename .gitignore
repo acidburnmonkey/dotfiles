@@ -7,3 +7,4 @@ sublime-text/Local/*
 /sublime-text/Log/*
 /sublime-text/Trash/*
 nvim/autoload/plug.vim.old
+nvim/.luarc.json
