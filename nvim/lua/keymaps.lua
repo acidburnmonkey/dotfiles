@@ -13,8 +13,8 @@ vim.keymap.set("n", "J", "mzJ`z") -- append line
 vim.keymap.set("n", "<C-d>", "<C-d>zz") --move half page
 vim.keymap.set("n", "<C-u>", "<C-u>zz") --move half page
 
--- Remove all trailing whitespace by pressing F2
-vim.keymap.set('n', '<F2>', functions.remove_trailing_whitespace, opts)
+-- Remove all trailing whitespace by pressing F3
+vim.keymap.set('n', '<F3>', functions.remove_trailing_whitespace, opts)
 
 -- Close all buffers (tabs) but the current one
 vim.keymap.set('n', '<leader>b', functions.bufonly, opts)
@@ -46,9 +46,7 @@ vim.keymap.set('i', '<Tab>', function()
 end, { expr = true, noremap = true })
 
 -- Disable
-vim.keymap.set('', '<F1>', '<Nop>', opts)
-vim.keymap.set('n', '<F1>', '<Esc>', opts)
-vim.keymap.set('i', '<F1>', '<Esc>', opts)
+vim.keymap.set({'x','v','n'}, '<F1>', '<Nop>', opts)
 vim.keymap.set('n', 's', '<Nop>', opts)
 vim.keymap.set('n', 'S', '<Nop>', opts)
 vim.keymap.set('n', 'q', '<Nop>', opts)

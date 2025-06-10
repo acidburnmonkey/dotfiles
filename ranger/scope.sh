@@ -171,12 +171,12 @@ handle_image() {
             exit 7;;
 
         ## Video
-        # video/*)
-        #     # Get embedded thumbnail
-        #     ffmpeg -i "${FILE_PATH}" -map 0:v -map -0:V -c copy "${IMAGE_CACHE_PATH}" && exit 6
-        #     # Get frame 10% into video
-        #     ffmpegthumbnailer -i "${FILE_PATH}" -o "${IMAGE_CACHE_PATH}" -s 0 && exit 6
-        #     exit 1;;
+        video/*)
+            # Get embedded thumbnail
+            ffmpeg -i "${FILE_PATH}" -map 0:v -map -0:V -c copy "${IMAGE_CACHE_PATH}" && exit 6
+            # Get frame 10% into video
+            ffmpegthumbnailer -i "${FILE_PATH}" -o "${IMAGE_CACHE_PATH}" -s 0 && exit 6
+            exit 1;;
 
         ## Audio
         # audio/*)
@@ -413,7 +413,7 @@ handle_mime() {
             exit 5;;
 
         ## Text
-       text/* | */xml | */javascript) 
+       text/* | */xml | */javascript)
             ## Syntax highlight
             if [[ "$( stat --printf='%s' -- "${FILE_PATH}" )" -gt "${HIGHLIGHT_SIZE_MAX}" ]]; then
                 exit 2
