@@ -21,7 +21,7 @@ vim.keymap.set('n', '<leader>b', functions.bufonly, opts)
 
 
 -- ############################
--- Default behabior overrides #
+-- Default behavior overrides #
 -- ############################
 
 vim.keymap.set("n", "x", [["_x]]) --void x
@@ -36,7 +36,7 @@ vim.keymap.set('n', '<leader>d', 'daw', opts)
 vim.keymap.set('n', 'cw', 'ciw', { noremap = true, nowait = true, silent = true }) -- cw = ciw
 
 
---use Tab to navigate menu snipets menu
+--use Tab to navigate menu snippets menu
 vim.keymap.set('i', '<Tab>', function()
   if vim.fn.pumvisible() == 1 then
     return '<C-n>'
@@ -52,7 +52,7 @@ vim.keymap.set('n', 'S', '<Nop>', opts)
 vim.keymap.set('n', 'q', '<Nop>', opts)
 
 -- ############################
--- Pluggins keymaps           #
+-- Plugins keymaps           #
 -- ############################
 
 vim.cmd([[nnoremap \ :Neotree toggle<cr>]])

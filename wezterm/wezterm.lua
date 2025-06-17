@@ -1,12 +1,15 @@
 local wezterm = require 'wezterm'
 local config = wezterm.config_builder()
 
+
+config.enable_wayland = false
+
 -- Font config
 config.font = wezterm.font_with_fallback {
   { family = "Fira Code", weight = "Regular" },
   "Symbols Nerd Font",
 }
-config.font_size = 12.0
+config.font_size = 22.0
 config.line_height = 1.0
 
 
@@ -40,6 +43,8 @@ config.keys = {
     { key = "RightArrow", mods = "CTRL", action = wezterm.action.ActivateTabRelative(1) },
     { key = "t", mods = "ALT", action = wezterm.action.SpawnTab "CurrentPaneDomain" },
     { key = "q", mods = "ALT", action = wezterm.action.CloseCurrentPane { confirm = false } },
+     { key = 'U', mods = 'CTRL|SHIFT', action = wezterm.action.AttachDomain 'unix',
+  },
 }
 -- Theme
 config.color_scheme = "Catppuccin Mocha"
@@ -84,7 +89,17 @@ tabline.setup({
   extensions = {},
 })
 
+config.unix_domains = {
+  {
+    name = 'unix',
+  }
+}
 
+local mux = wezterm.mux
 
+wezterm.on('gui-startup', function(cmd)
+  local tab, pane, window = mux.spawn_window(cmd or {})
+  window:gui_window():maximize()
+end)
 
 return config

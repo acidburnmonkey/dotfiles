@@ -2,21 +2,28 @@
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
-  local lazyrepo = "https://github.com/folke/lazy.nvim.git"
-  local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
-  if vim.v.shell_error ~= 0 then
-    vim.api.nvim_echo({
-      { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
-      { out, "WarningMsg" },
-      { "\nPress any key to exit..." },
-    }, true, {})
-    vim.fn.getchar()
-    os.exit(1)
-  end
+    local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+    local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+    if vim.v.shell_error ~= 0 then
+        vim.api.nvim_echo({
+            { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
+            { out, "WarningMsg" },
+            { "\nPress any key to exit..." },
+        }, true, {})
+        vim.fn.getchar()
+        os.exit(1)
+    end
 end
 vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
+    -- mine
+    {
+        'acidburnmonkey/ruffer',
+        config = function()
+            require('ruffer').setup()
+        end,
+    },
 
     -- Terminal floating window
     { "voldikss/vim-floaterm" },
@@ -112,7 +119,7 @@ local plugins = {
 
     -- Formatter/Linter integration
     { "nvimtools/none-ls.nvim" ,
-        dependencies = {
+    dependencies = {
         "nvimtools/none-ls-extras.nvim",},
     } ,
 
@@ -145,7 +152,7 @@ local plugins = {
 
     -- Lualine
     { 'nvim-lualine/lualine.nvim',
-        dependencies = { 'nvim-tree/nvim-web-devicons' } },
+    dependencies = { 'nvim-tree/nvim-web-devicons' } },
 
     -- File icons
     { "ryanoasis/vim-devicons" },
@@ -161,20 +168,25 @@ local plugins = {
         end,
         opts = {},
     },
--- highlight
-  {
-      'tzachar/local-highlight.nvim',
-  },
-
-
-{
-    'ChuufMaster/buffer-vacuum',
-    opts = {
-      max_buffers = 2,
-      count_pinned_buffers = false,
-      enable_messages = false,
+    -- highlight
+    {
+        'tzachar/local-highlight.nvim',
     },
-  },
+
+    -- buffer vacuum
+    {
+        'ChuufMaster/buffer-vacuum',
+        opts = {
+            max_buffers = 2,
+            count_pinned_buffers = false,
+            enable_messages = false,
+        },
+    },
+
+    -- telescope pluggin
+    {'nvim-telescope/telescope-ui-select.nvim' },
+
+
 }
 
 local opts = {}

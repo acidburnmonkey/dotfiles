@@ -1,3 +1,5 @@
+name: TruffleHog OSS
+
 on:
   push:
     branches:

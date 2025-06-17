@@ -24,7 +24,7 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 -- LSP attach callback
-local on_attach = function(client, bufnr)
+local lsp_attach = function(client, bufnr)
   -- Helper function to set buffer-local keymaps
   local bufmap = function(mode, lhs, rhs, desc)
     vim.keymap.set(mode, lhs, rhs, { buffer = bufnr, desc = desc })
@@ -49,7 +49,7 @@ local servers = { "clangd", "ts_ls", "pyright", "tailwindcss", "html", "stimulus
 
 
 
---Uncoment on first run
+------Uncoment on first run
 -- require("mason-lspconfig").setup({
 --   ensure_installed = servers,
 -- })
@@ -60,7 +60,7 @@ local lspconfig = require("lspconfig")
 for _, server in ipairs(servers) do
     lspconfig[server].setup({
             capabilities = capabilities,
-            on_attach = on_attach,
+            on_attach = lsp_attach
         })
     end
 
@@ -69,22 +69,23 @@ for _, server in ipairs(servers) do
 local null_ls = require("null-ls")
 
 null_ls.setup({
-  sources = {
-    null_ls.builtins.diagnostics.cppcheck,
-    null_ls.builtins.formatting.prettierd.with({
-      extra_args = { "--single-quote" },
-    }),
-  },
-  on_attach = function(client, bufnr)
-    if client.supports_method("textDocument/formatting") then
-      vim.api.nvim_create_autocmd("BufWritePre", {
-        buffer = bufnr,
-        callback = function()
-          vim.lsp.buf.format({ bufnr = bufnr })
-        end,
-      })
-    end
-  end,
+    sources = {
+        null_ls.builtins.diagnostics.cppcheck,
+        null_ls.builtins.diagnostics.codespell,
+        null_ls.builtins.formatting.prettierd.with({
+            extra_args = { "--single-quote" },
+        }),
+    },
+    on_attach = function(client, bufnr)
+        if client.supports_method("textDocument/formatting") then
+            vim.api.nvim_create_autocmd("BufWritePre", {
+                buffer = bufnr,
+                callback = function()
+                    vim.lsp.buf.format({ bufnr = bufnr })
+                end,
+            })
+        end
+    end,
 })
 
 --"'''''''''''''''''''Tree sitter highlight''''''''''''''''''''''''''''''

@@ -14,6 +14,7 @@ require('coderun')
 require('pluginSettings')
 require('lspConfig')
 
+
 --############
 -- # Autorun #
 -- ###########
@@ -26,7 +27,29 @@ vim.api.nvim_create_autocmd("BufWritePre", {
     end,
 })
 
+-- treat qss as css
+--
+vim.api.nvim_create_autocmd({"BufNewFile", "BufRead"}, {
+  pattern = "*.qss",
+  command = "set filetype=css"
+})
 
+--############
+--# setup   #
+--###########
+
+
+-- telescope
+require("telescope").setup {
+    extensions = {
+        ["ui-select"] = {
+            require("telescope.themes").get_dropdown {
+            },
+        },
+    },
+}
+
+require("telescope").load_extension("ui-select")
 
 
 -- ''''''''''Splash''''''''''''''''''''''''''''''''''''''''''''''''''''
@@ -41,12 +64,12 @@ require'colorizer'.setup()
 vim.api.nvim_exec([[
 augroup ColorizerAttach
 autocmd!
-autocmd BufRead,BufNewFile *.config,*.rasi,*.conf :ColorizerAttachToBuffer
+autocmd BufRead,BufNewFile *.config,*.rasi,*.conf,*.qss,*.css :ColorizerAttachToBuffer
 augroup END
 ]], false)
 
 --'''''''''''''' Theme ''''''''''''''''''''''''''''''''''''''''''''''''
-function force_backgraund(color)
+local function force_backgraund(color)
     color = color or "catppuccin-mocha"
     vim.cmd.colorscheme(color)
 
