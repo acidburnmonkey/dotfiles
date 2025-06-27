@@ -28,11 +28,22 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 })
 
 -- treat qss as css
---
 vim.api.nvim_create_autocmd({"BufNewFile", "BufRead"}, {
   pattern = "*.qss",
   command = "set filetype=css"
 })
+
+
+
+-- set spelling on these files
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "markdown", "text" },
+  callback = function()
+    vim.opt_local.spell = true
+  end,
+})
+
+
 
 --############
 --# setup   #
@@ -60,7 +71,7 @@ require("lsnip")
 
 --"''''''''''''''''''nvim-colorizer'''''''''''''''''''''''''''''''''''''
 require'colorizer'.setup()
--- this is an autocomand to force colorizer to attatch to some files
+-- this is an autocomand to force colorizer to attach to some files
 vim.api.nvim_exec([[
 augroup ColorizerAttach
 autocmd!

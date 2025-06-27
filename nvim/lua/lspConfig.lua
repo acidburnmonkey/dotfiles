@@ -47,8 +47,6 @@ end
 -- Mason-LSPconfig setup
 local servers = { "clangd", "ts_ls", "pyright", "tailwindcss", "html", "stimulus_ls", "cssls", "lua_ls" }
 
-
-
 ------Uncoment on first run
 -- require("mason-lspconfig").setup({
 --   ensure_installed = servers,
@@ -63,6 +61,29 @@ for _, server in ipairs(servers) do
             on_attach = lsp_attach
         })
     end
+
+
+local util = require("lspconfig.util")
+require('lspconfig').pyright.setup{
+    capabilities = capabilities,
+    on_attach = lsp_attach,
+    root_dir  = util.root_pattern(
+        'pyproject.toml',
+        'requirements.txt',
+        '.git'
+    ),
+    settings = {
+        python = {
+            analysis = {
+                autoSearchPaths = true,
+                useLibraryCodeForTypes = true,
+                stubPath = "",
+                diagnosticMode           = 'workspace',
+                autoImportCompletions    = true,
+            },
+        },
+    },
+}
 
 
 --''''''''''''''''Non-ls/null-ls''''''''''''''''

@@ -13,9 +13,6 @@ vim.keymap.set("n", "J", "mzJ`z") -- append line
 vim.keymap.set("n", "<C-d>", "<C-d>zz") --move half page
 vim.keymap.set("n", "<C-u>", "<C-u>zz") --move half page
 
--- Remove all trailing whitespace by pressing F3
-vim.keymap.set('n', '<F3>', functions.remove_trailing_whitespace, opts)
-
 -- Close all buffers (tabs) but the current one
 vim.keymap.set('n', '<leader>b', functions.bufonly, opts)
 
@@ -38,11 +35,11 @@ vim.keymap.set('n', 'cw', 'ciw', { noremap = true, nowait = true, silent = true 
 
 --use Tab to navigate menu snippets menu
 vim.keymap.set('i', '<Tab>', function()
-  if vim.fn.pumvisible() == 1 then
-    return '<C-n>'
-  else
-    return '<Tab>'
-  end
+    if vim.fn.pumvisible() == 1 then
+        return '<C-n>'
+    else
+        return '<Tab>'
+    end
 end, { expr = true, noremap = true })
 
 -- Disable
@@ -66,27 +63,59 @@ vim.keymap.set('n', '<leader>ff', "<cmd>lua require'telescope.builtin'.find_file
 vim.keymap.set('n', '<leader>fr', "<cmd>lua require'telescope.builtin'.buffers({ show_all_buffers = true })<cr>")
 vim.keymap.set('n', '<leader>fg', "<cmd>lua require('telescope.builtin').live_grep()<cr>")
 
+-- Splelling suggestions on s
+vim.keymap.set('n','s',function()
+  local win  = 0
+  local pos  = vim.api.nvim_win_get_cursor(win)
+  local w    = vim.fn.expand('<cword>')
+  local info = vim.fn.spellbadword()
+  vim.api.nvim_win_set_cursor(win, pos)
+
+  if info[1] == w and info[2] ~= '' then
+    require('telescope.builtin').spell_suggest(
+      require('telescope.themes').get_cursor{ winblend = 5 }
+    )
+  end
+end,{desc='Telescope spell suggestions (only on typo under cursor)'})
+
+
 vim.keymap.set('n', '<leader>u', ':UndotreeToggle<CR>', opts)
 vim.keymap.set('n', '<leader>-', ':IBLToggle<CR>', opts)
+
+
+
+-- show diagnostics
+vim.keymap.set('n', '<F3>', function()
+  require('telescope.builtin').diagnostics(
+    require('telescope.themes').get_ivy{
+      -- only show errors & warnings, not hints/info:
+      severity_limit = vim.diagnostic.severity.WARN,
+      layout_config = { height = 0.3 },
+    }
+  )
+end, { desc = 'Telescope: show all diagnostics' })
+
 
 -- ########
 -- Macros #
 -- ########
-local esc = vim.api.nvim_replace_termcodes("<Esc>",true,true,true)
 
---prints seclected value @l
-vim.api.nvim_create_autocmd('FileType', {
-  pattern = 'python',
-  callback = function()
-      vim.fn.setreg('l',"yoprint('".. esc.. "pa:"  ..esc.. "la," .. esc .. "pl")
-  end,
+local esc = vim.api.nvim_replace_termcodes("<Esc>",true,true,true)
+local cr  = vim.api.nvim_replace_termcodes("<C-R>\"", true, true, true)
+--
+-- Python: set up a single-keystroke macro in register ‘l’
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "python",
+    callback = function()
+        vim.fn.setreg("l", "y" .. "oprint('" .. cr .. ":' , " .. cr .. ")" .. esc)
+    end,
 })
 
---prints seclected value @l
-vim.api.nvim_create_autocmd('FileType', {
-  pattern = {'javascript','typescript'},
-  callback = function()
-      vim.fn.setreg('l',"yoconsole.log('".. esc.. "pa:"  ..esc.. "la," .. esc .. "pl")
-  end,
+-- JavaScript/TypeScript: same idea with console.log
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = { "javascript", "typescript" },
+    callback = function()
+        vim.fn.setreg("l", "y" .. "oconsole.log('" .. cr .. ":' , " .. cr .. ");" .. esc)
+    end,
 })
 

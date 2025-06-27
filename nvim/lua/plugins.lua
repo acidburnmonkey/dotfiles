@@ -43,7 +43,7 @@ local plugins = {
     },
 
     -- Color highlighting
-    { "norcalli/nvim-colorizer.lua" },
+    { "catgoose/nvim-colorizer.lua"},
 
     -- Undo tree viewer
     { "mbbill/undotree" },
