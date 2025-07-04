@@ -92,6 +92,9 @@ force_backgraund()
 --"''''''''Neotree''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 require("neo-tree").setup({
     close_if_last_window = true,
+    filesystem = {
+        hijack_netrw_behavior = "disabled",
+    }
 })
 
 --'''''''''''''''''' web-devicons ''''''''''''''''''''''''''''''''''
@@ -196,6 +199,7 @@ require('nvim-ts-autotag').setup({
 
 --'''''''''''''''OIL'''''''''''''''''''''''''''''''''''''''''''''''
 require("oil").setup({
+    default_file_explorer = true,
     lsp_file_methods = {
         enabled = true,
         timeout_ms = 1000,
