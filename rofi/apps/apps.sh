@@ -22,17 +22,17 @@ fi
 
 # CMDs (add your apps here)
 term_cmd='thunderbird'
-file_cmd='flatpak run codes.merritt.FeelingFinder'
+file_cmd='flatpak run io.github.flattool.Warehouse'
 text_cmd='flatpak run md.obsidian.Obsidian'
 web_cmd='firefox -no-remote -P School'
-music_cmd='flatpak run com.discordapp.Discord'
+music_cmd='flatpak run com.discordapp.DiscordCanary'
 setting_cmd='steam'
 
 # Options
 layout=`cat ${theme} | grep 'USE_ICON' | cut -d'=' -f2`
 if [[ "$layout" == 'NO' ]]; then
 	option_1=" Thunderbird<span weight='light' size='small'></span>"
-	option_2=" Emoji <span weight='light' size='small'></span>"
+	option_2=" Flatpak <span weight='light' size='small'></span>"
 	option_3=" Obsidian<span weight='light' size='small'></span>"
 	option_4=" School<span weight='light' size='small'></span>"
 	option_5=" Discord <span weight='light' size='small'></span>"
