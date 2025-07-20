@@ -35,6 +35,7 @@ alias docker-compose='docker compose'
 alias ranger='source ranger'
 alias dps='docker container ls --format "table {{.ID}}\t{{.Names}}\t{{.Ports}}" -a'
 alias sr='source .venv/bin/activate'
+alias ncdu='ncdu --color dark'
 
 ### Plugins ###
 plugins=(git zsh-autosuggestions python virtualenv fzf)

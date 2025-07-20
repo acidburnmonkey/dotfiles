@@ -85,7 +85,6 @@ require('lspconfig').pyright.setup{
     },
 }
 
-
 --''''''''''''''''Non-ls/null-ls''''''''''''''''
 local null_ls = require("null-ls")
 
@@ -93,6 +92,7 @@ null_ls.setup({
     sources = {
         null_ls.builtins.diagnostics.cppcheck,
         null_ls.builtins.diagnostics.codespell,
+        null_ls.builtins.diagnostics.hadolint,
         null_ls.builtins.formatting.prettierd.with({
             extra_args = { "--single-quote" },
         }),

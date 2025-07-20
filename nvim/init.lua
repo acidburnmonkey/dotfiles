@@ -89,11 +89,34 @@ local function force_backgraund(color)
 end
 force_backgraund()
 
+--'''''''''''''''OIL'''''''''''''''''''''''''''''''''''''''''''''''
+require("oil").setup({
+    default_file_explorer = true,
+    keymaps = {
+        ["?"] = { "actions.show_help", mode = "n" },
+        ["<CR>"] = "actions.select",
+        ["<C-s>"] = { "actions.select", opts = { vertical = true } },
+        ["<C-h>"] = { "actions.select", opts = { horizontal = true } },
+        ["<C-t>"] = { "actions.select", opts = { tab = true } },
+        ["-"] = { "actions.parent", mode = "n" },
+        ["_"] = { "actions.open_cwd", mode = "n" },
+        ["gs"] = { "actions.change_sort", mode = "n" },
+        ["gx"] = "actions.open_external",
+        ["H"] = { "actions.toggle_hidden", mode = "n" },
+    },
+    lsp_file_methods = {
+        enabled = true,
+        timeout_ms = 1000,
+        autosave_changes = false,
+    }
+})
+
+
 --"''''''''Neotree''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 require("neo-tree").setup({
     close_if_last_window = true,
     filesystem = {
-        hijack_netrw_behavior = "disabled",
+        hijack_netrw_behavior = "disabled"
     }
 })
 
@@ -196,16 +219,6 @@ require('nvim-ts-autotag').setup({
     },
 })
 
-
---'''''''''''''''OIL'''''''''''''''''''''''''''''''''''''''''''''''
-require("oil").setup({
-    default_file_explorer = true,
-    lsp_file_methods = {
-        enabled = true,
-        timeout_ms = 1000,
-        autosave_changes = false,
-    }
-})
 
 
 --''''''''''''''''''''''''rainbow'''''''''''''''''''''''''''''''''''''''
