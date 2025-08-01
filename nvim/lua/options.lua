@@ -16,10 +16,23 @@ vim.opt.encoding = 'utf-8'
 vim.opt.termguicolors = true
 
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
--- Spell generall options
+-- Spell generally options
 vim.opt.spelllang = 'en_us'
 vim.opt.spell = false
 vim.opt.hlsearch = false
 
 vim.opt.showmode = false
 vim.opt.showtabline = 2
+
+vim.g.clipboard = {
+  name = 'wl-clipboard',
+  copy = {
+    ['+'] = 'wl-copy',
+    ['*'] = 'wl-copy',
+  },
+  paste = {
+    ['+'] = 'wl-paste',
+    ['*'] = 'wl-paste',
+  },
+  cache_enabled = 0,
+}

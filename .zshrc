@@ -7,6 +7,8 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 #
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
+#
+export ZSH_COMPDUMP=$ZSH/cache/.zcompdump-$HOST
 export EDITOR='nvim'
 export VISUAL='nvim'
 export PATH="$HOME/scripts:$PATH"
@@ -30,7 +32,7 @@ alias update-grub='sudo grub2-mkconfig -o /boot/grub2/grub.cfg & grub2-mkconfig 
 alias vim='nvim'
 alias xc='wl-copy'
 alias goadum='ssh -x mal0@192.168.1.146'
-alias zz='bash $HOME/scripts/virtuals.sh'
+alias zz='python $HOME/scripts/devmode.py'
 alias docker-compose='docker compose'
 alias ranger='source ranger'
 alias dps='docker container ls --format "table {{.ID}}\t{{.Names}}\t{{.Ports}}" -a'
@@ -46,6 +48,16 @@ function cd {
 
 function .. {
     builtin cd .. "$@" && ls -F
+}
+
+function man {
+    LESS_TERMCAP_md=$'\e[01;31m' \
+    LESS_TERMCAP_me=$'\e[0m' \
+    LESS_TERMCAP_se=$'\e[0m' \
+    LESS_TERMCAP_so=$'\e[01;44;33m' \
+    LESS_TERMCAP_ue=$'\e[0m' \
+    LESS_TERMCAP_us=$'\e[01;32m' \
+    command man "$@"
 }
 
 source $ZSH/oh-my-zsh.sh

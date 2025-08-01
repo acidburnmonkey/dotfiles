@@ -182,7 +182,7 @@ local plugins = {
         },
     },
 
-    -- telescope pluggin
+    -- telescope plugin
     {'nvim-telescope/telescope-ui-select.nvim' },
 
 
