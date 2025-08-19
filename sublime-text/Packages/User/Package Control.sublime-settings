@@ -7,5 +7,6 @@
 	],
 	"in_process_packages":
 	[
+		"Package Control",
 	],
 }

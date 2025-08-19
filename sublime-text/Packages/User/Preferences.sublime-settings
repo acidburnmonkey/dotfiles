@@ -3,9 +3,10 @@
 	"color_scheme": "ayu-dark.sublime-color-scheme",
 	"ignored_packages":
 	[
+		"Package Control",
 		"Vintage",
 	],
-	"index_files": true,
+	"index_files": false,
 	"remember_open_files": false,
 	"hot_exit": false,
 	"font_size": 11,

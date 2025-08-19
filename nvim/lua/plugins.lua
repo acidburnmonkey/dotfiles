@@ -185,6 +185,8 @@ local plugins = {
     -- telescope plugin
     {'nvim-telescope/telescope-ui-select.nvim' },
 
+    -- harpoon
+    {'ThePrimeagen/harpoon',lazy=true}
 
 }
 

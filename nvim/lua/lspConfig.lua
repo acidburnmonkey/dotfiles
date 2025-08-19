@@ -78,8 +78,8 @@ require('lspconfig').pyright.setup{
                 autoSearchPaths = true,
                 useLibraryCodeForTypes = true,
                 stubPath = "",
-                diagnosticMode           = 'workspace',
-                autoImportCompletions    = true,
+                diagnosticMode  = 'off',
+                autoImportCompletions = true,
             },
         },
     },
@@ -93,9 +93,6 @@ vim.lsp.config('ruff', {
     }
   }
 })
-
-vim.lsp.enable('ruff')
-
 vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup('lsp_attach_disable_ruff_hover', { clear = true }),
   callback = function(args)
@@ -104,12 +101,13 @@ vim.api.nvim_create_autocmd("LspAttach", {
       return
     end
     if client.name == 'ruff' then
-      -- Disable hover in favor of Pyright
       client.server_capabilities.hoverProvider = false
     end
   end,
   desc = 'LSP: Disable hover capability from Ruff',
 })
+
+vim.lsp.enable('ruff')
 
 
 --''''''''''''''''Non-ls/null-ls''''''''''''''''

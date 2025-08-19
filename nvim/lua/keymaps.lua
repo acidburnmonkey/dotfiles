@@ -96,6 +96,16 @@ vim.keymap.set('n', '<F3>', function()
 end, { desc = 'Telescope: show all diagnostics' })
 
 
+-- Harpoon
+local harpoon = require("harpoon.ui")
+vim.keymap.set("n", "<leader>h", harpoon.toggle_quick_menu)
+vim.keymap.set("n", "<leader>ha", require("harpoon.mark").add_file)
+vim.keymap.set("n", "<leader>1", function() harpoon.nav_file(1) end)
+vim.keymap.set("n", "<leader>2", function() harpoon.nav_file(2) end)
+vim.keymap.set("n", "<leader>3", function() harpoon.nav_file(3) end)
+vim.keymap.set("n", "<leader>4", function() harpoon.nav_file(4) end)
+
+
 -- ########
 -- Macros #
 -- ########
@@ -103,7 +113,7 @@ end, { desc = 'Telescope: show all diagnostics' })
 local esc = vim.api.nvim_replace_termcodes("<Esc>",true,true,true)
 local cr  = vim.api.nvim_replace_termcodes("<C-R>\"", true, true, true)
 --
--- Python: set up a single-keystroke macro in register ‘l’
+-- Python: set up a single-keystroke macro in register ‘@l’
 vim.api.nvim_create_autocmd("FileType", {
     pattern = "python",
     callback = function()
