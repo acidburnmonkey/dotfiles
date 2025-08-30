@@ -137,7 +137,7 @@ null_ls.setup({
 --"'''''''''''''''''''Tree sitter highlight''''''''''''''''''''''''''''''
 require'nvim-treesitter.configs'.setup {
   -- A list of parser names, or "all"
-ensure_installed = { "c", "lua","bash","python"},
+ensure_installed = { "lua","bash","python",'typescript','javascript','go'},
 sync_install = false,
 indent = {
     enable = true,
@@ -167,7 +167,7 @@ highlight = {
         ['@function.outer'] = 'V', -- linewise
         ['@class.outer'] = '<c-v>', -- blockwise
       },
-      include_surrounding_whitespace = true,
+      include_surrounding_whitespace = false,
     },
 move = {
   enable = true,

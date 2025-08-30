@@ -42,13 +42,6 @@ vim.api.nvim_create_autocmd('FileType', {
   end,
 })
 
-vim.api.nvim_create_autocmd('FileType', {
-  pattern = 'rust',
-  callback = function()
-    buf_map('n', '<F10>', ':w<CR>:!rustc % -o %:r && ./%:r<CR>')
-    buf_map('n', '<F11>', ':w<bar>:FloatermNew --disposable --autoclose=0 rustc % -o %:r && ./%:r<CR>')
-  end,
-})
 
 vim.api.nvim_create_autocmd('FileType', {
   pattern = 'lua',

@@ -72,5 +72,4 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-alias virsh='virsh -c qemu:///system'
 eval "$(uv generate-shell-completion zsh)"

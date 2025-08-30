@@ -76,8 +76,7 @@ vim.keymap.set('n','s',function()
       require('telescope.themes').get_cursor{ winblend = 5 }
     )
   end
-end,{desc='Telescope spell suggestions (only on typo under cursor)'})
-
+end,{desc='Telescope spell suggestions'})
 
 vim.keymap.set('n', '<leader>u', ':UndotreeToggle<CR>', opts)
 vim.keymap.set('n', '<leader>-', ':IBLToggle<CR>', opts)
@@ -112,7 +111,7 @@ vim.keymap.set("n", "<leader>4", function() harpoon.nav_file(4) end)
 
 local esc = vim.api.nvim_replace_termcodes("<Esc>",true,true,true)
 local cr  = vim.api.nvim_replace_termcodes("<C-R>\"", true, true, true)
---
+
 -- Python: set up a single-keystroke macro in register ‘@l’
 vim.api.nvim_create_autocmd("FileType", {
     pattern = "python",
