@@ -45,7 +45,7 @@ local lsp_attach = function(client, bufnr)
 end
 
 -- Mason-LSPconfig setup
-local servers = { "clangd", "ts_ls", "pyright", "tailwindcss", "html", "stimulus_ls", "cssls", "lua_ls" }
+local servers = { "clangd", "ts_ls", "pyright", "tailwindcss", "html", "stimulus_ls", "cssls", "lua_ls"}
 
 ------Uncoment on first run
 -- require("mason-lspconfig").setup({
@@ -61,6 +61,14 @@ for _, server in ipairs(servers) do
             on_attach = lsp_attach
         })
     end
+
+
+-- r
+lspconfig.r_language_server.setup({
+        capabilities = capabilities,
+        on_attach = lsp_attach
+
+})
 
 
 local util = require("lspconfig.util")

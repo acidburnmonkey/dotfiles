@@ -186,7 +186,17 @@ local plugins = {
     {'nvim-telescope/telescope-ui-select.nvim' },
 
     -- harpoon
-    {'ThePrimeagen/harpoon',lazy=true}
+    {'ThePrimeagen/harpoon',lazy=true},
+
+
+    -- R
+    {
+        "quarto-dev/quarto-nvim",
+        dependencies = {
+            "jmbuhr/otter.nvim",
+            "nvim-treesitter/nvim-treesitter",
+        }
+    },
 
 }
 
