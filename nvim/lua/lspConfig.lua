@@ -52,55 +52,46 @@ local servers = { "clangd", "ts_ls", "pyright", "tailwindcss", "html", "stimulus
 --   ensure_installed = servers,
 -- })
 
-local lspconfig = require("lspconfig")
 
--- Setup LSP servers dynamically
 for _, server in ipairs(servers) do
-    lspconfig[server].setup({
-            capabilities = capabilities,
-            on_attach = lsp_attach
-        })
-    end
+  vim.lsp.config(server, {
+    capabilities = capabilities,
+    on_attach = lsp_attach
+  })
+  vim.lsp.enable(server)
+end
 
-
--- r
-lspconfig.r_language_server.setup({
-        capabilities = capabilities,
-        on_attach = lsp_attach
-
-})
-
-
-local util = require("lspconfig.util")
-require('lspconfig').pyright.setup{
+vim.lsp.config('pyright', {
     capabilities = capabilities,
     on_attach = lsp_attach,
-    root_dir  = util.root_pattern(
-        'pyproject.toml',
-        'requirements.txt',
-        '.git'
-    ),
     settings = {
         python = {
             analysis = {
                 autoSearchPaths = true,
                 useLibraryCodeForTypes = true,
                 stubPath = "",
-                diagnosticMode  = 'off',
+                diagnosticMode = 'off',
                 autoImportCompletions = true,
             },
         },
     },
-}
+})
+vim.lsp.enable('pyright')
+
+
+
 
 -- RUFF
 vim.lsp.config('ruff', {
-  init_options = {
-    settings = {
-      configuration = "~/.config/ruff/pyproject.toml"
+    filetypes = {'python'},
+    init_options = {
+        settings = {
+            configuration = "~/.config/ruff/pyproject.toml"
+        }
     }
-  }
 })
+
+
 vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup('lsp_attach_disable_ruff_hover', { clear = true }),
   callback = function(args)
@@ -116,6 +107,15 @@ vim.api.nvim_create_autocmd("LspAttach", {
 })
 
 vim.lsp.enable('ruff')
+
+
+vim.lsp.config("r-languageserver",{
+    filetypes = {'r','rmd'},
+    cmd = {'R', '--slave', '-e', 'languageserver::run()'},
+    on_attach = lsp_attach,
+    capabilities = capabilities,
+})
+vim.lsp.enable("r-languageserver")
 
 
 --''''''''''''''''Non-ls/null-ls''''''''''''''''

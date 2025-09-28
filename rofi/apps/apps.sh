@@ -26,7 +26,7 @@ file_cmd='flatpak run io.github.flattool.Warehouse'
 text_cmd='flatpak run md.obsidian.Obsidian'
 web_cmd='firefox -no-remote -P School'
 music_cmd='flatpak run com.discordapp.DiscordCanary'
-setting_cmd='steam'
+setting_cmd='env QT_SCALE_FACTOR=2 GDK_SCALE=2 steam'
 
 # Options
 layout=`cat ${theme} | grep 'USE_ICON' | cut -d'=' -f2`

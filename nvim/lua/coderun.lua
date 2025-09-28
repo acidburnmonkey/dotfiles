@@ -59,3 +59,12 @@ vim.api.nvim_create_autocmd('FileType', {
         buf_map('n', '<F11>', ':w<CR>:FloatermNew --disposable --autoclose=0 npx tsx %<CR>')
     end,
 })
+
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'r',
+  callback = function()
+    buf_map('n', '<F10>', ':w<CR>:!Rscript %<CR>')
+    buf_map('i', '<F10>', '<Esc>:w<CR>:!Rscript %<CR>')
+    buf_map('n', '<F11>', ':w<CR>:FloatermNew --disposable --autoclose=0 Rscript %<CR>')
+  end,
+})
