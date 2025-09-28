@@ -188,16 +188,6 @@ local plugins = {
     -- harpoon
     {'ThePrimeagen/harpoon',lazy=true},
 
-
-    -- R
-    {
-        "quarto-dev/quarto-nvim",
-        dependencies = {
-            "jmbuhr/otter.nvim",
-            "nvim-treesitter/nvim-treesitter",
-        }
-    },
-
 }
 
 local opts = {}
