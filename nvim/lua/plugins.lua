@@ -81,11 +81,9 @@ local plugins = {
 
     -- Mason package manager
     {
-        "williamboman/mason.nvim",
-        "williamboman/mason-lspconfig.nvim",
-        "neovim/nvim-lspconfig",
+        "mason-org/mason.nvim",
+        opts = {}
     },
-
 
     -- LuaSnip engine
     {
@@ -112,9 +110,6 @@ local plugins = {
 
     -- Surround plugin
     { "tpope/vim-surround" },
-
-    -- Git integration
-    { "tpope/vim-fugitive" },
 
     -- Formatter/Linter integration
     { "nvimtools/none-ls.nvim" ,
@@ -167,6 +162,7 @@ local plugins = {
         end,
         opts = {},
     },
+
     -- highlight
     {
         'tzachar/local-highlight.nvim',

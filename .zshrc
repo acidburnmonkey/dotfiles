@@ -37,6 +37,7 @@ alias docker-compose='docker compose'
 alias ranger='source ranger'
 alias dps='docker container ls --format "table {{.ID}}\t{{.Names}}\t{{.Ports}}" -a'
 alias sr='source .venv/bin/activate'
+alias git-push='git remote | xargs -n1 git push'
 alias ncdu='ncdu --color dark'
 
 ### Plugins ###
