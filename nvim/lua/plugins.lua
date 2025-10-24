@@ -17,6 +17,9 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
+
+    { "neovim/nvim-lspconfig" },
+
     -- mine
     {
         'acidburnmonkey/ruffer',
