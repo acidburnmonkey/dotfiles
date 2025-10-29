@@ -117,7 +117,10 @@ require("neo-tree").setup({
     close_if_last_window = true,
     filesystem = {
         hijack_netrw_behavior = "disabled"
-    }
+    },
+    window = {
+        width = 25
+    },
 })
 
 --'''''''''''''''''' web-devicons ''''''''''''''''''''''''''''''''''
@@ -178,13 +181,13 @@ cmp.setup({
 
     mapping = {
         ['<Down>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
-        ['<C-j>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
+        ['<A-j>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
         ['<Up>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
-        ['<C-k>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
-        ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-        ['<C-f>'] = cmp.mapping.scroll_docs(4),
-        ['<C-Space>'] = cmp.mapping.complete(),
-        ['<C-e>'] = cmp.mapping.close(),
+        ['<A-k>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
+        ['<A-d>'] = cmp.mapping.scroll_docs(-4),
+        ['<A-f>'] = cmp.mapping.scroll_docs(4),
+        ['<A-Space>'] = cmp.mapping.complete(),
+        ['<A-e>'] = cmp.mapping.close(),
         ['<CR>'] = cmp.mapping.confirm({
             behavior = cmp.ConfirmBehavior.Insert,
             select = true,

@@ -2,7 +2,7 @@ local wezterm = require 'wezterm'
 local config = wezterm.config_builder()
 
 
-config.enable_wayland = false
+config.enable_wayland = true
 
 -- unset start dir
 config.default_cwd = nil
@@ -12,7 +12,7 @@ config.font = wezterm.font_with_fallback {
   { family = "Fira Code", weight = "Regular" },
   "Symbols Nerd Font",
 }
-config.font_size = 22.0
+config.font_size = 11.0
 config.line_height = 1.0
 
 

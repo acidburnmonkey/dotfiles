@@ -19,7 +19,7 @@
 		"clock#1",
 		"tray",
         "custom/powermenu"
-	],  
+	],
 
 
 
@@ -34,8 +34,8 @@
            "6": " ",
            "7": " ",
            "8": " ",
-           "9": " ",
-           "10": " " 
+           "9": " ",
+           "10": " "
 	                }
         },
 
@@ -44,20 +44,20 @@
         "tooltip": false,
         "on-click": "firefox"
     },
-	
+
 
     "custom/nemo": {
         "format": "{}  ",
         "tooltip": false,
         "on-click": "nemo"
     },
-	
+
     "custom/updates": {
-        "return-type": "json", 
+        "return-type": "json",
         "text": "{text}  ",
         "interval": 300,
         "exec": "$HOME/.config/waybar/scripts/dnf-updates.sh",
-        "tooltip": "{tooltip} " 
+        "tooltip": "{tooltip} "
         },
 
 
@@ -82,7 +82,7 @@
 		"on-click": "pamixer -t",
 		"on-click-right": "pavucontrol"
 	},
-	
+
     "tray": {
 		"icon-size": 18
 	},
