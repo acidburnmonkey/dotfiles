@@ -1,11 +1,11 @@
 // -*- mode: json -*-
 
 
-{ 
+{
  "name": "bar2",
 	"layer": "top",
 	"position": "top",
-    "output":   "DP-5",
+    "output":   "DP-2",
 
 	"modules-center": [
 		"hyprland/workspaces",
