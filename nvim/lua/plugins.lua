@@ -31,13 +31,6 @@ local plugins = {
     -- Terminal floating window
     { "voldikss/vim-floaterm" },
 
-    -- Markdown Preview
-    {
-        "iamcco/markdown-preview.nvim",
-        build = "cd app && npm install",
-        ft = { "markdown" },
-    },
-
     -- Indent guides
     {
         "lukas-reineke/indent-blankline.nvim",
@@ -66,13 +59,11 @@ local plugins = {
         lazy = true,
     },
 
-
     -- Telescope fuzzy finder
     {
         'nvim-telescope/telescope.nvim', tag = '0.1.8',
         dependencies = { 'nvim-lua/plenary.nvim' }
     },
-
 
     -- Treesitter
     {
@@ -137,7 +128,6 @@ local plugins = {
     -- Rainbow delimiters
     { "HiPhish/rainbow-delimiters.nvim" },
 
-
     -- Completion engine
     { "hrsh7th/nvim-cmp" },
     { "hrsh7th/cmp-buffer" },
@@ -145,7 +135,6 @@ local plugins = {
     { "saadparwaiz1/cmp_luasnip" },
     { "hrsh7th/cmp-nvim-lsp" },
     { "hrsh7th/cmp-nvim-lua" },
-
 
     -- Lualine
     { 'nvim-lualine/lualine.nvim',
@@ -185,7 +174,7 @@ local plugins = {
     {'nvim-telescope/telescope-ui-select.nvim' },
 
     -- harpoon
-    {'ThePrimeagen/harpoon',lazy=true},
+    {'ThePrimeagen/harpoon',lazy=false},
 
 }
 

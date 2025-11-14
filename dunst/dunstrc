@@ -63,7 +63,7 @@
     icon_position = left
     min_icon_size = 32
     max_icon_size = 128
-    icon_path = ~/.config/dust/icons 
+    icon_path = ~/.config/dust/icons
 
     ### History ###
 
@@ -81,13 +81,13 @@
 
     # Define the class of the windows spawned by dunst
     class = Dunst
-    corner_radius = 5 
+    corner_radius = 5
     ignore_dbusclose = false
 
     ### Wayland ###
     # These settings are Wayland-specific. They have no effect when using X11
 
-    # Uncomment this if you want to let notications appear under fullscreen
+    # Uncomment this if you want to let notifications appear under fullscreen
     # applications (default: overlay)
     # layer = top
 
@@ -129,22 +129,27 @@
     timeout = 0
     # Icon for notifications with critical urgency, uncomment to enable
     #default_icon = /path/to/icon
-    
+
 
 [screenshot]
     summary = "Screenshot Saved"
     new_icon = gnome-screenshot
-    timeout = 3   
+    timeout = 3
 
 [Phone-conected]
-    summary = "Phone Pluged"
+    summary = "Phone Plugged"
     new_icon = phone
-    timeout = 3   
+    timeout = 3
 
 [Phone-disconected]
-    summary = "Phone Disconected"
+    summary = "Phone Disconnected"
     new_icon = phone
-    timeout = 3   
+    timeout = 3
+
+[openrazer_battery_ignore]
+    appname = OpenRazer Daemon
+    summary = *Battery*
+    skip_display = true
 
 # [Tauon]
 #     appname = Tauon

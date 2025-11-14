@@ -7,24 +7,23 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 #
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-export MANPAGER="sh -c 'awk '\''{ gsub(/\x1B\[[0-9;]*m/, \"\", \$0); gsub(/.\x08/, \"\", \$0); print }'\'' | bat -p -lman'"
+export ZSH="$HOME/.oh-my-zsh"
 export ZSH_COMPDUMP=$ZSH/cache/.zcompdump-$HOST
 export EDITOR='nvim'
 export VISUAL='nvim'
 export PATH="$HOME/scripts:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
-export PATH="$HOME/scripts:$PATH"
-export ZSH="$HOME/.oh-my-zsh"
-export PYTHONUNBUFFERED=1
-export XDG_RUNTIME_DIR=/run/user/$(id -u)
 export PATH="$HOME/.cargo/bin:$PATH"
+export PYTHONUNBUFFERED=1
 export QT_QPA_PLATFORMTHEME=qt5ct
+export MANPAGER="sh -c 'awk '\''{ gsub(/\x1B\[[0-9;]*m/, \"\", \$0); gsub(/.\x08/, \"\", \$0); print }'\'' | bat -p -lman'"
 export SSH_AUTH_SOCK=/run/user/$(id -u)/ssh-agent.socket
-export $(dbus-launch)
-export DOCKER_HOST=unix:///var/run/docker.sock
+# export DOCKER_HOST=unix:///var/run/docker.sock
+export NO_AT_BRIDGE=1 #disable accessibility
+export GTK_A11Y=none
 
 # some more ls aliases
-alias update='sudo dnf update && sudo flatpak -y update'
+alias update='sudo dnf update && flatpak -y update'
 alias cl='clear'
 alias src='source ~/.zshrc'
 alias neogit='onefetch'
@@ -55,22 +54,5 @@ source $ZSH/oh-my-zsh.sh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/usr/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/usr/etc/profile.d/conda.sh" ]; then
-        . "/usr/etc/profile.d/conda.sh"
-    else
-        export PATH="/usr/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
 
 eval "$(uv generate-shell-completion zsh)"
