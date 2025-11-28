@@ -1,0 +1,39 @@
+include "/usr/share/X11/locale/en_US.UTF-8/Compose"
+
+# ----- Simple Greek letters for math, using double letters -----
+# Multi_key = your Compose key (Right Ctrl)
+
+<Multi_key> <a> <a> : "α" U03B1  # alpha
+<Multi_key> <b> <b> : "β" U03B2  # beta
+<Multi_key> <g> <g> : "γ" U03B3  # gamma
+<Multi_key> <d> <d> : "δ" U03B4  # delta
+<Multi_key> <e> <e> : "ε" U03B5  # epsilon
+<Multi_key> <z> <z> : "ζ" U03B6  # zeta
+<Multi_key> <h> <h> : "η" U03B7  # eta
+<Multi_key> <t> <h> : "θ" U03B8  # theta
+<Multi_key> <i> <i> : "ι" U03B9  # iota
+<Multi_key> <k> <k> : "κ" U03BA  # kappa
+<Multi_key> <l> <l> : "λ" U03BB  # lambda
+<Multi_key> <m> <m> : "μ" U03BC  # mu
+<Multi_key> <n> <n> : "ν" U03BD  # nu
+<Multi_key> <x> <i> : "ξ" U03BE  # xi
+<Multi_key> <p> <i> : "π" U03C0  # pi
+<Multi_key> <r> <r> : "ρ" U03C1  # rho
+<Multi_key> <s> <s> : "σ" U03C3  # sigma
+<Multi_key> <s> <f> : "ς" U03C2  # final sigma (sf = sigma final)
+<Multi_key> <t> <t> : "τ" U03C4  # tau
+<Multi_key> <u> <u> : "υ" U03C5  # upsilon
+<Multi_key> <f> <i> : "φ" U03C6  # phi
+<Multi_key> <c> <h> : "χ" U03C7  # chi
+<Multi_key> <p> <s> : "ψ" U03C8  # psi
+<Multi_key> <o> <m> : "ω" U03C9  # omega
+
+# Uppercase commonly-used ones
+<Multi_key> <A> <A> : "Α" U0391  # Alpha
+<Multi_key> <B> <B> : "Β" U0392  # Beta
+<Multi_key> <G> <G> : "Γ" U0393  # Gamma
+<Multi_key> <D> <D> : "Δ" U0394  # Delta
+<Multi_key> <L> <L> : "Λ" U039B  # Lambda
+<Multi_key> <P> <I> : "Π" U03A0  # Pi
+<Multi_key> <S> <S> : "Σ" U03A3  # Sigma
+<Multi_key> <O> <M> : "Ω" U03A9  # Omega
