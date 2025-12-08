@@ -33,7 +33,11 @@ local lsp_attach = function(client, bufnr)
   -- Keymaps for LSP actions
   bufmap("n", "gd", vim.lsp.buf.definition, "Go to definition")
   bufmap("n", "gD", vim.lsp.buf.declaration, "Go to declaration")
-  bufmap("n", "K", vim.lsp.buf.hover, "Show hover documentation")
+  bufmap("n", "K", function()
+      vim.lsp.buf.hover({
+          border = "rounded",
+      })
+  end, "Show hover documentation")
   bufmap("n", "<leader>vws", vim.lsp.buf.workspace_symbol, "Search workspace symbols")
   bufmap("n", "<leader>vd", vim.diagnostic.open_float, "Show diagnostics in float")
   bufmap("n", "[d", vim.diagnostic.goto_prev, "Go to previous diagnostic")
@@ -45,7 +49,7 @@ local lsp_attach = function(client, bufnr)
 end
 
 -- Mason-LSPconfig setup
-local servers = { "clangd", "ts_ls", "pyright", "tailwindcss", "html", "stimulus_ls", "cssls", "lua_ls"}
+local servers = { "clangd", "vtsls", "pyright", "tailwindcss", "html", "stimulus_ls", "cssls",'gopls'}
 
 ------Uncoment on first run
 -- require("mason-lspconfig").setup({
