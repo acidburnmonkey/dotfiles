@@ -1,3 +1,4 @@
 pip install neovim pyright
 sudo dnf install nodejs-bash-language-server
 sudo npm install -g @fsouza/prettierd
+go install mvdan.cc/gofumpt@latest

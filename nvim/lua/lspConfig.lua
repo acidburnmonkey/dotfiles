@@ -127,15 +127,15 @@ local null_ls = require("null-ls")
 
 null_ls.setup({
     sources = {
+        null_ls.builtins.diagnostics.djlint,
         null_ls.builtins.diagnostics.cppcheck,
         null_ls.builtins.diagnostics.codespell,
         null_ls.builtins.diagnostics.hadolint,
-        null_ls.builtins.formatting.prettierd.with({
-            extra_args = { "--single-quote" },
-        }),
+        null_ls.builtins.formatting.prettierd.with({ extra_args = { "--single-quote" }, }),
+        null_ls.builtins.formatting.gofumpt,
     },
     on_attach = function(client, bufnr)
-        if client.supports_method("textDocument/formatting") then
+        if client.supports_method("textDocument/formatting") then -- run formatters on save
             vim.api.nvim_create_autocmd("BufWritePre", {
                 buffer = bufnr,
                 callback = function()
