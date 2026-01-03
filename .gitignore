@@ -1,5 +1,6 @@
 **__pycache__**
 systemd/user/default.target.wants/
+systemd/user/.*
 systemd/user/graphical-session.target.wants/
 systemd/user/sockets.target.wants/
 sublime-text/Local/*

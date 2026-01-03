@@ -49,7 +49,8 @@ local lsp_attach = function(client, bufnr)
 end
 
 -- Mason-LSPconfig setup
-local servers = { "clangd", "vtsls", "pyright", "tailwindcss", "html", "stimulus_ls", "cssls",'gopls'}
+local servers = { "clangd", "vtsls", "pyright", "tailwindcss", "html", "stimulus_ls", "cssls",'gopls'
+,'autotools-language-server'}
 
 ------Uncoment on first run
 -- require("mason-lspconfig").setup({

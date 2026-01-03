@@ -87,12 +87,16 @@ vim.keymap.set('n', '<leader>-', ':IBLToggle<CR>', opts)
 vim.keymap.set('n', '<F3>', function()
   require('telescope.builtin').diagnostics(
     require('telescope.themes').get_ivy{
-      -- only show errors & warnings, not hints/info:
       severity_limit = vim.diagnostic.severity.WARN,
       layout_config = { height = 0.3 },
     }
   )
 end, { desc = 'Telescope: show all diagnostics' })
+
+-- show code actions
+vim.keymap.set('n', '<F4>', function()
+  vim.lsp.buf.code_action()
+end, { desc = 'LSP: show code actions' })
 
 
 -- Harpoon
@@ -128,3 +132,10 @@ vim.api.nvim_create_autocmd("FileType", {
     end,
 })
 
+-- for go
+vim.api.nvim_create_autocmd("FileType", {
+    pattern =  "go",
+    callback = function()
+        vim.fn.setreg("l", "y" .. "ofmt.Println(\"" .. cr .. ":\", " .. cr .. ");" .. esc)
+    end,
+})

@@ -82,6 +82,16 @@ for _, ft in ipairs(filetypes) do
     ls.add_snippets(ft, common_snippets)
 end
 
+-- go
+ls.add_snippets("go", {
+  s("iferr", {
+    t("if err != nil {"),
+    t({ "", "\treturn " }),
+    i(1, "err"),
+    t({ "", "}" }),
+  }),
+})
+
 
 -- Markdown
 -- ls.add_snippets("markdown",{
