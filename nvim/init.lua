@@ -44,6 +44,12 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 
+vim.api.nvim_create_autocmd("TextYankPost", {
+    callback = function()
+        vim.highlight.on_yank()
+    end,
+})
+
 
 --############
 --# setup   #
@@ -89,28 +95,6 @@ local function force_backgraund(color)
 end
 force_backgraund()
 
---'''''''''''''''OIL'''''''''''''''''''''''''''''''''''''''''''''''
-require("oil").setup({
-    default_file_explorer = true,
-    keymaps = {
-        ["?"] = { "actions.show_help", mode = "n" },
-        ["<CR>"] = "actions.select",
-        ["<C-s>"] = { "actions.select", opts = { vertical = true } },
-        ["<C-h>"] = { "actions.select", opts = { horizontal = true } },
-        ["<C-t>"] = { "actions.select", opts = { tab = true } },
-        ["-"] = { "actions.parent", mode = "n" },
-        ["_"] = { "actions.open_cwd", mode = "n" },
-        ["gs"] = { "actions.change_sort", mode = "n" },
-        ["gx"] = "actions.open_external",
-        ["H"] = { "actions.toggle_hidden", mode = "n" },
-    },
-    lsp_file_methods = {
-        enabled = true,
-        timeout_ms = 1000,
-        autosave_changes = false,
-    }
-})
-
 
 --"''''''''Neotree''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 require("neo-tree").setup({
@@ -123,11 +107,6 @@ require("neo-tree").setup({
     },
 })
 
---'''''''''''''''''' web-devicons ''''''''''''''''''''''''''''''''''
-require('nvim-web-devicons').setup{}
-
---"''''''''''IndentBlankline''''''''''``````````````````````````````````
-require("ibl").setup()
 
 --'''''''''''''nvim-ts-autotag'''''''''''''''''''''''''''''''''''''''''
 require('nvim-ts-autotag').setup({
@@ -199,6 +178,28 @@ require('barbar').setup({
 -- '''''''''''' highlight ''''''''''''''''''''''''''''''''''''''''
 require('local-highlight').setup({ animate = { enabled = false}})
 
+
+--'''''''''''''''OIL'''''''''''''''''''''''''''''''''''''''''''''''
+require("oil").setup({
+    default_file_explorer = true,
+    keymaps = {
+        ["?"] = { "actions.show_help", mode = "n" },
+        ["<CR>"] = "actions.select",
+        ["<C-s>"] = { "actions.select", opts = { vertical = true } },
+        ["<C-h>"] = { "actions.select", opts = { horizontal = true } },
+        ["<C-t>"] = { "actions.select", opts = { tab = true } },
+        ["-"] = { "actions.parent", mode = "n" },
+        ["_"] = { "actions.open_cwd", mode = "n" },
+        ["gs"] = { "actions.change_sort", mode = "n" },
+        ["gx"] = "actions.open_external",
+        ["H"] = { "actions.toggle_hidden", mode = "n" },
+    },
+    lsp_file_methods = {
+        enabled = true,
+        timeout_ms = 1000,
+        autosave_changes = false,
+    }
+})
 
 -- ''''''''''''''autopairs'''''''''''''''''''''''''''''''''''''''
 local npairs = require("nvim-autopairs")

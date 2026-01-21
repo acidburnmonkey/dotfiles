@@ -91,7 +91,6 @@ local plugins = {
     {
         'windwp/nvim-autopairs',
         event = "InsertEnter",
-        config = true
     },
 
     -- Commenting utility
@@ -108,7 +107,7 @@ local plugins = {
     -- Formatter/Linter integration
     { "nvimtools/none-ls.nvim" ,
     dependencies = {
-        "nvimtools/none-ls-extras.nvim",},
+        "nvimtools/none-ls-extras.nvim"}
     } ,
 
     -- Treesitter auto-closing tags
@@ -120,9 +119,7 @@ local plugins = {
     -- Oil file explorer
     {
         'stevearc/oil.nvim',
-        opts = {},
-        dependencies = { { "echasnovski/mini.icons", opts = {} } },
-        lazy = false,
+        lazy = false
     },
 
     -- Rainbow delimiters
@@ -151,8 +148,7 @@ local plugins = {
         },
         init = function()
             vim.g.barbar_auto_setup = false -- disable auto-setup
-        end,
-        opts = {},
+        end
     },
 
     -- highlight
