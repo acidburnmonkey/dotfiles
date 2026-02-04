@@ -1,6 +1,0 @@
-The old, written in PostScript, PDF interpreter has been removed entirely.
-You should cease using -dNEWDPF as it has no effect npre-processing DVI file (format version 2)
-processing page 1
-  graphic size: 22.826725pt x 11.276922pt (8.022676mm x 3.963385mm)
-  output written to tmpfile.svg
-1 of 1 page converted in 0.060297 seconds
