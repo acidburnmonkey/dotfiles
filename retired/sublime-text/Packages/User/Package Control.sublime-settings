@@ -1,0 +1,12 @@
+{
+	"bootstrapped": true,
+	"installed_packages":
+	[
+		"ayu",
+		"Package Control",
+	],
+	"in_process_packages":
+	[
+		"Package Control",
+	],
+}

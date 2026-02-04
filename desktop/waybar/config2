@@ -1,0 +1,21 @@
+// -*- mode: json -*-
+
+
+{
+ "name": "bar2",
+	"layer": "top",
+	"position": "top",
+    "output":   "DP-2",
+
+	"modules-center": [
+		"hyprland/workspaces",
+	],
+
+ "hyprland/workspaces": {
+	"format": " {icon} ",
+	"format-icons": {
+           "6": " ",
+           "7": " "
+	                }
+        },
+}

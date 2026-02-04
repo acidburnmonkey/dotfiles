@@ -1,0 +1,7 @@
+Linux Archon-s19 6.7.5-200.fc39.x86_64 #1 SMP PREEMPT_DYNAMIC Sat Feb 17 17:20:08 UTC 2024 x86_64 GNU/Linux
+
+osType=Linux
+cpuType=i386
+
+PATH=/usr/bin/:/home/mahalo/.config/libreoffice/4/user/uno_packages/cache/uno_packages/lu115471551y1.tmp_/TexMaths-0.52.oxt/bin/Linuxi386:/home/mahalo/.cargo/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin
+
