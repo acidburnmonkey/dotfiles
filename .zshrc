@@ -36,11 +36,12 @@ alias docker-compose='docker compose'
 alias ranger='source ranger'
 alias dps='docker container ls --format "table {{.ID}}\t{{.Names}}\t{{.Ports}}" -a'
 alias sr='source .venv/bin/activate'
-alias git-push='git remote | xargs -n1 git push'
 alias ncdu='ncdu --color dark'
+alias git-push='git remote | xargs -n1 git push'
+alias gc='git clone --depth=1'
 
 ### Plugins ###
-plugins=(git zsh-autosuggestions python virtualenv fzf)
+plugins=(zsh-autosuggestions python virtualenv fzf)
 
 function cd {
     builtin cd "$@" && ls -F
