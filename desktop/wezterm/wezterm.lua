@@ -46,15 +46,13 @@ config.keys = {
 	{ key = "q", mods = "ALT", action = wezterm.action.CloseCurrentPane({ confirm = false }) },
 	{ key = "U", mods = "CTRL|SHIFT", action = wezterm.action.AttachDomain("unix") },
 
-	-- Horizontal split (top/bottom)
-	{ key = "h", mods = "CTRL", action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
-	-- Vertical split (left/right)
-	{ key = "v", mods = "CTRL", action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }) },
-	-- Navigation with Ctrl + arrows
-	{ key = "LeftArrow", mods = "CTRL", action = wezterm.action.ActivatePaneDirection("Left") },
-	{ key = "RightArrow", mods = "CTRL", action = wezterm.action.ActivatePaneDirection("Right") },
-	{ key = "UpArrow", mods = "CTRL", action = wezterm.action.ActivatePaneDirection("Up") },
-	{ key = "DownArrow", mods = "CTRL", action = wezterm.action.ActivatePaneDirection("Down") },
+	-- splits
+	{ key = "h", mods = "ALT", action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
+	{ key = "5", mods = "ALT", action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }) },
+	{ key = "LeftArrow", mods = "ALT", action = wezterm.action.ActivatePaneDirection("Left") },
+	{ key = "RightArrow", mods = "ALT", action = wezterm.action.ActivatePaneDirection("Right") },
+	{ key = "UpArrow", mods = "ALT", action = wezterm.action.ActivatePaneDirection("Up") },
+	{ key = "DownArrow", mods = "ALT", action = wezterm.action.ActivatePaneDirection("Down") },
 }
 -- Theme
 config.color_scheme = "Catppuccin Mocha"
