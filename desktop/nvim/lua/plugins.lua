@@ -1,191 +1,202 @@
-
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
-    local lazyrepo = "https://github.com/folke/lazy.nvim.git"
-    local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
-    if vim.v.shell_error ~= 0 then
-        vim.api.nvim_echo({
-            { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
-            { out, "WarningMsg" },
-            { "\nPress any key to exit..." },
-        }, true, {})
-        vim.fn.getchar()
-        os.exit(1)
-    end
+	local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+	local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+	if vim.v.shell_error ~= 0 then
+		vim.api.nvim_echo({
+			{ "Failed to clone lazy.nvim:\n", "ErrorMsg" },
+			{ out, "WarningMsg" },
+			{ "\nPress any key to exit..." },
+		}, true, {})
+		vim.fn.getchar()
+		os.exit(1)
+	end
 end
 vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
 
-    { "neovim/nvim-lspconfig" },
+	{ "neovim/nvim-lspconfig" },
 
-    -- mine
-    {
-        'acidburnmonkey/ruffer',
-        config = function()
-            require('ruffer').setup()
-        end,
-    },
+	-- mine
+	{
+		"acidburnmonkey/ruffer",
+		config = function()
+			require("ruffer").setup()
+		end,
+	},
 
-    -- Terminal floating window
-    { "voldikss/vim-floaterm" },
+	-- Terminal floating window
+	{ "voldikss/vim-floaterm" },
 
-    -- Indent guides
-    {
-        "lukas-reineke/indent-blankline.nvim",
-        main = "ibl",
-        opts = {},
-    },
+	-- Indent guides
+	{
+		"lukas-reineke/indent-blankline.nvim",
+		main = "ibl",
+		opts = {},
+	},
 
-    -- Color highlighting
-    { "catgoose/nvim-colorizer.lua"},
+	-- Color highlighting
+	{ "catgoose/nvim-colorizer.lua" },
 
-    -- Undo tree viewer
-    { "mbbill/undotree" },
+	-- Undo tree viewer
+	{ "mbbill/undotree" },
 
-    -- Devicons
-    { "nvim-tree/nvim-web-devicons", opts = {} },
+	-- Devicons
+	{ "nvim-tree/nvim-web-devicons", opts = {} },
 
-    -- Neo-tree file explorer
-    {
-        "nvim-neo-tree/neo-tree.nvim",
-        branch = "v3.x",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "nvim-tree/nvim-web-devicons",
-            "MunifTanjim/nui.nvim",
-        },
-        lazy = true,
-    },
+	-- Neo-tree file explorer
+	{
+		"nvim-neo-tree/neo-tree.nvim",
+		branch = "v3.x",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-tree/nvim-web-devicons",
+			"MunifTanjim/nui.nvim",
+		},
+		lazy = true,
+	},
 
-    -- Telescope fuzzy finder
-    {
-        'nvim-telescope/telescope.nvim', tag = '0.1.8',
-        dependencies = { 'nvim-lua/plenary.nvim' }
-    },
+	-- Telescope fuzzy finder
+	{
+		"nvim-telescope/telescope.nvim",
+		tag = "0.1.8",
+		dependencies = { "nvim-lua/plenary.nvim" },
+	},
 
-    -- Treesitter
-    {
-        "nvim-treesitter/nvim-treesitter",
-        build = ":TSUpdate",
-    },
-    { "nvim-treesitter/nvim-treesitter-textobjects" },
+	-- Treesitter
+	{
+		"nvim-treesitter/nvim-treesitter",
+		build = ":TSUpdate",
+	},
+	{ "nvim-treesitter/nvim-treesitter-textobjects" },
 
+	-- Mason package manager
+	{
+		"mason-org/mason.nvim",
+		opts = {},
+	},
 
-    -- Mason package manager
-    {
-        "mason-org/mason.nvim",
-        opts = {}
-    },
+	-- LuaSnip engine
+	{
+		"L3MON4D3/LuaSnip",
+		build = "make install_jsregexp",
+	},
+	-- LuaSnip snippets
+	{ "rafamadriz/friendly-snippets" },
 
-    -- LuaSnip engine
-    {
-        "L3MON4D3/LuaSnip",
-        build = "make install_jsregexp",
-    },
-    -- LuaSnip snippets
-    { "rafamadriz/friendly-snippets" },
+	-- Autopairs
+	{
+		"windwp/nvim-autopairs",
+		event = "InsertEnter",
+	},
 
-    -- Autopairs
-    {
-        'windwp/nvim-autopairs',
-        event = "InsertEnter",
-    },
+	-- Commenting utility
+	{ "tpope/vim-commentary" },
 
-    -- Commenting utility
-    { "tpope/vim-commentary" },
+	-- Catppuccin theme
+	{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
 
-    -- Catppuccin theme
-    { "catppuccin/nvim",
-    name = "catppuccin",
-    priority = 1000 },
+	-- Surround plugin
+	{ "tpope/vim-surround" },
 
-    -- Surround plugin
-    { "tpope/vim-surround" },
+	-- Formatter/Linter integration
+	{ "nvimtools/none-ls.nvim", dependencies = {
+		"nvimtools/none-ls-extras.nvim",
+	} },
 
-    -- Formatter/Linter integration
-    { "nvimtools/none-ls.nvim" ,
-    dependencies = {
-        "nvimtools/none-ls-extras.nvim"}
-    } ,
+	-- Treesitter auto-closing tags
+	{ "windwp/nvim-ts-autotag" },
 
-    -- Treesitter auto-closing tags
-    { "windwp/nvim-ts-autotag" },
+	-- Signature marks
+	{ "kshenoy/vim-signature" },
 
-    -- Signature marks
-    { "kshenoy/vim-signature" },
+	-- Oil file explorer
+	{
+		"stevearc/oil.nvim",
+		lazy = false,
+	},
 
-    -- Oil file explorer
-    {
-        'stevearc/oil.nvim',
-        lazy = false
-    },
+	-- Rainbow delimiters
+	{ "HiPhish/rainbow-delimiters.nvim" },
 
-    -- Rainbow delimiters
-    { "HiPhish/rainbow-delimiters.nvim" },
+	-- Completion engine
+	{ "hrsh7th/nvim-cmp" },
+	{ "hrsh7th/cmp-buffer" },
+	{ "hrsh7th/cmp-path" },
+	{ "saadparwaiz1/cmp_luasnip" },
+	{ "hrsh7th/cmp-nvim-lsp" },
+	{ "hrsh7th/cmp-nvim-lua" },
 
-    -- Completion engine
-    { "hrsh7th/nvim-cmp" },
-    { "hrsh7th/cmp-buffer" },
-    { "hrsh7th/cmp-path" },
-    { "saadparwaiz1/cmp_luasnip" },
-    { "hrsh7th/cmp-nvim-lsp" },
-    { "hrsh7th/cmp-nvim-lua" },
+	-- Lualine
+	{ "nvim-lualine/lualine.nvim", dependencies = { "nvim-tree/nvim-web-devicons" } },
 
-    -- Lualine
-    { 'nvim-lualine/lualine.nvim',
-    dependencies = { 'nvim-tree/nvim-web-devicons' } },
+	-- File icons
+	{ "ryanoasis/vim-devicons" },
 
-    -- File icons
-    { "ryanoasis/vim-devicons" },
+	-- barbar
+	{
+		"romgrk/barbar.nvim",
+		dependencies = {
+			"nvim-tree/nvim-web-devicons",
+		},
+		init = function()
+			vim.g.barbar_auto_setup = false -- disable auto-setup
+		end,
+	},
 
-    -- barbar
-    {
-        'romgrk/barbar.nvim',
-        dependencies = {
-            'nvim-tree/nvim-web-devicons'
-        },
-        init = function()
-            vim.g.barbar_auto_setup = false -- disable auto-setup
-        end
-    },
+	-- highlight
+	{
+		"tzachar/local-highlight.nvim",
+	},
 
-    -- highlight
-    {
-        'tzachar/local-highlight.nvim',
-    },
+	-- buffer vacuum
+	{
+		"ChuufMaster/buffer-vacuum",
+		opts = {
+			max_buffers = 2,
+			count_pinned_buffers = false,
+			enable_messages = false,
+		},
+	},
 
-    -- buffer vacuum
-    {
-        'ChuufMaster/buffer-vacuum',
-        opts = {
-            max_buffers = 2,
-            count_pinned_buffers = false,
-            enable_messages = false,
-        },
-    },
+	-- telescope plugin
+	{ "nvim-telescope/telescope-ui-select.nvim" },
 
-    -- telescope plugin
-    {'nvim-telescope/telescope-ui-select.nvim' },
+	-- harpoon
+	{ "ThePrimeagen/harpoon", lazy = false },
 
-    -- harpoon
-    {'ThePrimeagen/harpoon',lazy=false},
+	--MarkdownPreview
+	{
+		"iamcco/markdown-preview.nvim",
+		cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+		build = "cd app && npm install",
+		init = function()
+			vim.g.mkdp_filetypes = { "markdown" }
+		end,
+		ft = { "markdown" },
+	},
 
-    --MarkdownPreview
-    {
-        "iamcco/markdown-preview.nvim",
-        cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-        build = "cd app && npm install",
-        init = function()
-            vim.g.mkdp_filetypes = { "markdown" }
-        end,
-        ft = { "markdown" },
-    },
-
+	-- Dadbod
+	{
+		"kristijanhusak/vim-dadbod-ui",
+		dependencies = {
+			{ "tpope/vim-dadbod", lazy = true },
+			{ "kristijanhusak/vim-dadbod-completion", ft = { "sql", "mysql", "plsql" }, lazy = true },
+		},
+		cmd = {
+			"DBUI",
+			"DBUIToggle",
+			"DBUIAddConnection",
+			"DBUIFindBuffer",
+		},
+		init = function()
+			vim.g.db_ui_use_nerd_fonts = 1
+		end,
+	},
 }
 
 local opts = {}
 
-require('lazy').setup(plugins, opts)
-
+require("lazy").setup(plugins, opts)

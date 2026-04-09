@@ -4,16 +4,17 @@ fi
 
 ZSH_DISABLE_COMPFIX="true" #root comp
 ZSH_THEME="powerlevel10k/powerlevel10k"
-#
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+
 export ZSH="$HOME/.oh-my-zsh"
 export ZSH_COMPDUMP=$ZSH/cache/.zcompdump-$HOST
 export EDITOR='nvim'
 export VISUAL='nvim'
+
 export PATH="$HOME/scripts:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/go/bin/:$PATH"
+
 export PYTHONUNBUFFERED=1
 export QT_QPA_PLATFORMTHEME=qt5ct
 export MANPAGER="sh -c 'awk '\''{ gsub(/\x1B\[[0-9;]*m/, \"\", \$0); gsub(/.\x08/, \"\", \$0); print }'\'' | bat -p -lman'"

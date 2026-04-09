@@ -79,8 +79,8 @@
 			]
 		},
 		"scroll-step": 5,
-		"on-click": "pamixer -t",
-		"on-click-right": "pavucontrol"
+		"on-click": "quickshell -p ~/.config/quickshell/audio/audioWidget.qml > /dev/null 2>&1",
+		"on-click-right": "pamixer -t"
 	},
 
     "tray": {
