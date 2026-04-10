@@ -55,7 +55,7 @@
     "custom/updates": {
         "return-type": "json",
         "text": "{text}  ",
-        "interval": 300,
+        "interval": 3600,
         "exec": "$HOME/.config/waybar/scripts/dnf-updates.sh",
         "tooltip": "{tooltip} "
         },
@@ -63,7 +63,7 @@
 
     "clock#1": {
 		"format": "{:%a %I:%M %m-%d}",
-        "on-click": "bash $HOME/.config/waybar/scripts/calendar.sh",
+        "on-click": "bash $HOME/.config/waybar/scripts/calendar.sh > /dev/null 2>&1",
 		"tooltip": false
 	},
 

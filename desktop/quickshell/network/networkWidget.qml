@@ -4,16 +4,15 @@ import Quickshell.Io
 
 FloatingWindow {
     id: root
-    title: "qs-volume"
+    title: "qs-network"
     objectName: "quickshellWidget"
     color: "transparent"
     visible: true
 
-    implicitWidth: 480
-    implicitHeight: volumePopup.implicitHeight
+    implicitWidth: 900
+    implicitHeight: 700
 
-    VolumePopup {
-        id: volumePopup
+    NetworkPopup {
         anchors.fill: parent
     }
 
@@ -21,6 +20,4 @@ FloatingWindow {
         sequence: "Escape"
         onActivated: Qt.quit()
     }
-
-    onVisibleChanged: if (!visible) Qt.quit()
 }

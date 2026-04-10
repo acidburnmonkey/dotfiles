@@ -55,6 +55,8 @@ Item {
     property string activeTab: "outputs" // outputs, inputs, apps
     onActiveTabChanged: updateHeroData()
 
+    property var peakLevels: ({})
+
     readonly property color tabColor: {
         if (activeTab === "outputs") return window.blue;
         if (activeTab === "inputs") return window.mauve;
@@ -184,6 +186,17 @@ Item {
         onTriggered: audioPoller.running = true
     }
 
+    Process {
+        id: peakProc
+        command: ["python3", window.scriptsDir + "/get_peak_levels.py"]
+        running: true
+        stdout: SplitParser {
+            onRead: (line) => {
+                try { window.peakLevels = JSON.parse(line); } catch(e) {}
+            }
+        }
+    }
+
     // -------------------------------------------------------------------------
     // ANIMATIONS
     // -------------------------------------------------------------------------
@@ -239,7 +252,32 @@ Item {
                 Behavior on color { ColorAnimation { duration: 800 } }
             }
 
-            ColumnLayout {
+            // Cog button — top right corner
+            Item {
+                anchors.top: parent.top
+                anchors.right: parent.right
+                anchors.margins: 14
+                width: 28; height: 28
+                z: 10
+
+                Image {
+                    anchors.centerIn: parent
+                    source: Qt.resolvedUrl("cog.svg")
+                    width: 16; height: 16
+                    opacity: cogMa.containsMouse ? 1.0 : 0.35
+                    Behavior on opacity { NumberAnimation { duration: 150 } }
+                }
+
+                MouseArea {
+                    id: cogMa
+                    anchors.fill: parent
+                    hoverEnabled: true
+                    cursorShape: Qt.PointingHandCursor
+                    onClicked: Quickshell.execDetached(["pavucontrol"])
+                }
+            }
+
+                        ColumnLayout {
                 anchors.fill: parent
                 anchors.margins: 25
                 spacing: 20
@@ -600,13 +638,13 @@ Item {
                                     spacing: 8
                                     Text {
                                         font.family: "Iosevka Nerd Font"; font.pixelSize: 18
-                                        color: window.activeTab === tabId ? window.crust : (tabMa.containsMouse ? window.text : window.subtext0)
+                                        color: window.activeTab === tabId ? window.crust : (tabMa.containsMouse ? window.subtext0 : window.overlay0)
                                         text: icon
                                         Behavior on color { ColorAnimation { duration: 200 } }
                                     }
                                     Text {
                                         font.family: "JetBrains Mono"; font.weight: Font.Black; font.pixelSize: 13
-                                        color: window.activeTab === tabId ? window.crust : (tabMa.containsMouse ? window.text : window.subtext0)
+                                        color: window.activeTab === tabId ? window.crust : (tabMa.containsMouse ? window.subtext0 : window.overlay0)
                                         text: label
                                         Behavior on color { ColorAnimation { duration: 200 } }
                                     }
@@ -686,7 +724,7 @@ Item {
 
                             // Dynamic Height: The active hero element collapses its bottom slider row
                             property bool isActiveNode: model.is_default && window.activeTab !== "apps"
-                            height: isActiveNode ? 60 : 100
+                            height: isActiveNode ? 76 : 116
                             Behavior on height { NumberAnimation { duration: 400; easing.type: Easing.OutQuint } }
 
                             radius: 14
@@ -757,7 +795,50 @@ Item {
                                     }
                                 }
 
-                                // Bottom row: Custom Slider & Mute (Hides if it's the active node)
+                                // VU level meter
+                                Item {
+                                    id: vuMeter
+                                    Layout.fillWidth: true
+                                    height: 6
+
+                                    property real rawPeak: {
+                                        let key = (window.activeTab === "outputs" ? "sink_"
+                                                 : window.activeTab === "inputs"  ? "source_"
+                                                 : "app_") + model.id;
+                                        return window.peakLevels[key] || 0.0;
+                                    }
+                                    property real displayPeak: 0.0
+
+                                    onRawPeakChanged: {
+                                        if (rawPeak > displayPeak) {
+                                            peakDecay.stop();
+                                            displayPeak = rawPeak;
+                                            peakDecay.restart();
+                                        }
+                                    }
+
+                                    NumberAnimation {
+                                        id: peakDecay
+                                        target: vuMeter; property: "displayPeak"
+                                        to: 0.0; duration: 900; easing.type: Easing.OutCubic
+                                    }
+
+                                    Rectangle {
+                                        anchors.fill: parent; radius: 3
+                                        color: isActiveNode ? "#20000000" : "#0dffffff"
+                                    }
+                                    Rectangle {
+                                        height: parent.height; radius: 3
+                                        width: vuMeter.width * vuMeter.displayPeak
+                                        color: model.mute ? window.surface2
+                                             : isActiveNode ? Qt.darker(window.tabColor, 1.3)
+                                             : window.tabColor
+                                        opacity: model.mute ? 0.4 : 0.9
+                                        Behavior on color { ColorAnimation { duration: 300 } }
+                                    }
+                                }
+
+                                                                // Bottom row: Custom Slider & Mute (Hides if it's the active node)
                                 RowLayout {
                                     Layout.fillWidth: true
                                     spacing: 15
@@ -832,8 +913,8 @@ Item {
 
                                                 gradient: Gradient {
                                                     orientation: Gradient.Horizontal
-                                                    GradientStop { position: 0.0; color: model.mute ? window.surface2 : window.tabColor; Behavior on color { ColorAnimation { duration: 300 } } }
-                                                    GradientStop { position: 1.0; color: model.mute ? Qt.lighter(window.surface2, 1.15) : Qt.lighter(window.tabColor, 1.25); Behavior on color { ColorAnimation { duration: 300 } } }
+                                                    GradientStop { position: 0.0; color: model.mute ? window.surface2 : (window.activeTab === "apps" ? window.tabColor : window.surface2); Behavior on color { ColorAnimation { duration: 300 } } }
+                                                    GradientStop { position: 1.0; color: model.mute ? Qt.lighter(window.surface2, 1.15) : (window.activeTab === "apps" ? Qt.lighter(window.tabColor, 1.25) : Qt.lighter(window.surface2, 1.2)); Behavior on color { ColorAnimation { duration: 300 } } }
                                                 }
                                             }
                                         }
