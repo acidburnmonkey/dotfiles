@@ -40,17 +40,19 @@ alias sr='source .venv/bin/activate'
 alias ncdu='ncdu --color dark'
 alias git-push='git remote | xargs -n1 git push'
 alias gc='git clone --depth=1'
+alias ls='ls --color=auto -hlF'
 
 ### Plugins ###
 plugins=(zsh-autosuggestions python virtualenv fzf)
 
 function cd {
-    builtin cd "$@" && ls -F
+    builtin cd "$@" && ls
 }
 
 function .. {
-    builtin cd .. "$@" && ls -F
+    builtin cd .. "$@" && ls
 }
+
 
 source $ZSH/oh-my-zsh.sh
 

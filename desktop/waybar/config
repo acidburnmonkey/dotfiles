@@ -55,7 +55,7 @@
     "custom/updates": {
         "return-type": "json",
         "text": "{text}  ",
-        "interval": 3600,
+        "interval": 300,
         "exec": "$HOME/.config/waybar/scripts/dnf-updates.sh",
         "tooltip": "{tooltip} "
         },
