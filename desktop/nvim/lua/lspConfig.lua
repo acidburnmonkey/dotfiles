@@ -49,7 +49,6 @@ end
 
 -- Mason-LSPconfig setup
 local servers = {
-	"stylua",
 	"clangd",
 	"vtsls",
 	"pyright",
@@ -91,7 +90,7 @@ vim.lsp.config("pyright", {
 })
 vim.lsp.enable("pyright")
 
--- RUFF
+----------- RUFF
 vim.lsp.config("ruff", {
 	filetypes = { "python" },
 	init_options = {
@@ -117,7 +116,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 vim.lsp.enable("ruff")
 
---django experimental
+--------- django experimental
 vim.lsp.config("djls", {
 	cmd = { "djls", "serve" },
 	filetypes = { "htmldjango", "html", "python" },
@@ -125,6 +124,33 @@ vim.lsp.config("djls", {
 })
 
 vim.lsp.enable("djls")
+
+-------------- LUA
+vim.lsp.config("lua_ls", {
+	capabilities = capabilities,
+	on_attach = lsp_attach,
+
+	settings = {
+		Lua = {
+			workspace = {
+				library = {
+					"/usr/share/hypr/stubs",
+					-- Neovim Lua runtime completion
+					vim.env.VIMRUNTIME,
+					-- Your nvim config Lua files
+					vim.fn.stdpath("config") .. "/lua",
+				},
+				checkThirdParty = false,
+			},
+			diagnostics = {
+				enable = true,
+				globals = { "vim", "hl" },
+			},
+		},
+	},
+})
+
+vim.lsp.enable("lua_ls")
 
 --''''''''''''''''Non-ls/null-ls''''''''''''''''
 local null_ls = require("null-ls")
