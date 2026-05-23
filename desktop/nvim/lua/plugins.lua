@@ -68,9 +68,11 @@ local plugins = {
 	-- Treesitter
 	{
 		"nvim-treesitter/nvim-treesitter",
+		branch = "main",
+		lazy = false,
 		build = ":TSUpdate",
 	},
-	{ "nvim-treesitter/nvim-treesitter-textobjects" },
+	{ "nvim-treesitter/nvim-treesitter-textobjects", branch = "main" },
 
 	-- Mason package manager
 	{
@@ -102,9 +104,12 @@ local plugins = {
 	{ "tpope/vim-surround" },
 
 	-- Formatter/Linter integration
-	{ "nvimtools/none-ls.nvim", dependencies = {
-		"nvimtools/none-ls-extras.nvim",
-	} },
+	{
+		"nvimtools/none-ls.nvim",
+		dependencies = {
+			"nvimtools/none-ls-extras.nvim",
+		},
+	},
 
 	-- Treesitter auto-closing tags
 	{ "windwp/nvim-ts-autotag" },
@@ -193,6 +198,25 @@ local plugins = {
 		},
 		init = function()
 			vim.g.db_ui_use_nerd_fonts = 1
+		end,
+	},
+
+	-- go-tagger
+	{
+		"romus204/go-tagger.nvim",
+		config = function()
+			require("go-tagger").setup({
+				skip_private = true,
+				casing = "camelCase",
+				tags = {
+					json = {
+						casing = "camelCase",
+					},
+					xml = {
+						casing = "snake_case",
+					},
+				},
+			})
 		end,
 	},
 }
