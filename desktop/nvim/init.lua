@@ -1,4 +1,6 @@
 require("plugins")
+-- Ensure Neovim's own bundled parsers take priority over nvim-treesitter's older versions
+vim.opt.runtimepath:prepend("/usr/lib64/nvim")
 -- General settings
 require("options")
 -- keymaps

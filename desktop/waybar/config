@@ -43,7 +43,7 @@
     "custom/firefox": {
         "format": "{}  ",
         "tooltip": false,
-        "on-click": "firefox"
+        "on-click": "flatpak run net.waterfox.waterfox"
     },
 
 
