@@ -8,3 +8,5 @@ sublime-text/Local/*
 /sublime-text/Trash/*
 nvim/autoload/plug.vim.old
 nvim/.luarc.json
+.claude
+CLAUDE*

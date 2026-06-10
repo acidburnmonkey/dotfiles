@@ -29,6 +29,9 @@ vim.keymap.set("n", "d", '"_d', opts) --void d
 vim.keymap.set("v", "d", '"_d', opts)
 vim.keymap.set("n", "<leader>d", "daw", opts)
 vim.keymap.set("n", "cw", "ciw", { noremap = true, nowait = true, silent = true }) -- cw = ciw
+vim.keymap.set("n", "!", "^") -- remaps ! to ^
+vim.keymap.set("v", "<", "<gv") -- stay in visual mode after indent
+vim.keymap.set("v", ">", ">gv")
 
 --use Tab to navigate menu snippets menu
 vim.keymap.set("i", "<Tab>", function()

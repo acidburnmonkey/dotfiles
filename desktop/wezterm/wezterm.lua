@@ -27,6 +27,8 @@ config.window_background_opacity = 0.92
 config.use_fancy_tab_bar = false
 config.tab_bar_at_bottom = false
 
+config.warn_about_missing_glyphs = false
+
 -- Cursor
 config.default_cursor_style = "BlinkingBlock"
 config.cursor_blink_rate = 600
@@ -47,8 +49,16 @@ config.keys = {
 	{ key = "U", mods = "CTRL|SHIFT", action = wezterm.action.AttachDomain("unix") },
 
 	-- splits
-	{ key = "h", mods = "ALT", action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
-	{ key = "5", mods = "ALT", action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }) },
+	{
+		key = "h",
+		mods = "ALT",
+		action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }),
+	},
+	{
+		key = "5",
+		mods = "ALT",
+		action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }),
+	},
 	{ key = "LeftArrow", mods = "ALT", action = wezterm.action.ActivatePaneDirection("Left") },
 	{ key = "RightArrow", mods = "ALT", action = wezterm.action.ActivatePaneDirection("Right") },
 	{ key = "UpArrow", mods = "ALT", action = wezterm.action.ActivatePaneDirection("Up") },

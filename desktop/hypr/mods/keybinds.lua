@@ -9,7 +9,11 @@ local menu = "~/.config/rofi/rofimenu/launcher.sh"
 local apps = "~/.config/rofi/apps/apps.sh"
 local powermenu = "~/.config/rofi/rofipowermenu/powermenu.sh"
 local screenshot = 'grim -g "$(slurp)" ' .. os.getenv("HOME") .. "/screenshots/$(date +'%Y-%m-%d-%H%M%S').png"
+<<<<<<< HEAD
 local mouseConstrain = "~/scripts/mouseConstrain.sh"
+=======
+local monitorConstrain = require("mods/mouseConstrain")
+>>>>>>> refs/remotes/origin/master
 
 -- App launchers
 hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(terminal))
@@ -22,7 +26,11 @@ hl.bind(mainMod .. " + D", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + S", hl.dsp.exec_cmd(apps))
 hl.bind("CTRL + ALT + L", hl.dsp.exec_cmd(powermenu))
 hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("loginctl lock-session"))
+<<<<<<< HEAD
 hl.bind(mainMod .. " + G", hl.dsp.exec_cmd(mouseConstrain))
+=======
+hl.bind(mainMod .. " + G", monitorConstrain)
+>>>>>>> refs/remotes/origin/master
 hl.bind(mainMod .. " + N", hl.dsp.exec_cmd("~/.config/quickshell/network/network_toggle.sh"))
 
 -- Special workspace (scratchpad)

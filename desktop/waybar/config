@@ -24,6 +24,7 @@
 
 
     "hyprland/workspaces": {
+        "on-click": "activate",
         "format": " {icon} ",
         "format-icons": {
             "1": " ",
@@ -42,7 +43,7 @@
     "custom/firefox": {
         "format": "{}  ",
         "tooltip": false,
-        "on-click": "firefox"
+        "on-click": "flatpak run net.waterfox.waterfox"
     },
 
 

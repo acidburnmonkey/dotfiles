@@ -1,0 +1,82 @@
+From: local fix
+Subject: Fix query_predicates for Neovim 0.12 TSNode[] match format
+
+Neovim 0.12 removed the `all` option from add_directive/add_predicate.
+Match callbacks now always receive TSNode[] (arrays) instead of a single
+TSNode. nvim-treesitter assumed a single node; the nil-check passed
+because arrays are truthy, then node:range() crashed on a plain table.
+
+Add a first_node() helper and use it everywhere match[id] is accessed.
+
+diff --git a/lua/nvim-treesitter/query_predicates.lua b/lua/nvim-treesitter/query_predicates.lua
+index 7539170d..4fd7aef5 100644
+--- a/lua/nvim-treesitter/query_predicates.lua
++++ b/lua/nvim-treesitter/query_predicates.lua
+@@ -18,6 +18,13 @@ local non_filetype_match_injection_language_aliases = {
+ -- compatibility shim for breaking change on nightly/0.11
+ local opts = vim.fn.has "nvim-0.10" == 1 and { force = true, all = false } or true
+
++-- Neovim 0.12 dropped the `all` option: match values are now TSNode[] not TSNode
++local function first_node(match, id)
++  local n = match[id]
++  if type(n) == "table" then n = n[1] end
++  return n
++end
++
+ local function get_parser_from_markdown_info_string(injection_alias)
+   local match = vim.filetype.match { filename = "a." .. injection_alias }
+   return match or non_filetype_match_injection_language_aliases[injection_alias] or injection_alias
+@@ -53,7 +60,7 @@ query.add_predicate("nth?", function(match, _pattern, _bufnr, pred)
+     return
+   end
+
+-  local node = match[pred[2]] ---@type TSNode
++  local node = first_node(match, pred[2]) ---@type TSNode
+   local n = tonumber(pred[3])
+   if node and node:parent() and node:parent():named_child_count() > n then
+     return node:parent():named_child(n) == node
+@@ -74,7 +81,7 @@ query.add_predicate("is?", function(match, _pattern, bufnr, pred)
+
+   -- Avoid circular dependencies
+   local locals = require "nvim-treesitter.locals"
+-  local node = match[pred[2]]
++  local node = first_node(match, pred[2])
+   local types = { unpack(pred, 3) }
+
+   if not node then
+@@ -96,7 +103,7 @@ query.add_predicate("kind-eq?", function(match, _pattern, _bufnr, pred)
+     return
+   end
+
+-  local node = match[pred[2]]
++  local node = first_node(match, pred[2])
+   local types = { unpack(pred, 3) }
+
+   if not node then
+@@ -113,7 +120,7 @@ end, opts)
+ ---@return boolean|nil
+ query.add_directive("set-lang-from-mimetype!", function(match, _, bufnr, pred, metadata)
+   local capture_id = pred[2]
+-  local node = match[capture_id]
++  local node = first_node(match, capture_id)
+   if not node then
+     return
+   end
+@@ -134,7 +141,7 @@ end, opts)
+ ---@return boolean|nil
+ query.add_directive("set-lang-from-info-string!", function(match, _, bufnr, pred, metadata)
+   local capture_id = pred[2]
+-  local node = match[capture_id]
++  local node = first_node(match, capture_id)
+   if not node then
+     return
+   end
+@@ -154,7 +161,7 @@ query.add_directive("make-range!", function() end, opts)
+ ---@return boolean|nil
+ query.add_directive("downcase!", function(match, _, bufnr, pred, metadata)
+   local id = pred[2]
+-  local node = match[id]
++  local node = first_node(match, id)
+   if not node then
+     return
+   end
