@@ -46,6 +46,12 @@ local lsp_attach = function(client, bufnr)
 	bufmap("n", "<F1>", function()
 		vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = bufnr }))
 	end, "Toggle inlay hints")
+
+	-- Turn inlay hints on automatically, but only for these filetypes
+	local inlay_hint_filetypes = { go = true, cpp = true }
+	if client:supports_method("textDocument/inlayHint") and inlay_hint_filetypes[vim.bo[bufnr].filetype] then
+		vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+	end
 end
 
 -- Mason-LSPconfig setup
@@ -58,8 +64,8 @@ local servers = {
 	"html",
 	"stimulus_ls",
 	"cssls",
-	"gopls",
 	"yamlls",
+	"zls",
 }
 
 require("mason-lspconfig").setup({
@@ -75,6 +81,28 @@ for _, server in ipairs(servers) do
 	vim.lsp.enable(server)
 end
 
+-- GOPLS
+vim.lsp.config("gopls", {
+	capabilities = capabilities,
+	on_attach = lsp_attach,
+	settings = {
+		gopls = {
+			hints = {
+				parameterNames = true,
+				assignVariableTypes = true,
+				compositeLiteralFields = true, -- {/* in: */ "hello", /* want: */ "world"}
+				compositeLiteralTypes = true,
+				constantValues = true,
+				functionTypeParameters = true,
+				rangeVariableTypes = true,
+			},
+		},
+	},
+})
+
+vim.lsp.enable("gopls")
+
+--- pyright
 vim.lsp.config("pyright", {
 	capabilities = capabilities,
 	on_attach = lsp_attach,
