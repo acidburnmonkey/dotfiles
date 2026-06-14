@@ -115,12 +115,12 @@ vim.lsp.config("gopls", {
 		gopls = {
 			hints = {
 				parameterNames = true,
-				assignVariableTypes = true,
-				compositeLiteralFields = true, -- {/* in: */ "hello", /* want: */ "world"}
-				compositeLiteralTypes = true,
-				constantValues = true,
+				-- assignVariableTypes = true,
+				-- compositeLiteralFields = true, -- {/* in: */ "hello", /* want: */ "world"}
+				-- compositeLiteralTypes = true,
+				-- constantValues = true,
 				functionTypeParameters = true,
-				rangeVariableTypes = true,
+				-- rangeVariableTypes = true,
 			},
 		},
 	},
