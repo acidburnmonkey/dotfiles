@@ -14,6 +14,8 @@ require("coderun")
 require("pluginSettings")
 require("lspConfig")
 require("cmpConf")
+require("noneLs")
+require("treeSitter")
 
 --############
 -- # Autorun #

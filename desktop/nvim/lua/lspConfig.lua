@@ -48,7 +48,7 @@ local lsp_attach = function(client, bufnr)
 	end, "Toggle inlay hints")
 
 	-- Turn inlay hints on automatically, but only for these filetypes
-	local inlay_hint_filetypes = { go = true, cpp = true }
+	local inlay_hint_filetypes = { go = true, cpp = true, rust = true }
 	if client:supports_method("textDocument/inlayHint") and inlay_hint_filetypes[vim.bo[bufnr].filetype] then
 		vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
 	end
@@ -65,7 +65,6 @@ local servers = {
 	"stimulus_ls",
 	"cssls",
 	"yamlls",
-	"zls",
 }
 
 require("mason-lspconfig").setup({
@@ -80,6 +79,33 @@ for _, server in ipairs(servers) do
 	})
 	vim.lsp.enable(server)
 end
+
+-- rust
+vim.lsp.config("rust_analyzer", {
+	capabilities = capabilities,
+	on_attach = lsp_attach,
+	settings = {
+		["rust-analyzer"] = {
+			inlayHints = {
+				bindingModeHints = { enable = false },
+				chainingHints = { enable = true },
+				closingBraceHints = { enable = true, minLines = 25 },
+				closureReturnTypeHints = { enable = "never" },
+				lifetimeElisionHints = { enable = "never", useParameterNames = false },
+				maxLength = 25,
+				parameterHints = { enable = true },
+				reborrowHints = { enable = "never" },
+				renderColons = true,
+				typeHints = {
+					enable = true,
+					hideClosureInitialization = false,
+					hideNamedConstructor = false,
+				},
+			},
+		},
+	},
+})
+vim.lsp.enable("rust_analyzer")
 
 -- GOPLS
 vim.lsp.config("gopls", {
@@ -181,95 +207,3 @@ vim.lsp.config("lua_ls", {
 })
 
 vim.lsp.enable("lua_ls")
-
---''''''''''''''''Non-ls/null-ls''''''''''''''''
-local null_ls = require("null-ls")
-local helpers = require("null-ls.helpers")
-local methods = require("null-ls.methods")
-
-local ruff_format = helpers.make_builtin({
-	name = "ruff_format",
-	method = methods.internal.FORMATTING,
-	filetypes = { "python" },
-	generator_opts = {
-		command = "ruff",
-		args = { "format", "--stdin-filename", "$FILENAME", "-" },
-		to_stdin = true,
-	},
-	factory = helpers.formatter_factory,
-})
-
-null_ls.setup({
-	sources = {
-		null_ls.builtins.diagnostics.djlint,
-		null_ls.builtins.diagnostics.cppcheck,
-		null_ls.builtins.diagnostics.codespell,
-		null_ls.builtins.diagnostics.hadolint,
-		null_ls.builtins.formatting.prettierd.with({ extra_args = { "--single-quote" } }),
-		null_ls.builtins.formatting.gofumpt,
-		null_ls.builtins.formatting.stylua,
-		ruff_format,
-	},
-	on_attach = function(client, bufnr)
-		if client:supports_method("textDocument/formatting") then -- run formatters on save
-			vim.api.nvim_create_autocmd("BufWritePre", {
-				buffer = bufnr,
-				callback = function()
-					vim.lsp.buf.format({ bufnr = bufnr })
-				end,
-			})
-		end
-	end,
-})
-
---"'''''''''''''''''''Tree sitter highlight''''''''''''''''''''''''''''''
-require("nvim-treesitter").install({ "lua", "yaml", "bash", "python", "typescript", "javascript", "go" })
-
-local ts_indent_langs = { "html", "javascript", "tsx", "go", "lua" }
-vim.api.nvim_create_autocmd("FileType", {
-	callback = function(ev)
-		pcall(vim.treesitter.start)
-		if vim.tbl_contains(ts_indent_langs, ev.match) then
-			vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
-		end
-	end,
-})
-
-require("nvim-treesitter-textobjects").setup({
-	select = {
-		lookahead = true,
-		selection_modes = {
-			["@parameter.outer"] = "v",
-			["@function.outer"] = "V",
-			["@class.outer"] = "<c-v>",
-		},
-		include_surrounding_whitespace = false,
-	},
-	move = { set_jumps = true },
-})
-
-local select = require("nvim-treesitter-textobjects.select")
-local move = require("nvim-treesitter-textobjects.move")
-
-vim.keymap.set({ "x", "o" }, "af", function()
-	select.select_textobject("@function.outer", "textobjects")
-end)
-vim.keymap.set({ "x", "o" }, "if", function()
-	select.select_textobject("@function.inner", "textobjects")
-end)
-vim.keymap.set({ "x", "o" }, "ac", function()
-	select.select_textobject("@class.outer", "textobjects")
-end)
-vim.keymap.set({ "x", "o" }, "ic", function()
-	select.select_textobject("@class.inner", "textobjects")
-end)
-vim.keymap.set({ "x", "o" }, "as", function()
-	select.select_textobject("@local.scope", "locals")
-end)
-
-vim.keymap.set({ "n", "x", "o" }, "<C-f>", function()
-	move.goto_next_start("@function.outer", "textobjects")
-end)
-vim.keymap.set({ "n", "x", "o" }, "<A-f>", function()
-	move.goto_previous_start("@function.outer", "textobjects")
-end)

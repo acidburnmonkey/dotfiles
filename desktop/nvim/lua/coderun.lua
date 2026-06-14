@@ -66,3 +66,12 @@ vim.api.nvim_create_autocmd("FileType", {
 		buf_map("n", "<F11>", ":w<CR>:FloatermNew --disposable --autoclose=0 zig run %<CR>")
 	end,
 })
+
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "rust",
+	callback = function()
+		buf_map("n", "<F10>", ":w<CR>:!cargo run %<CR>")
+		buf_map("i", "<F10>", "<Esc>:w<CR>:!cargo run %<CR>")
+		buf_map("n", "<F11>", ":w<CR>:FloatermNew --disposable --autoclose=0 cargo run %<CR>")
+	end,
+})
