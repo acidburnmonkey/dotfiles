@@ -10,7 +10,7 @@ hl.window_rule({ name = "ws-firefox", match = { class = "^(org.mozilla.firefox)$
 hl.window_rule({ name = "ws-waterfox", match = { class = "^(waterfox)$" }, workspace = 2 })
 hl.window_rule({ name = "ws-nemo", match = { class = "^(nemo)$" }, workspace = 3 })
 hl.window_rule({ name = "ws-vscodium", match = { title = "^(VSCodium)$" }, workspace = 4 })
-hl.window_rule({ name = "ws-jetbrains", match = { title = "^(jetbrains-idea)$" }, workspace = 4 })
+hl.window_rule({ name = "ws-jetbrains-idea", match = { class = "^(jetbrains-idea)$" }, workspace = 4 })
 hl.window_rule({ name = "ws-postman", match = { title = "^(Postman)$" }, workspace = 4 })
 hl.window_rule({ name = "ws-rstudio", match = { title = "^(RStudio)$" }, workspace = 4 })
 hl.window_rule({ name = "ws-obsidian", match = { class = "^(obsidian)$" }, workspace = 5 })

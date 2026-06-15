@@ -82,8 +82,8 @@ end
 ls.add_snippets("go", {
 	s("iferr", {
 		t("if err != nil {"),
-		t({ "", "\treturn " }),
-		i(1, "err"),
+		t({ "", "\tlog.Fatal(" }),
+		i(1, "err)"),
 		t({ "", "}" }),
 	}),
 })

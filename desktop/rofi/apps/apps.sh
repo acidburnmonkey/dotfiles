@@ -24,7 +24,7 @@ fi
 term_cmd='thunderbird'
 file_cmd='flatpak run io.github.flattool.Warehouse'
 text_cmd='flatpak run md.obsidian.Obsidian'
-web_cmd='firefox -no-remote -P School'
+web_cmd='flatpak run net.waterfox.waterfox -no-remote -p school'
 music_cmd='flatpak run com.discordapp.DiscordCanary'
 setting_cmd='env QT_SCALE_FACTOR=2 GDK_SCALE=2 steam'
 
@@ -32,7 +32,7 @@ setting_cmd='env QT_SCALE_FACTOR=2 GDK_SCALE=2 steam'
 layout=`cat ${theme} | grep 'USE_ICON' | cut -d'=' -f2`
 if [[ "$layout" == 'NO' ]]; then
 	option_1=" Thunderbird<span weight='light' size='small'></span>"
-	option_2=" Flatpak <span weight='light' size='small'></span>"
+	option_2=" Warehouse <span weight='light' size='small'></span>"
 	option_3=" Obsidian<span weight='light' size='small'></span>"
 	option_4=" School<span weight='light' size='small'></span>"
 	option_5=" Discord <span weight='light' size='small'></span>"
